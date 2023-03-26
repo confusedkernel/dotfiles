@@ -6,6 +6,8 @@ if status is-interactive
 	set -x LC_ALL en_US.UTF-8
 	set -x LC_CTYPE en_US.UTF-8
 
+	set -gx GPG_TTY (tty)
+
 	# Source starship
 	starship init fish | source
 
