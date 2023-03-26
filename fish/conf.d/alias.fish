@@ -1,0 +1,9 @@
+alias ls='tree -Cph -L 1'
+alias la='tree -Cpha -L 1'
+alias pip='pip3'
+
+# For fzf because the binding doesn't work
+alias log='_fzf_search_git_log'
+alias stats='_fzf_search_git_status'
+alias dir='_fzf_search_directory'
+alias hist='_fzf_search_history'
