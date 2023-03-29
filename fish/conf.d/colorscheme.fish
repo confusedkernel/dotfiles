@@ -4,19 +4,19 @@
 # Default color
 set -gx fish_color_normal normal
 # Commands (binary)
-set -gx fish_color_command normal #000000 #black
+set -gx fish_color_command normal 
 # Options starting with “-”, up to the first “--” parameter
 set -gx fish_color_param normal #black
 # Regular command parameters
 set -gx fish_color_option 875fff #purple
 # Quoted blocks of text
-set -gx fish_color_quote ff5f00 #orange
+set -gx fish_color_quote ff8c00 #orange
 # IO redirections
 set -gx fish_color_redirection d78700 #caramel
 # Process separators like ';' and '&'
 set -gx fish_color_end d78700 #caramel
 # The color used to highlight potential errors (invalid command)
-set -gx fish_color_error c82829 #crimson
+set -gx fish_color_error d42829 #crimson
 # Code comments
 set -gx fish_color_comment a8a8a8 #grey
 # Highlight matching parenthesis
@@ -32,7 +32,7 @@ set -gx fish_color_valid_path normal --underline --bold
 # Autosuggestion
 set -gx fish_color_autosuggestion d7afff #violet
 # The `^C` indicator on a canceled command
-set -gx fish_color_cancel ff5f00 --reverse #orange
+set -gx fish_color_cancel ff8c00 --reverse #orange
 # History search matches and selected pager items (background only)
 # Default value is black (background)
 set -gx fish_color_search_match --reverse
