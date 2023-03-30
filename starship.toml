@@ -12,7 +12,7 @@ format = "[$hostname]($style):"
 
 [character]
 success_symbol = "[⮑](#aaaaaa) "
-error_symbol = "[⮑](#c82829) "
+error_symbol = "[⮑](#ed4747) "
 
 [directory]
 truncation_length = 3

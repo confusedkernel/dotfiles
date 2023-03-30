@@ -16,7 +16,7 @@ set -gx fish_color_redirection d78700 #caramel
 # Process separators like ';' and '&'
 set -gx fish_color_end d78700 #caramel
 # The color used to highlight potential errors (invalid command)
-set -gx fish_color_error d42829 #crimson
+set -gx fish_color_error ed4747 #crimson
 # Code comments
 set -gx fish_color_comment a8a8a8 #grey
 # Highlight matching parenthesis
