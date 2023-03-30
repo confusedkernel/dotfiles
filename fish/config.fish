@@ -6,6 +6,9 @@ if status is-interactive
 	set -x LC_ALL en_US.UTF-8
 	set -x LC_CTYPE en_US.UTF-8
 
+	set -gx fzf_preview_file_cmd "bat --style=numbers --color=always --theme OneHalfLight"
+	set -gx LS_COLORS (vivid -m 24-bit generate ~/.config/fish/ls_theme.yml)
+
 	set -gx GPG_TTY (tty)
 
 	# Source starship
