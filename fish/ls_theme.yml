@@ -1,12 +1,13 @@
 colors:
   background_color: 'fafafa'
   white: 'a0a1a7'
-  red: 'e45649'
+  red: 'ed4747'
   green: '50a14f'
-  yellow: 'c18401'
-  blue: '4078f2'
-  pink: 'ff6ac1'
-  cyan: '0184bc'
+  yellow: 'd4a133'
+  blue: '5281bf'
+  pink: 'e68a99'
+  cyan: '52adbf'
+  violet: 'd7afff'
 
   black: '000000'
   gray: '999999'
@@ -22,7 +23,7 @@ core:
     foreground: blue
 
   symlink:
-    foreground: pink
+    foreground: violet
 
   multi_hard_link: {}
 
@@ -103,8 +104,8 @@ programming:
 media:
   foreground: pink
 
-office:
-  foreground: red
+office: 
+  font-style: italic
 
 archives:
   foreground: cyan
