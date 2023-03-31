@@ -1,8 +1,12 @@
-vim.g.bufferline = {
+require'barbar'.setup {
 	animation = true,
 	tabpages = true,
 	clickable = true,
-	icon_pinned = '',
+	    icon = {
+        pinned = {
+            button = '',
+        },
+    },
 }
 
 -- Move to previous/next

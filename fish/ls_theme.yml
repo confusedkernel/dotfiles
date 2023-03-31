@@ -1,13 +1,14 @@
+# A custom color scheme based on One Light theme
 colors:
   background_color: 'fafafa'
   white: 'a0a1a7'
   red: 'ed4747'
   green: '50a14f'
   yellow: 'd4a133'
-  blue: '5281bf'
+  blue: '5b8fd4'
   pink: 'e68a99'
   cyan: '52adbf'
-  violet: 'd7afff'
+  violet: 'a87dd4'
 
   black: '000000'
   gray: '999999'

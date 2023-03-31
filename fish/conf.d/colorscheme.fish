@@ -4,9 +4,9 @@
 # Default color
 set -gx fish_color_normal normal
 # Commands (binary)
-set -gx fish_color_command normal 
+set -gx fish_color_command normal
 # Options starting with “-”, up to the first “--” parameter
-set -gx fish_color_param normal #black
+set -gx fish_color_param normal
 # Regular command parameters
 set -gx fish_color_option 875fff #purple
 # Quoted blocks of text
