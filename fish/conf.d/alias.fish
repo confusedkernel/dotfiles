@@ -16,3 +16,5 @@ abbr gp 'git push'
 abbr ga 'git add .'
 abbr gb 'git blame'
 
+# For nvim light mode flicker workaround
+alias nv="nvim --cmd \"set background=light\""

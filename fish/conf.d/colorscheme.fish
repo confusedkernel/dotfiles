@@ -8,7 +8,7 @@ set -gx fish_color_command normal
 # Options starting with “-”, up to the first “--” parameter
 set -gx fish_color_param normal
 # Regular command parameters
-set -gx fish_color_option 875fff #purple
+set -gx fish_color_option 9274ed #purple
 # Quoted blocks of text
 set -gx fish_color_quote ff8c00 #orange
 # IO redirections

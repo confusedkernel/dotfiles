@@ -24,7 +24,7 @@ style = "blck"
 format = "[$path]($style)[$read_only]($read_only_style) "
 
 [git_commit]
-style = "#875fff"
+style = "#9274ed"
 format = "[\\($hash$tag\\)]($style)"
 
 [git_branch]
@@ -36,7 +36,7 @@ format = "[$symbol$branch]($style)"
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-style = "bold #875fff"
+style = "bold #9274ed"
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]

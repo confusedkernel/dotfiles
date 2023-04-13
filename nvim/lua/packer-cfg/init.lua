@@ -45,18 +45,18 @@ require "packer".startup(function(use)
 	-- Multicursor
 	use "mg979/vim-visual-multi"
 	-- Tab bar
-	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+ 	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	-- Grep / fuzzy finder
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
-	use {
-		"nvim-telescope/telescope-file-browser.nvim",
-		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	use { "nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", 
+					 "nvim-lua/plenary.nvim" }
 	}
 	-- Git utilities, i.e. git blame
 	use "tpope/vim-fugitive"
 	-- Auto enable darkmode
-	use "f-person/auto-dark-mode.nvim"
+    use "f-person/auto-dark-mode.nvim"
 	-- Auto-complete snippets
 	use "rafamadriz/friendly-snippets"
 	-- Highlight todo comments
