@@ -88,6 +88,10 @@ require "packer".startup(function(use)
 	use { "hrsh7th/nvim-cmp",
 		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	}
+	-- Auto Gitignore Generators
+	use { "wintermute-cell/gitignore.nvim",
+		requires = { "nvim-telescope/telescope.nvim" }
+	}
 
 	----> LSP and AST <----
 	-- AST
@@ -112,7 +116,7 @@ require "packer".startup(function(use)
 
 	----> Deprecated <----
 	-- Tab bar
-    --	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+	use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
 	if is_bootstrap then
 		require "packer".sync()

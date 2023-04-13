@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/auto-dark-mode.nvim",
     url = "https://github.com/f-person/auto-dark-mode.nvim"
   },
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim"
+  },
   ["cellular-automaton.nvim"] = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
@@ -118,6 +123,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["gitignore.nvim"] = {
+    loaded = true,
+    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/gitignore.nvim",
+    url = "https://github.com/wintermute-cell/gitignore.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,

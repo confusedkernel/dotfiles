@@ -2,11 +2,6 @@ require'barbar'.setup {
 	animation = true,
 	tabpages = true,
 	clickable = true,
-	    icon = {
-        pinned = {
-            button = '',
-        },
-    },
 }
 
 -- Move to previous/next
