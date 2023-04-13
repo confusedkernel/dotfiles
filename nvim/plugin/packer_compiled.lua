@@ -89,11 +89,6 @@ _G.packer_plugins = {
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/auto-dark-mode.nvim",
     url = "https://github.com/f-person/auto-dark-mode.nvim"
   },
-  ["barbar.nvim"] = {
-    loaded = true,
-    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/barbar.nvim",
-    url = "https://github.com/romgrk/barbar.nvim"
-  },
   ["cellular-automaton.nvim"] = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
@@ -129,10 +124,20 @@ _G.packer_plugins = {
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    url = "https://github.com/ellisonleao/glow.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["iswap.nvim"] = {
+    loaded = true,
+    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/iswap.nvim",
+    url = "https://github.com/mizlan/iswap.nvim"
   },
   ["lsp-format.nvim"] = {
     loaded = true,
@@ -192,7 +197,7 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["one-nvim"] = {
     loaded = true,

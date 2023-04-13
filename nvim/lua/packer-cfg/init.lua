@@ -9,13 +9,21 @@ end
 require "packer".startup(function(use)
 	use "wbthomason/packer.nvim"
 
-	----> Misc <----
+	----> Appearance <----
 	-- Theme
 	use "Th3Whit3Wolf/one-nvim"
 	-- Vim interactive tutorial
 	use "ThePrimeagen/vim-be-good"
 	-- Make it rain :)
 	use "Eandrju/cellular-automaton.nvim"
+	-- Discord presence
+	use "andweeb/presence.nvim"
+	-- Start page
+	use { "startup-nvim/startup.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	}
+	-- Auto enable darkmode
+	use "f-person/auto-dark-mode.nvim"
 
 	----> Utilities <----
 	-- Symbols view
@@ -34,8 +42,6 @@ require "packer".startup(function(use)
 	use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
 	-- Auto config tabsize
 	use "tpope/vim-sleuth"
-	-- Discord presence
-	use "andweeb/presence.nvim"
 	-- Auto-pair parentheses and more
 	use "windwp/nvim-autopairs"
 	-- Add/change/delete surrounding delimiter pairs
@@ -44,36 +50,44 @@ require "packer".startup(function(use)
 	use "norcalli/nvim-colorizer.lua"
 	-- Multicursor
 	use "mg979/vim-visual-multi"
-	-- Tab bar
- 	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+	-- Devicons
+	use "nvim-tree/nvim-web-devicons"
+	-- Markdown Preview
+	use "ellisonleao/glow.nvim"
+	-- Interactive Swap
+	use "mizlan/iswap.nvim"
+	
 	-- Grep / fuzzy finder
-	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
-	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
-	use { "nvim-telescope/telescope-file-browser.nvim",
-		requires = { "nvim-telescope/telescope.nvim", 
-					 "nvim-lua/plenary.nvim" }
+	use { "nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		requires = { "nvim-lua/plenary.nvim" } 
 	}
+	use { "nvim-telescope/telescope-fzf-native.nvim",
+		run = "make", 
+		cond = vim.fn.executable "make" == 1
+	}
+	use { "nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	}
+
 	-- Git utilities, i.e. git blame
 	use "tpope/vim-fugitive"
-	-- Auto enable darkmode
-    use "f-person/auto-dark-mode.nvim"
 	-- Auto-complete snippets
 	use "rafamadriz/friendly-snippets"
 	-- Highlight todo comments
-	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
+	use { "folke/todo-comments.nvim", 
+		requires = "nvim-lua/plenary.nvim"
+	 }
 	-- Show history as tree
 	use "mbbill/undotree"
 	-- Terminal
-	use {"akinsho/toggleterm.nvim", tag = '*'}
-	-- Start page
-	use { "startup-nvim/startup.nvim",
-		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	use {"akinsho/toggleterm.nvim", 
+		tag = '*'
 	}
 	-- Auto-complete
 	use { "hrsh7th/nvim-cmp",
 		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	}
-
 
 	----> LSP and AST <----
 	-- AST
@@ -83,6 +97,7 @@ require "packer".startup(function(use)
 			ts_update()
 		end,
 	}
+	-- Treesitter
 	use "nvim-treesitter/nvim-treesitter-context"
 	-- LSP
 	use "lukas-reineke/lsp-format.nvim"
@@ -95,14 +110,18 @@ require "packer".startup(function(use)
 		},
 	}
 
+	----> Deprecated <----
+	-- Tab bar
+    --	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+
 	if is_bootstrap then
 		require "packer".sync()
 	end
+
 end)
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
---
 -- You'll need to restart nvim, and then it will work.
 if is_bootstrap then
 	print "=================================="
