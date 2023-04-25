@@ -6,9 +6,9 @@ alias cf='clear && fish'
 
 # For fzf because the binding doesn't work
 alias log='_fzf_search_git_log'
-alias stats='_fzf_search_git_status'
+alias sts='_fzf_search_git_status'
 alias dir='_fzf_search_directory'
-alias hist='_fzf_search_history'
+alias hst='_fzf_search_history'
 
 # Abbr for easy access
 abbr gc 'git commit'
@@ -16,5 +16,6 @@ abbr gp 'git push'
 abbr ga 'git add .'
 abbr gb 'git blame'
 
-# For nvim light mode flicker workaround
-alias nv="nvim --cmd \"set background=light\""
+# For opening apps
+alias nv='nvim'
+alias code='codium'

@@ -56,6 +56,8 @@ require "packer".startup(function(use)
 	use "ellisonleao/glow.nvim"
 	-- Interactive Swap
 	use "mizlan/iswap.nvim"
+	-- Reformat Code
+	use "mhartington/formatter.nvim"
 	
 	-- Grep / fuzzy finder
 	use { "nvim-telescope/telescope.nvim",
