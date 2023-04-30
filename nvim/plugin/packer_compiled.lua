@@ -303,6 +303,11 @@ _G.packer_plugins = {
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/vim-be-good",
     url = "https://github.com/ThePrimeagen/vim-be-good"
   },
+  ["vim-colors-xcode"] = {
+    loaded = true,
+    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/vim-colors-xcode",
+    url = "https://github.com/arzg/vim-colors-xcode"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/vim-fugitive",

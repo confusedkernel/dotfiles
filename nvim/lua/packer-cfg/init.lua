@@ -12,6 +12,8 @@ require "packer".startup(function(use)
 	----> Appearance <----
 	-- Theme
 	use "Th3Whit3Wolf/one-nvim"
+	use "arzg/vim-colors-xcode"
+
 	-- Vim interactive tutorial
 	use "ThePrimeagen/vim-be-good"
 	-- Make it rain :)
