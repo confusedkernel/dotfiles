@@ -74,8 +74,8 @@ core:
 
 text:
   special:
-    foreground: background_color
-    background: yellow
+    foreground: yellow
+    font-style: italic
 
   todo:
     font-style: bold
