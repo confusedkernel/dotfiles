@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/glow.nvim",
     url = "https://github.com/ellisonleao/glow.nvim"
   },
+  ["hex.nvim"] = {
+    loaded = true,
+    path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/hex.nvim",
+    url = "https://github.com/RaafatTurki/hex.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",

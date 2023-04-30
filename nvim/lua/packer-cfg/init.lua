@@ -58,14 +58,16 @@ require "packer".startup(function(use)
 	use "mizlan/iswap.nvim"
 	-- Reformat Code
 	use "mhartington/formatter.nvim"
-	
+	-- Hex Editor 
+	use "RaafatTurki/hex.nvim"
+
 	-- Grep / fuzzy finder
 	use { "nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		requires = { "nvim-lua/plenary.nvim" } 
+		requires = { "nvim-lua/plenary.nvim" }
 	}
 	use { "nvim-telescope/telescope-fzf-native.nvim",
-		run = "make", 
+		run = "make",
 		cond = vim.fn.executable "make" == 1
 	}
 	use { "nvim-telescope/telescope-file-browser.nvim",
@@ -77,13 +79,13 @@ require "packer".startup(function(use)
 	-- Auto-complete snippets
 	use "rafamadriz/friendly-snippets"
 	-- Highlight todo comments
-	use { "folke/todo-comments.nvim", 
+	use { "folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim"
 	 }
 	-- Show history as tree
 	use "mbbill/undotree"
 	-- Terminal
-	use {"akinsho/toggleterm.nvim", 
+	use {"akinsho/toggleterm.nvim",
 		tag = '*'
 	}
 	-- Auto-complete
