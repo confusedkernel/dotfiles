@@ -96,6 +96,13 @@ require "packer".startup(function(use)
 	use { "wintermute-cell/gitignore.nvim",
 		requires = { "nvim-telescope/telescope.nvim" }
 	}
+	-- Show directory as tree
+	use { 'nvim-tree/nvim-tree.lua',
+		requires = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+		require("nvim-tree").setup {}
+	end
+	}
 
 	----> LSP and AST <----
 	-- AST
