@@ -26,6 +26,7 @@ require "diffview-cfg"
 require "treesitter-cfg"
 require "treesitter-context-cfg"
 require "iswap-cfg"
+require "nvim-tree-cfg"
 require "hex-cfg"
 
 require "neodev-cfg"
