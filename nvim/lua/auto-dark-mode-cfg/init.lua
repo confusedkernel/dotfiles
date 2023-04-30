@@ -2,12 +2,10 @@ local auto_dark_mode = require "auto-dark-mode"
 
 Set_light_mode = function()
 	vim.cmd('colorscheme xcodelight')
-	vim.o.background = "light"
 end
 
 Set_dark_mode = function()
 	vim.cmd('colorscheme xcodedark')
-	vim.o.background = "dark"
 end
 
 -- Use light by default
