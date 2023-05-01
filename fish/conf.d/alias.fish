@@ -2,7 +2,8 @@
 alias ls='tree -Cph -L 1'
 alias la='tree -Cpha -L 1'
 alias pip='pip3'
-alias cf='clear && fish'
+alias cf='clear && fish_greeting'
+alias fc ='set_fzf_colors'
 
 # For fzf because the binding doesn't work
 alias log='_fzf_search_git_log'
