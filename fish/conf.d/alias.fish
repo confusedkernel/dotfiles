@@ -16,6 +16,8 @@ abbr gc 'git commit'
 abbr gp 'git push'
 abbr ga 'git add .'
 abbr gb 'git blame'
+abbr gbr 'fzf_git_branch'
+abbr gbo 'fzf_git_checkout'
 
 # For opening apps
 alias nv='nvim'
