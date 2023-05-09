@@ -1,7 +1,10 @@
-/StardewValley/
-/gh/
-/jgit/
-/asciinema/
+/.config/StardewValley/
+/.config/gh/
+/.config/jgit/
+/.config/asciinema/
+/.config/iterm2/
+/.config/configstore/
+
 **/.DS_Store/
 /.DS_Store/
 .DS_Store
