@@ -4,6 +4,8 @@
 /.config/asciinema/
 /.config/iterm2/
 /.config/configstore/
+/.config/btop/
+/.config/ytmdl/
 
 **/.DS_Store/
 /.DS_Store/
