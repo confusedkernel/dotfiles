@@ -4,7 +4,13 @@ alias la='lsd -a --tree --depth 1'
 alias pip='pip3'
 alias cf='clear && fish_greeting'
 alias fc ='set_fzf_colors'
+
+# For yadm
 alias dot='yadm'
+abbr da 'dot add -u :/'
+abbr dc 'dot commit'
+abbr dp 'dot push'
+abbr dr 'dot reset --hard'
 
 # For fzf because the binding doesn't work
 alias log='_fzf_search_git_log'
