@@ -1,34 +1,111 @@
-require "packer-cfg"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-require "keymap"
-require "options"
+require("keymap")
+require("options")
 
-require "nvim-cmp-cfg"
-require "comment-cfg"
-require "gitsigns-cfg"
-require "indent-blankline-cfg"
-require "lualine-cfg"
-require "telescope-cfg"
-require "startup-cfg"
-require "nvim-autopairs-cfg"
-require "nvim-colorizer-cfg"
-require "glow-cfg"
-require "toggleterm-cfg"
-require "todo-comments-cfg"
-require "trailing-whitespace-cfg"
-require "symbols-outline-cfg"
-require "surround-cfg"
-require "presence-cfg"
-require "auto-dark-mode-cfg"
-require "fugitive-cfg"
-require "undotree-cfg"
-require "diffview-cfg"
-require "treesitter-cfg"
-require "treesitter-context-cfg"
-require "iswap-cfg"
-require "nvim-tree-cfg"
-require "hex-cfg"
+require("lazy").setup({
+    -- Themes
+    "Th3Whit3Wolf/one-nvim",
+    "arzg/vim-colors-xcode",
+    -- Vim interactive tutorial
+    "ThePrimeagen/vim-be-good",
+    -- Fun ADHD trap
+    "Eandrju/cellular-automaton.nvim",
+    -- Discord presence
+    "andweeb/presence.nvim",
+    -- Startup screen
+    { "startup-nvim/startup.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },},
+    -- Auto dark mode
+    "f-person/auto-dark-mode.nvim",
+    -- Neovim devicons
+    "nvim-tree/nvim-web-devicons",
 
-require "neodev-cfg"
-require "lsp-cfg"
-require "fidget-cfg"
+    --> Utilities --<
+    -- Symbols view
+    "simrat39/symbols-outline.nvim",
+    -- Comment shortcut
+    "numToStr/Comment.nvim",
+    -- Git diff symbols on the side
+    "lewis6991/gitsigns.nvim",
+    -- Auto-indent new line
+    "lukas-reineke/indent-blankline.nvim",
+    -- Highlight trailing whitespace
+    "lukoshkin/trailing-whitespace",
+    -- Diff tool
+    { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
+    -- Heuristically set buffer options
+    "tpope/vim-sleuth",
+    -- Auto-pair parentheses and more
+    "windwp/nvim-autopairs",
+    -- Add/change/delete surrounding delimiter pairs
+    "ur4ltz/surround.nvim",
+    -- Colorize hex color strings
+    "norcalli/nvim-colorizer.lua",
+    -- Multicursor
+    "mg979/vim-visual-multi",
+    -- Markdown Preview
+    "ellisonleao/glow.nvim",
+    -- Status bar
+    "nvim-lualine/lualine.nvim",
+    -- Interactive Swap
+    "mizlan/iswap.nvim",
+    -- Surround
+    "tpope/vim-surround",
+    -- Reformat Code
+    "mhartington/formatter.nvim",
+    -- Hex Editor 
+    "RaafatTurki/hex.nvim",
+    -- Highlight todo comments
+    { "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
+    -- Git utilities, i.e. git blame
+    "tpope/vim-fugitive",
+    -- Auto-complete snippets
+    "rafamadriz/friendly-snippets",
+    -- Show history as tree
+    "mbbill/undotree",
+    -- Terminal
+    { "akinsho/toggleterm.nvim", tag = "*" },
+    -- Gitignore generator
+    { "wintermute-cell/gitignore.nvim", dependencies =  "nvim-telescope/telescope.nvim" },
+    -- Auto-complete
+    { "hrsh7th/nvim-cmp", dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },},
+    -- Telescope related functions
+    { "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1},
+    { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" }},
+    -- Treesitter
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",},
+    "nvim-treesitter/nvim-treesitter-context",
+
+    -- LSP
+	  "lukas-reineke/lsp-format.nvim",
+	  { "neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"j-hui/fidget.nvim",
+			"folke/neodev.nvim",
+		},
+	},
+    -- Neovim Tree Directory
+    { "nvim-tree/nvim-tree.lua", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" ,},
+      config = function()
+          require("nvim-tree").setup {}
+      end,
+  },
+
+    -- Deprecated
+    {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
+
+})
