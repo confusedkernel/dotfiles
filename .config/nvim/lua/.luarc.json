@@ -40,6 +40,7 @@
         "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/trailing-whitespace/lua",
         "/Users/tyleryeh/.local/share/nvim/site/pack/packer/start/vim-be-good/lua",
         "/Users/tyleryeh/.config/nvim/lua",
-        "${3rd}/luv/library"
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
     ]
 }

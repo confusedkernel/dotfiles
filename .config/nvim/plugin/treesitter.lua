@@ -1,15 +1,12 @@
+require("fidget").setup({
+	text = {
+		spinner = "dots",
+	},
+})
+
 require('nvim-treesitter.configs').setup({
 	-- A list of parser names, or "all" (the four listed parsers should always be installed)
-	ensure_installed = {
-		"c",
-		"cpp",
-		"lua",
-		"vim",
-		"vimdoc",
-		"rust",
-		"scala",
-		"python"
-	},
+	ensure_installed = {},
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
 	-- Automatically install missing parsers when entering buffer
@@ -23,10 +20,10 @@ require('nvim-treesitter.configs').setup({
 		enable = true,
 		keymaps = {
 			-- set to `false` to disable one of the mappings
-			init_selection = "false",
-			scope_incremental = "false",
-			node_incremental = "<A-Up>",
-			node_decremental = "<A-Down>",
+			-- init_selection = "false",
+			-- scope_incremental = "false",
+			-- node_incremental = "<A-Up>",
+			-- node_decremental = "<A-Down>",
 		},
 	},
 	refactor = {
