@@ -64,6 +64,8 @@ require("lazy").setup({
     "tpope/vim-surround",
     -- Reformat Code
     "mhartington/formatter.nvim",
+    -- Harpoon?
+    "ThePrimeagen/harpoon",
     -- Hex Editor 
     "RaafatTurki/hex.nvim",
     -- Highlight todo comments
@@ -75,7 +77,7 @@ require("lazy").setup({
     -- Show history as tree
     "mbbill/undotree",
     -- Terminal
-    { "akinsho/toggleterm.nvim", tag = "*" },
+    { "akinsho/toggleterm.nvim", version = "*" },
     -- Gitignore generator
     { "wintermute-cell/gitignore.nvim", dependencies =  "nvim-telescope/telescope.nvim" },
     -- Auto-complete
