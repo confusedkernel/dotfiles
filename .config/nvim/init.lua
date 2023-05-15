@@ -15,9 +15,11 @@ require("keymap")
 require("options")
 
 require("lazy").setup({
+    --> Appearance <--
     -- Themes
     "Th3Whit3Wolf/one-nvim",
     "arzg/vim-colors-xcode",
+    { "catppuccin/nvim", name = "catppuccin" },
     -- Vim interactive tutorial
     "ThePrimeagen/vim-be-good",
     -- Fun ADHD trap
@@ -91,21 +93,21 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter-context",
 
     -- LSP
-	  "lukas-reineke/lsp-format.nvim",
-	  { "neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"j-hui/fidget.nvim",
-			"folke/neodev.nvim",
-		},
-	},
+    "lukas-reineke/lsp-format.nvim",
+    { "neovim/nvim-lspconfig",
+      dependencies = {
+	"williamboman/mason.nvim",
+      	"williamboman/mason-lspconfig.nvim",
+      	"j-hui/fidget.nvim",
+      	"folke/neodev.nvim",
+      },
+    },
     -- Neovim Tree Directory
     { "nvim-tree/nvim-tree.lua", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" ,},
       config = function()
           require("nvim-tree").setup {}
       end,
-  },
+    },
 
     -- Deprecated
     {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
