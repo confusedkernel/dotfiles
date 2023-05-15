@@ -5,7 +5,7 @@ Set_light_mode = function()
 end
 
 Set_dark_mode = function()
-	vim.cmd('colorscheme xcodedark')
+	vim.cmd('colorscheme nordic')
 end
 
 -- Use light by default

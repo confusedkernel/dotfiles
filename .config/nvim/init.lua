@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt.cmdheight = 0
 
 require("keymap")
 require("options")
@@ -19,7 +20,14 @@ require("lazy").setup({
     -- Themes
     "Th3Whit3Wolf/one-nvim",
     "arzg/vim-colors-xcode",
-    { "catppuccin/nvim", name = "catppuccin" },
+    {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require 'nordic' .load()
+    end
+    },
     -- Vim interactive tutorial
     "ThePrimeagen/vim-be-good",
     -- Fun ADHD trap
