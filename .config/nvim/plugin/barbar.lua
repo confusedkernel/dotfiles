@@ -1,9 +1,13 @@
+local sidebar = {
+    NvimTree = true,
+}
+
 require'barbar'.setup {
 	animation = true,
-	tabpages = true,
+	tabpages = false,
 	clickable = true,
 	icons = {button = '✗',pinned = {button = ''}},
-
+	sidebar_filetypes = sidebar,
 }
 
 -- Move to previous/next
