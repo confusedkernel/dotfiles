@@ -19,7 +19,6 @@ require('lazy').setup({
   --> Appearance <--
   -- Themes
   { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim'},
-  { 'rose-pine/neovim', name = 'rose-pine' },
   { 'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000,
@@ -100,6 +99,13 @@ require('lazy').setup({
   'nvim-treesitter/nvim-treesitter-context',
   -- Prettier diagnostic list
   { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+  -- Helps you learn neovim
+  { 'folke/which-key.nvim',
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+  },
 
   -- LSP
   'lukas-reineke/lsp-format.nvim',
