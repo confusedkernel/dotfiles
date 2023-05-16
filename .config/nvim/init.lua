@@ -118,6 +118,5 @@ require("lazy").setup({
     },
 
     -- Deprecated
-    {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
-
+    -- {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
 })
