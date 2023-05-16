@@ -16,7 +16,7 @@ error_symbol = "[⮑](#ed4747) "
 
 [directory]
 truncation_length = 3
-truncation_symbol = "…/"
+truncation_symbol = "../"
 truncate_to_repo = false
 read_only = " "
 read_only_style = "#ed4747"
