@@ -99,6 +99,8 @@ require("lazy").setup({
     -- Treesitter
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",},
     "nvim-treesitter/nvim-treesitter-context",
+    -- Prettier diagnostic list
+    { "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
 
     -- LSP
     "lukas-reineke/lsp-format.nvim",
@@ -118,5 +120,5 @@ require("lazy").setup({
     },
 
     -- Deprecated
-    -- {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
+    {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
 })

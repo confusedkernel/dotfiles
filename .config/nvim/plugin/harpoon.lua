@@ -16,4 +16,3 @@ vim.keymap.set({ 'n', 'i' }, '<A-5>', function() ui.nav_file(5) end, { desc = "h
 vim.keymap.set({ 'n', 'i' }, '<A-6>', function() ui.nav_file(6) end, { desc = "harpoon 6" })
 vim.keymap.set({ 'n', 'i' }, '<A-7>', function() ui.nav_file(7) end, { desc = "harpoon 7" })
 vim.keymap.set({ 'n', 'i' }, '<A-8>', function() ui.nav_file(8) end, { desc = "harpoon 8" })
-
