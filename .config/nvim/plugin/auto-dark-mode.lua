@@ -1,7 +1,7 @@
 local auto_dark_mode = require "auto-dark-mode"
 
 Set_light_mode = function()
-	vim.cmd('colorscheme xcodelight')
+	vim.cmd('colorscheme one-nvim')
 end
 
 Set_dark_mode = function()
