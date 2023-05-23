@@ -80,6 +80,8 @@ require('lazy').setup({
   { 'folke/todo-comments.nvim', dependencies = 'nvim-lua/plenary.nvim' },
   -- Git utilities, i.e. git blame
   'tpope/vim-fugitive',
+  -- Autosave
+  'Pocco81/auto-save.nvim',
   -- Auto-complete snippets
   'rafamadriz/friendly-snippets',
   -- Show history as tree
@@ -90,6 +92,7 @@ require('lazy').setup({
   { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim' },
   -- Auto-complete
   { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },},
+
   -- Telescope related functions
   { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }},
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable('make') == 1},
@@ -97,6 +100,7 @@ require('lazy').setup({
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',},
   'nvim-treesitter/nvim-treesitter-context',
+
   -- Prettier diagnostic list
   { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
   -- Helps you learn neovim
@@ -124,7 +128,7 @@ require('lazy').setup({
     end,
   },
 
-  -- Deprecated
+  -- Barbar (I'm removing this)
   {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
 } )
 
