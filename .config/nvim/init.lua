@@ -18,6 +18,7 @@ require('options')
 require('lazy').setup({
   --> Appearance <--
   -- Themes
+
   { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim'},
   { 'AlexvZyl/nordic.nvim',
     lazy = false,
