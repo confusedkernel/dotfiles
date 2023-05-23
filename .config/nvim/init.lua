@@ -82,8 +82,6 @@ require('lazy').setup({
   { 'folke/todo-comments.nvim', dependencies = 'nvim-lua/plenary.nvim' },
   -- Git utilities, i.e. git blame
   'tpope/vim-fugitive',
-  -- Autosave
-  'Pocco81/auto-save.nvim',
   -- Auto-complete snippets
   'rafamadriz/friendly-snippets',
   -- Show history as tree

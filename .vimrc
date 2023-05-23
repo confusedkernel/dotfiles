@@ -5,5 +5,5 @@ set laststatus=0
 set noshowmode
 set noruler
 set noshowcmd
-autocmd BufRead,BufNewFile * set laststatus=0
+autocmd BufRead,BufNewFile * set noshowmode
 syntax enable
