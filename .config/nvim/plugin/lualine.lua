@@ -102,10 +102,10 @@ local function get_git_compare()
 
     -- Run job to get git.
     local result = Job:new({
-        command = 'git',
-        cwd = curr_dir,
-        args = { 'rev-list', '--left-right', '--count', 'HEAD...@{upstream}' },
-    })
+            command = 'git',
+            cwd = curr_dir,
+            args = { 'rev-list', '--left-right', '--count', 'HEAD...@{upstream}' },
+        })
         :sync(100)[1]
 
     -- Process the result.
@@ -138,17 +138,17 @@ local tree = {
             {
                 get_short_cwd,
                 padding = 0,
-                icon = { '   '},
+                icon = { '   ' },
             },
         },
         lualine_z = {
             {
                 'location',
-                icon = { '', align = 'left',}
+                icon = { '', align = 'left', }
             },
             {
                 'progress',
-                icon = { '', align = 'left',},
+                icon = { '', align = 'left', },
                 separator = { right = '', left = '' },
             },
         },
@@ -165,22 +165,13 @@ require('lualine').setup {
                 separator = { right = ' ', left = '' },
             },
         },
-        lualine_b = {},
+        lualine_b = {
+            M.get_current_filename_with_icon,
+        },
         lualine_c = {
             {
-                parent_folder,
-                icon = { '  ',},
-                separator = '',
-                padding = 0,
-            },
-            {
-                get_current_filename,
-                separator = ' ',
-                padding = 0,
-            },
-            {
                 'branch',
-                icon = { ' ',},
+                icon = { ' ', },
                 separator = ' ',
                 padding = 0,
             },
@@ -200,25 +191,28 @@ require('lualine').setup {
             {
                 'diagnostics',
                 sources = { 'nvim_diagnostic' },
-                symbols = { error = ' ', warn = ' ', info = ' ', hint = '󱤅 ', other = '󰠠 ' },                colored = true,
+                symbols = { error = ' ', warn = ' ', info = ' ', hint = '󱤅 ', other = '󰠠 ' },
+                colored = true,
                 padding = 1,
             },
+        },
+        lualine_y = {
             {
                 get_native_lsp,
                 padding = 2,
-                separator = ' ',
+                separator = '',
                 icon = { ' ', },
             },
+
         },
-        lualine_y = {},
         lualine_z = {
             {
                 'location',
-                icon = { '', align = 'left',},
+                icon = { '', align = 'left', },
             },
-{
+            {
                 'progress',
-                icon = { '', align = 'left',},
+                icon = { '', align = 'left', },
                 separator = { right = '', left = '' },
             },
         },
