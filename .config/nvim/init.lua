@@ -20,7 +20,7 @@ require('lazy').setup({
   -- Themes
 
   { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim'},
-  { 'AlexvZyl/nordic.nvim',
+  { 'nottyl/nordic.nvim',
     lazy = false,
     priority = 1000,
     config = function()
