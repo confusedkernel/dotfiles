@@ -27,7 +27,7 @@ require('lazy').setup({
       require 'nordic' .load()
     end
   },
-  { 'projekt0n/github-nvim-theme', name = 'github-theme' },
+
   -- Vim interactive tutorial
   'ThePrimeagen/vim-be-good',
   -- Fun ADHD trap
