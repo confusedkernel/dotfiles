@@ -60,7 +60,7 @@ require('lazy').setup({
   -- Add/change/delete surrounding delimiter pairs
   'ur4ltz/surround.nvim',
   -- Colorize hex color strings
-  'norcalli/nvim-colorizer.lua',
+  'NvChad/nvim-colorizer.lua',
   -- Multicursor
   'mg979/vim-visual-multi',
   -- Markdown Preview
