@@ -157,6 +157,20 @@ local tree = {
 }
 
 require('lualine').setup {
+    options = {
+        globalstatus = true,
+        section_separators = { left = ' ', right = ' ' },
+        component_separators = { left = '', right = '' },
+        disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+        },
+        refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
+        }
+    },
     sections = {
         lualine_a = {
             {
@@ -217,12 +231,7 @@ require('lualine').setup {
             },
         },
     },
-    options = {
-        disabled_filetypes = { 'dashboard' },
-        globalstatus = true,
-        section_separators = { left = ' ', right = ' ' },
-        component_separators = { left = '', right = '' },
-    },
+
     extensions = { ['nvim-tree'] = tree },
 }
 

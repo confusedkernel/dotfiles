@@ -14,6 +14,11 @@ telescope.setup {
 			hijack_netrw = true,
 		},
 	},
+
+	on_enter = function()
+		vim.cmd('doautocmd CursorMoved')
+		vim.cmd('doautocmd CursorMovedI')
+	end
 }
 
 -- Enable telescope fzf native, if installed
