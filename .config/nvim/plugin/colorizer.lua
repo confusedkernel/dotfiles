@@ -1,12 +1,12 @@
-require "colorizer".setup {
+require("colorizer").setup {
 	scss = {
 		RGB      = true,
 		RRGGBB   = true,
-		names    = true,
+		names    = false,
 		RRGGBBAA = true,
 		rgb_fn   = true,
 		hsl_fn   = true,
-		css      = true,
-		css_fn   = true,
+		css      = false,
+		css_fn   = false,
 	}
 }
