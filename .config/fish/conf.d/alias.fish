@@ -16,7 +16,8 @@ abbr da 'dot add -u :/'
 abbr dc 'dot commit'
 abbr dp 'dot push'
 abbr dr 'dot reset --hard'
-abbr ds 'dot status'
+abbr ds 'dot status -u ./'
+abbr db 'dot blame'
 
 # For fzf because the binding doesn't work
 alias log='_fzf_search_git_log'

@@ -16,7 +16,7 @@ if status is-interactive
 	set_fzf_colors
 
 	# FZF preview theme
-	set -gx fzf_preview_file_cmd "bat --style=numbers --color=always --theme OneHalfLight"
+	# set -gx fzf_preview_file_cmd "bat --style=numbers --color=always --theme OneHalfLight"
 	set -gx LS_COLORS (vivid -m 24-bit generate ~/.config/fish/ls_theme.yml)
 	
 	# tty for GPG
