@@ -18,20 +18,13 @@ require('options')
 require('lazy').setup({
   --> Appearance <--
   -- Themes
-
-  { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim'},
-  { 'nottyl/nordic.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require 'nordic' .load()
-    end
-  },
-
+  { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim' },
+  { 'catppuccin/nvim', name = 'catppuccin' },
+  { 'nottyl/nordic.nvim', name = 'nordic', lazy = false, priority = 1000 },
   -- Vim interactive tutorial
-  'ThePrimeagen/vim-be-good',
+  { 'ThePrimeagen/vim-be-good', lazy = true },
   -- Fun ADHD trap
-  'Eandrju/cellular-automaton.nvim',
+  { 'Eandrju/cellular-automaton.nvim', lazy = true },
   -- Discord presence
   'andweeb/presence.nvim',
   -- Startup screen
@@ -65,7 +58,7 @@ require('lazy').setup({
   -- Multicursor
   'mg979/vim-visual-multi',
   -- Markdown Preview
-  'ellisonleao/glow.nvim',
+  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
   -- Status bar
   'nvim-lualine/lualine.nvim',
   -- Interactive Swap
@@ -89,7 +82,7 @@ require('lazy').setup({
   -- Terminal
   { 'akinsho/toggleterm.nvim', version = '*' },
   -- Gitignore generator
-  { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim' },
+  { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim', lazy = true },
   -- Auto-complete
   { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },},
 
@@ -105,7 +98,8 @@ require('lazy').setup({
   { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
   -- Helps you learn neovim
   { 'folke/which-key.nvim',
-    config = function()
+    event = 'VeryLazy',
+    init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
@@ -129,6 +123,6 @@ require('lazy').setup({
   },
 
   -- Barbar (I'm removing this)
-  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
+  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons' },
 } )
 
