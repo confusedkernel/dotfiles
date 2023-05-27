@@ -1,15 +1,13 @@
 local auto_dark_mode = require "auto-dark-mode"
 
 Set_light_mode = function()
-	vim.api.nvim_set_option("background", "light")
-	vim.cmd('colorscheme one-nvim')
+	vim.cmd('colorscheme catppuccin-latte')
 end
 
 Set_dark_mode = function()
 	vim.cmd('colorscheme nordic')
 end
 
--- Use light by default
 Set_dark_mode()
 
 auto_dark_mode.setup({

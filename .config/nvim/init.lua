@@ -59,6 +59,11 @@ require('lazy').setup({
   'mg979/vim-visual-multi',
   -- Markdown Preview
   { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
+  -- Win bar
+  { 'utilyre/barbecue.nvim', name = 'barbecue', version = '*',
+    dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons', },
+    lazy = false,
+  },
   -- Status bar
   'nvim-lualine/lualine.nvim',
   -- Interactive Swap
@@ -80,7 +85,7 @@ require('lazy').setup({
   -- Show history as tree
   'mbbill/undotree',
   -- Terminal
-  { 'akinsho/toggleterm.nvim', version = '*' },
+  { 'akinsho/toggleterm.nvim', version = '*', config = true },
   -- Gitignore generator
   { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim', lazy = true },
   -- Auto-complete
@@ -123,6 +128,6 @@ require('lazy').setup({
   },
 
   -- Barbar (I'm removing this)
-  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons' },
+  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons', lazy = true },
 } )
 
