@@ -100,7 +100,7 @@ require('lazy').setup({
   'nvim-treesitter/nvim-treesitter-context',
 
   -- Prettier diagnostic list
-  { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+  -- { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
   -- Helps you learn neovim
   { 'folke/which-key.nvim',
     event = 'VeryLazy',
