@@ -97,7 +97,7 @@ require('lazy').setup({
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }},
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',},
-  'nvim-treesitter/nvim-treesitter-context',
+  -- 'nvim-treesitter/nvim-treesitter-context',
 
   -- Prettier diagnostic list
   -- { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
