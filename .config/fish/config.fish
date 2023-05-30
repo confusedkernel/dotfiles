@@ -25,6 +25,9 @@ if status is-interactive
 	# Source starship
 	starship init fish | source
 
+	# Set max open files because my neovim is broken somehow
+	ulimit -n 4096
+
 	# Zoxide
 	zoxide init fish --hook="prompt" | source
 
