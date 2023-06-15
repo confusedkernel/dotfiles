@@ -1,13 +1,26 @@
 local sidebar = {
-    NvimTree = true,
+	NvimTree = true,
+	UndoTree = true,
 }
-
-require'barbar'.setup {
+require 'barbar'.setup {
 	custom_colors = true,
 	animation = true,
 	tabpages = false,
 	clickable = true,
-	icons = {button = '✗',pinned = {button = ''}},
+	icons = {
+		button = '✗',
+		pinned = { button = '' },
+		modified = { button = '●' },
+		diagnostics = {
+			enabled = true,
+			{ enabled = true,  icon = ' ' }, -- Error.
+			{ enabled = false, icon = ' ' }, -- Warning.
+			{ enabled = false },     -- Info.
+			{ enabled = false },     -- Hint.
+		},
+	},
+	inactive = {button = ''},
+	highlight_inactive_file_icons = false,
 	sidebar_filetypes = sidebar,
 }
 
