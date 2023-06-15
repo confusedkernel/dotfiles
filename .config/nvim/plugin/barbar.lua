@@ -3,6 +3,7 @@ local sidebar = {
 }
 
 require'barbar'.setup {
+	custom_colors = true,
 	animation = true,
 	tabpages = false,
 	clickable = true,

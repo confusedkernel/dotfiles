@@ -21,87 +21,59 @@ require('lazy').setup({
   { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim' },
   { 'catppuccin/nvim', name = 'catppuccin' },
   { 'nottyl/nordic.nvim', name = 'nordic', lazy = false, priority = 1000 },
-  -- Vim interactive tutorial
   { 'ThePrimeagen/vim-be-good', lazy = true },
-  -- Fun ADHD trap
   { 'Eandrju/cellular-automaton.nvim', lazy = true },
-  -- Discord presence
-  'andweeb/presence.nvim',
-  -- Startup screen
   { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }},
-  -- Auto dark mode
   'f-person/auto-dark-mode.nvim',
-  -- Neovim devicons
   'nvim-tree/nvim-web-devicons',
+  'andweeb/presence.nvim',
+
 
   --> Utilities --<
-  -- Symbols view
-  'simrat39/symbols-outline.nvim',
-  -- Comment shortcut
-  'numToStr/Comment.nvim',
-  -- Git diff symbols on the side
-  'lewis6991/gitsigns.nvim',
-  -- Auto-indent new line
-  'lukas-reineke/indent-blankline.nvim',
-  -- Highlight trailing whitespace
-  'lukoshkin/trailing-whitespace',
-  -- Diff tool
+  { 'akinsho/toggleterm.nvim', version = '*', config = true },
   { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-  -- Heuristically set buffer options
-  'tpope/vim-sleuth',
-  -- Auto-pair parentheses and more
-  'windwp/nvim-autopairs',
-  -- Add/change/delete surrounding delimiter pairs
-  'ur4ltz/surround.nvim',
-  -- Colorize hex color strings
-  'NvChad/nvim-colorizer.lua',
-  -- Multicursor
-  'mg979/vim-visual-multi',
-  -- Markdown Preview
+  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons', lazy = true },
+  { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },},
   { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
-  -- Win bar
+  { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim', lazy = true },
+  { 'folke/todo-comments.nvim', dependencies = 'nvim-lua/plenary.nvim' },
   { 'utilyre/barbecue.nvim', name = 'barbecue', version = '*',
     dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons', },
     lazy = false,
   },
-  -- Status bar
+
+  'simrat39/symbols-outline.nvim',
+  'numToStr/Comment.nvim',
+  'lewis6991/gitsigns.nvim',
+  'lukas-reineke/indent-blankline.nvim',
+  'lukoshkin/highlight-whitespace',
+  'tpope/vim-sleuth',
+  'windwp/nvim-autopairs',
+  'ur4ltz/surround.nvim',
+  'NvChad/nvim-colorizer.lua',
+  'mg979/vim-visual-multi',
   'nvim-lualine/lualine.nvim',
-  -- Interactive Swap
   'mizlan/iswap.nvim',
-  -- Surround
   'tpope/vim-surround',
-  -- Reformat Code
   'mhartington/formatter.nvim',
-  -- Harpoon?
   'ThePrimeagen/harpoon',
-  -- Hex Editor 
   'RaafatTurki/hex.nvim',
-  -- Highlight todo comments
-  { 'folke/todo-comments.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-  -- Git utilities, i.e. git blame
   'tpope/vim-fugitive',
-  -- Auto-complete snippets
   'rafamadriz/friendly-snippets',
-  -- Show history as tree
   'mbbill/undotree',
-  -- Terminal
-  { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  -- Gitignore generator
-  { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim', lazy = true },
-  -- Auto-complete
-  { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },},
+  -- 'pocco81/auto-save.nvim',
 
   -- Telescope related functions
   { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }},
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable('make') == 1},
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' }},
+
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',},
   -- 'nvim-treesitter/nvim-treesitter-context',
 
   -- Prettier diagnostic list
   -- { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
-  -- Helps you learn neovim
   { 'folke/which-key.nvim',
     event = 'VeryLazy',
     init = function()
@@ -114,12 +86,13 @@ require('lazy').setup({
   'lukas-reineke/lsp-format.nvim',
   { 'neovim/nvim-lspconfig',
     dependencies = {
-'williamboman/mason.nvim',
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'j-hui/fidget.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy' },
       'folke/neodev.nvim',
     },
   },
+
   -- Neovim Tree Directory
   { 'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' ,},
     config = function()
@@ -127,7 +100,5 @@ require('lazy').setup({
     end,
   },
 
-  -- Barbar (I'm removing this)
-  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons', lazy = true },
-} )
+})
 
