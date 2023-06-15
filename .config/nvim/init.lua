@@ -16,10 +16,9 @@ require('keymap')
 require('options')
 
 require('lazy').setup({
-  --> Appearance <--
-  -- Themes
+  -- Appearance & Others
   { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim' },
-  { 'catppuccin/nvim', name = 'catppuccin' },
+  { 'catppuccin/nvim', name = 'catppuccin', lazy =false, priority = 1000 },
   { 'nottyl/nordic.nvim', name = 'nordic', lazy = false, priority = 1000 },
   { 'ThePrimeagen/vim-be-good', lazy = true },
   { 'Eandrju/cellular-automaton.nvim', lazy = true },
@@ -29,10 +28,10 @@ require('lazy').setup({
   'andweeb/presence.nvim',
 
 
-  --> Utilities --<
+  -- Utilities
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
   { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-  {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons', lazy = true },
+  { 'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons', lazy = true, },
   { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },},
   { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
   { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim', lazy = true },
@@ -41,7 +40,6 @@ require('lazy').setup({
     dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons', },
     lazy = false,
   },
-
   'simrat39/symbols-outline.nvim',
   'numToStr/Comment.nvim',
   'lewis6991/gitsigns.nvim',
@@ -55,13 +53,12 @@ require('lazy').setup({
   'nvim-lualine/lualine.nvim',
   'mizlan/iswap.nvim',
   'tpope/vim-surround',
-  'mhartington/formatter.nvim',
   'ThePrimeagen/harpoon',
   'RaafatTurki/hex.nvim',
   'tpope/vim-fugitive',
   'rafamadriz/friendly-snippets',
   'mbbill/undotree',
-  -- 'pocco81/auto-save.nvim',
+  'pocco81/auto-save.nvim',
 
   -- Telescope related functions
   { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }},
@@ -72,8 +69,7 @@ require('lazy').setup({
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',},
   -- 'nvim-treesitter/nvim-treesitter-context',
 
-  -- Prettier diagnostic list
-  -- { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+  -- Which-key
   { 'folke/which-key.nvim',
     event = 'VeryLazy',
     init = function()
@@ -94,11 +90,11 @@ require('lazy').setup({
   },
 
   -- Neovim Tree Directory
-  { 'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' ,},
-    config = function()
-        require('nvim-tree').setup {}
-    end,
-  },
+  { 'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' ,}},
+
+  -- Experimental
+  -- 'rcarriga/nvim-notify',
+  { 'folke/noice.nvim', event = "VeryLazy", dependencies = { 'MunifTanjim/nui.nvim'}},
 
 })
 
