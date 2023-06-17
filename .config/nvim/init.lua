@@ -17,44 +17,44 @@ require('options')
 
 require('lazy').setup({
   -- Appearance & Others
-  { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim' },
-  { 'catppuccin/nvim', name = 'catppuccin', lazy =false, priority = 1000 },
+  { 'Th3Whit3Wolf/one-nvim', name = 'one-nvim', lazy = true },
+  { 'catppuccin/nvim', name = 'catppuccin' },
   { 'nottyl/nordic.nvim', name = 'nordic', lazy = false, priority = 1000 },
   { 'ThePrimeagen/vim-be-good', lazy = true },
   { 'Eandrju/cellular-automaton.nvim', lazy = true },
-  { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }},
+  { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
+  -- { 'glepnir/dashboard-nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }, event = 'VimEnter', priority = 100 },
+  'nvim-lualine/lualine.nvim',
   'f-person/auto-dark-mode.nvim',
   'nvim-tree/nvim-web-devicons',
   'andweeb/presence.nvim',
 
-
   -- Utilities
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
+  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim', lazy = true },
   { 'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons' },
-  { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },},
-  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
+  { 'hrsh7th/nvim-cmp', dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' }},
+  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow', lazy = true },
   { 'wintermute-cell/gitignore.nvim', dependencies =  'nvim-telescope/telescope.nvim', lazy = true },
   { 'folke/todo-comments.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-  { 'utilyre/barbecue.nvim', name = 'barbecue', version = '*',
-    dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons', },
-    lazy = false,
-  },
+  { 'tpope/vim-sleuth', lazy = true },
+  { 'nvim-pack/nvim-spectre', dependencies = 'nvim-lua/plenary.nvim', lazy = true },
+  { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }, lazy = true },
+  { 'ggandor/leap.nvim', dependencies = 'tpope/vim-repeat', lazy = true },
+  { 'utilyre/barbecue.nvim', name = 'barbecue', version = '*', dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons', }},
+  { 'RaafatTurki/hex.nvim', lazy = true },
   'simrat39/symbols-outline.nvim',
   'numToStr/Comment.nvim',
   'lewis6991/gitsigns.nvim',
   'lukas-reineke/indent-blankline.nvim',
   'lukoshkin/highlight-whitespace',
-  'tpope/vim-sleuth',
   'windwp/nvim-autopairs',
   'ur4ltz/surround.nvim',
   'NvChad/nvim-colorizer.lua',
   'mg979/vim-visual-multi',
-  'nvim-lualine/lualine.nvim',
   'mizlan/iswap.nvim',
   'tpope/vim-surround',
   'ThePrimeagen/harpoon',
-  'RaafatTurki/hex.nvim',
   'tpope/vim-fugitive',
   'rafamadriz/friendly-snippets',
   'mbbill/undotree',
@@ -67,11 +67,11 @@ require('lazy').setup({
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',},
-  -- 'nvim-treesitter/nvim-treesitter-context',
+  { 'nvim-treesitter/nvim-treesitter-context', enabled = false },
 
   -- Which-key
   { 'folke/which-key.nvim',
-    event = 'VeryLazy',
+    lazy = true,
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -90,11 +90,9 @@ require('lazy').setup({
   },
 
   -- Neovim Tree Directory
-  { 'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' ,}},
+  { 'nvim-tree/nvim-tree.lua', version = '*', dependencies = { 'nvim-tree/nvim-web-devicons' }},
 
   -- Experimental
   -- 'rcarriga/nvim-notify',
   { 'folke/noice.nvim', event = "VeryLazy", dependencies = { 'MunifTanjim/nui.nvim'}},
-
 })
-

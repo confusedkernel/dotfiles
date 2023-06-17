@@ -19,13 +19,27 @@ require("catppuccin").setup {
             base = "#fafafa",
             mantle = "#e6e6e6",
             crust = "#dcdcdc",
-            surface1 = "#fafafa",
         },
         frappe = {},
         macchiato = {},
         mocha = {},
     },
+    highlight_overrides = {
+        latte = function(latte)
+            return {
+                BufferCurrent = { bg = "#fafafa", fg = C.text },
+                BufferCurrentIndex = { bg = "#fafafa", fg = C.blue },
+                BufferCurrentMod = { bg = "#fafafa", fg = C.yellow },
+                BufferCurrentSign = { bg = "#fafafa", fg = C.blue },
+                BufferCurrentTarget = { bg = "#fafafa", fg = C.red },
+            }
+        end
+    },
     integrations = {
         barbar = true,
-    }
+        harpoon = true,
+        noice = true,
+        notify = true,
+
+    },
 }

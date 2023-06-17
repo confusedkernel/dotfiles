@@ -11,13 +11,6 @@ require 'barbar'.setup {
 		button = '✗',
 		pinned = { button = '' },
 		modified = { button = '●' },
-		diagnostics = {
-			enabled = true,
-			{ enabled = true,  icon = ' ' }, -- Error.
-			{ enabled = false, icon = ' ' }, -- Warning.
-			{ enabled = false },     -- Info.
-			{ enabled = false },     -- Hint.
-		},
 	},
 	inactive = {button = ''},
 	highlight_inactive_file_icons = false,

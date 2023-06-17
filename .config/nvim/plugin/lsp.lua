@@ -4,6 +4,7 @@ require "mason-lspconfig".setup({
 	automatic_installation = false
 })
 
+
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { noremap = true, silent = true })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
@@ -64,8 +65,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Spell check
 local common_dictionary = {
-	"Yu", "Hui", "Chiang",
-	"ISTIC",
+	"Lang", "Ching", "Yeh"
 }
 require "lspconfig".ltex.setup {
 	on_attach = on_attach,
