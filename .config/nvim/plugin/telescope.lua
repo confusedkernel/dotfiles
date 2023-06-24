@@ -13,6 +13,7 @@ telescope.setup {
 		file_browser = {
 			hijack_netrw = true,
 		},
+
 	},
 
 	on_enter = function()
@@ -24,6 +25,7 @@ telescope.setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'file_browser')
+pcall(require("telescope").load_extension("noice"))
 
 local builtin = require "telescope.builtin"
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })

@@ -38,6 +38,10 @@ require("catppuccin").setup {
     integrations = {
         barbar = true,
         harpoon = true,
+        telescope = {
+            enabled = true,
+            style = "nvchad",
+        },
         noice = true,
         notify = true,
 
