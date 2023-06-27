@@ -17,7 +17,7 @@ require("options")
 
 require("lazy").setup({
 	-- Appearance & Others
-	{ "leana8959/one-nvim", name = "one-nvim", lazy = true, branch = 'tweaks' },
+	{ "nottyl/one-nvim", name = "one-nvim", lazy = true, branch = 'lualine-support' },
 	-- { "catppuccin/nvim", name = "catppuccin" },
 	{ 'nottyl/catppuccin-nvim', name = 'catppuccin', branch = 'test' },
 	{ "nottyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
@@ -48,13 +48,9 @@ require("lazy").setup({
 	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, lazy = true },
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", lazy = true },
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
-	},
+	{ "utilyre/barbecue.nvim", name = "barbecue", version = "*", dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },},
 	{ "RaafatTurki/hex.nvim", lazy = true },
+    { "simrat39/rust-tools.nvim", dependencies = {"neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap"}, lazy = true },
 	"simrat39/symbols-outline.nvim",
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
@@ -65,7 +61,6 @@ require("lazy").setup({
 	"NvChad/nvim-colorizer.lua",
 	"mg979/vim-visual-multi",
 	"mizlan/iswap.nvim",
-	"simrat39/rust-tools.nvim",
 	"tpope/vim-surround",
 	"ThePrimeagen/harpoon",
 	"tpope/vim-fugitive",

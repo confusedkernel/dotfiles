@@ -6,25 +6,25 @@ function fish_greeting
     
     # Coloring the text based on eras
     if test "$subfolder_name" = "Midnights"
-        set_color --bold --italic 5a6b99 
+        set_color --bold --italic 3F5FB5 #3F5FB5
     else if test "$subfolder_name" = "folklore"
-        set_color --bold --italic a39586
+        set_color --bold --italic 587575 #587575
     else if test "$subfolder_name" = "evermore"
-        set_color --bold --italic a16b20 
+        set_color --bold --italic D89079 #D89079
     else if test "$subfolder_name" = "Lover"
-        set_color --bold --italic c495c1 
+        set_color --bold --italic E687E6 #E687E6
     else if test "$subfolder_name" = "reputation"
-        set_color --bold --italic 878787
+        set_color --bold --italic 878787 #878787
     else if test "$subfolder_name" = "1989"
-        set_color --bold --italic 87a6bb 
+        set_color --bold --italic 93CCDC #93CCDC
     else if test "$subfolder_name" = "Red"
-        set_color --bold --italic b84b3e
+        set_color --bold --italic A54E56 #A54E56
     else if test "$subfolder_name" = "Speak Now"
-        set_color --bold --italic aa97bd
+        set_color --bold --italic C895BF #C895BF
     else if test "$subfolder_name" = "Fearless"
-        set_color --bold --italic c49b04 
+        set_color --bold --italic D9B263 #D9B263
     else if test "$subfolder_name" = "Taylor Swift"
-        set_color --bold --italic 72ab6f 
+        set_color --bold --italic A3BE8C #A3BE8C
     else if test "$subfolder_name" = "Droplets"
         set_color --bold --italic 
     else
