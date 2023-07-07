@@ -1,8 +1,3 @@
-require "mason".setup()
-require "mason-lspconfig".setup({
-	ensure_installed = {},
-	automatic_installation = false
-})
 
 
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { noremap = true, silent = true })
@@ -44,14 +39,14 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = '·', texthl = "DiagnosticSign
 
 -- Border setup
 local border = {
-	{ "╭", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╮", "FloatBorder" },
-	{ "│", "FloatBorder" },
-	{ "╯", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╰", "FloatBorder" },
-	{ "│", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ " ", "FloatBorder" },
 }
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -67,6 +62,7 @@ capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 local common_dictionary = {
 	"Lang", "Ching", "Yeh"
 }
+
 require "lspconfig".ltex.setup {
 	on_attach = on_attach,
 	cmd = { "ltex-ls" },
@@ -80,7 +76,6 @@ require "lspconfig".ltex.setup {
 			trace = { server = "verbose" },
 			dictionary = {
 				["en-US"] = common_dictionary,
-				["fr"] = common_dictionary
 			},
 		},
 	},
@@ -119,9 +114,11 @@ require "lspconfig".lua_ls.setup {
 	},
 }
 -- Rust
-require "lspconfig".rust_analyzer.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
+require "rust-tools".setup {
+	server = {
+		on_attach = on_attach,
+		cmd = { "rustup", "run", "stable", "rust-analyzer" }
+	}
 }
 -- Scala
 require "lspconfig".metals.setup {
@@ -143,3 +140,14 @@ require "lspconfig".clangd.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+
+--local null_ls = require("null-ls")
+
+--null_ls.setup({
+--    sources = {
+--        null_ls.builtins.formatting.stylua,
+--        null_ls.builtins.diagnostics.eslint,
+--        null_ls.builtins.completion.spell,
+--        null_ls.
+--    },
+--})

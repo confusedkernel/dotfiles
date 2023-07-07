@@ -17,9 +17,9 @@ require("options")
 
 require("lazy").setup({
 	-- Appearance & Others
-	{ "nottyl/one-nvim", name = "one-nvim", lazy = true, branch = 'lualine-support' },
+	{ "leana8959/one-nvim", name = "one-nvim", lazy = true },
 	-- { "catppuccin/nvim", name = "catppuccin" },
-	{ 'nottyl/catppuccin-nvim', name = 'catppuccin', branch = 'test' },
+	{ 'nottyl/catppuccin-nvim', name = 'catppuccin' },
 	{ "nottyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
 	{ "ThePrimeagen/vim-be-good", lazy = true },
 	{ "Eandrju/cellular-automaton.nvim", lazy = true },

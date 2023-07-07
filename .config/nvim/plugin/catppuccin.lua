@@ -42,7 +42,10 @@ require("catppuccin").setup {
             enabled = true,
             style = "nvchad",
         },
-        noice = true,
+        noice = {
+            enabled = true,
+            style = "nvchad"
+        },
         notify = true,
 
     },
