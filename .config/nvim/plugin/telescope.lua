@@ -8,6 +8,11 @@ telescope.setup {
 				["<esc>"] = actions.close,
 			},
 		},
+        borderchars = {
+            prompt =  { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+            preview = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+        },
 	},
 	extensions = {
 		file_browser = {
