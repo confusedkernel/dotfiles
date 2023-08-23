@@ -28,7 +28,4 @@ vim.cmd('command! ColorToggle lua require("color-mode").ColorToggle()')
 
 vim.api.nvim_set_keymap('n', '<leader>C', ':ColorToggle<CR>', { silent = true })
 
-M.UseDark()
-
 return M
-
