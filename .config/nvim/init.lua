@@ -17,10 +17,18 @@ require("options")
 
 require("lazy").setup({
 	-- Appearance & Others
-	{ "leana8959/one-nvim",              name = "one-nvim",  lazy = true },
+	{ "leana8959/one-nvim",              name = "one-nvim", lazy = true },
 	-- { "catppuccin/nvim", name = "catppuccin" },
-	{ 'nottyl/catppuccin-nvim',          name = "catppuccin" },
-	{ "AlexvZyl/nordic.nvim",            name = "nordic",    lazy = false, priority = 1000 },
+	{
+		'nottyl/catppuccin-nvim',
+		name = "catppuccin",
+		config = function()
+			vim.opt.background = "light"
+			vim.cmd.colorscheme("catppuccin")
+		end
+	},
+
+	{ "AlexvZyl/nordic.nvim",            name = "nordic",   lazy = false, priority = 1000 },
 	{ "ThePrimeagen/vim-be-good",        lazy = true },
 	{ "Eandrju/cellular-automaton.nvim", lazy = true },
 	-- { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },

@@ -49,4 +49,9 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function() vim.cmd("set iskeyword+=$") end,
 })
 
+vim.cmd('command! UseLight lua require("color-mode").UseLight()')
+vim.cmd('command! UseDark lua require("color-mode").UseDark()')
+vim.cmd('command! ColorToggle lua require("color-mode").ColorToggle()')
+vim.api.nvim_set_keymap('n', '<leader>C', ':ColorToggle<CR>', { silent = true })
+
 -- vim.cmd.colorscheme "one-nvim"
