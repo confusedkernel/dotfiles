@@ -83,7 +83,6 @@ require("lazy").setup({
 	"lukas-reineke/indent-blankline.nvim",
 	"lukoshkin/highlight-whitespace",
 	"windwp/nvim-autopairs",
-	"ur4ltz/surround.nvim",
 	"NvChad/nvim-colorizer.lua",
 	"mg979/vim-visual-multi",
 	"mizlan/iswap.nvim",
@@ -129,8 +128,8 @@ require("lazy").setup({
 	},
 
 	-- Neovim Tree Directory
-	{ "nvim-tree/nvim-tree.lua", version = "*",      dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "nvim-tree/nvim-tree.lua", version = "*",      dependencies = "nvim-tree/nvim-web-devicons" },
 
 	-- Experimental
-	{ "folke/noice.nvim",        event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim" } },
+	{ "folke/noice.nvim",        event = "VeryLazy", dependencies = "MunifTanjim/nui.nvim" },
 })
