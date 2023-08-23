@@ -73,6 +73,11 @@ require("lazy").setup({
 	{ "RaafatTurki/hex.nvim",     lazy = true },
 	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
 	{
+		'mrcjkb/haskell-tools.nvim',
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		branch = "1.x.x"
+	},
+	{
 		"epwalsh/obsidian.nvim",
 		lazy = true,
 		dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim", },

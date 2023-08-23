@@ -155,6 +155,41 @@ require "lspconfig".clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+-- Haskell
+-- -- `haskell-tools` needs to be in `ftplugin`.
+-- -- To simplify the setup, we create an autocmd instead.
+local setup_ht = function()
+    local ht = require("haskell-tools")
+    ht.start_or_attach {
+        tools = {
+            hover = {
+                border = border,
+                stylize_markdown = true,
+            }
+        },
+        hls = {
+            on_attach = function(client, bufnr)
+                -- Set it to your preference. Or don't.
+                -- vim.cmd("setlocal shiftwidth=2")
+                on_attach(client, bufnr)
+                vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
+                    { desc = "Hoogle signature", buffer = bufnr })
+                vim.keymap.set('n', '<space>he', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
+                vim.keymap.set('n', '<space>hr', ht.repl.toggle, { desc = "Toggle repl" })
+            end,
+            default_settings = {
+                haskell = {
+                    -- The default formatter
+                    formattingProvider = "ormolu"
+                }
+            }
+        }
+    }
+end
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "haskell", "lhaskell", "cabal" },
+    callback = setup_ht,
+})
 
 --local null_ls = require("null-ls")
 
