@@ -17,7 +17,7 @@ require("options")
 
 require("lazy").setup({
 	-- Appearance & Others
-	{ "leana8959/one-nvim",              name = "one-nvim", lazy = true },
+	{ "leana8959/one-nvim",              lazy = true },
 	-- { "catppuccin/nvim", name = "catppuccin" },
 	{
 		'nottyl/catppuccin-nvim',
@@ -28,7 +28,7 @@ require("lazy").setup({
 		end
 	},
 
-	{ "AlexvZyl/nordic.nvim",            name = "nordic",   lazy = false, priority = 1000 },
+	{ "AlexvZyl/nordic.nvim",            name = "nordic", lazy = false, priority = 1000 },
 	{ "ThePrimeagen/vim-be-good",        lazy = true },
 	{ "Eandrju/cellular-automaton.nvim", lazy = true },
 	-- { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
@@ -71,7 +71,7 @@ require("lazy").setup({
 		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
 	},
 	{ "RaafatTurki/hex.nvim",     lazy = true },
-	{ "simrat39/rust-tools.nvim", dependencies = { "neovim/nvim-lspconfig" } },
+	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
 	{
 		"epwalsh/obsidian.nvim",
 		lazy = true,
