@@ -124,11 +124,17 @@ require "lspconfig".lua_ls.setup {
     },
 }
 -- Rust
-require "lspconfig".rust_analyzer.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
+require("rust-tools").setup({
+    server = {
+        on_attach = function(client, bufnr)
+            on_attach(client, bufnr)
+            -- Hover actions
+            vim.keymap.set("n", "<C-h>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+    },
+})
 -- Scala
 require "lspconfig".metals.setup {
     on_attach = on_attach,
