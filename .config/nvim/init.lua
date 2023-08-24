@@ -22,10 +22,8 @@ require("lazy").setup({
 	{
 		'nottyl/catppuccin-nvim',
 		name = "catppuccin",
-		config = function()
-			vim.opt.background = "light"
-			vim.cmd.colorscheme("catppuccin")
-		end
+		priority = 1000,
+		lazy = false,
 	},
 
 	{ "AlexvZyl/nordic.nvim",            name = "nordic", lazy = false, priority = 1000 },
