@@ -17,11 +17,19 @@ require("options")
 
 require("lazy").setup({
 	-- Appearance & Others
-	{ "leana8959/one-nvim", name = "one-nvim", lazy = true },
+	{ "leana8959/one-nvim",              lazy = true },
 	-- { "catppuccin/nvim", name = "catppuccin" },
-	{ 'nottyl/catppuccin-nvim', name = 'catppuccin' },
-	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
-	{ "ThePrimeagen/vim-be-good", lazy = true },
+	{
+		'nottyl/catppuccin-nvim',
+		name = "catppuccin",
+		config = function()
+			vim.opt.background = "light"
+			vim.cmd.colorscheme("catppuccin")
+		end
+	},
+
+	{ "AlexvZyl/nordic.nvim",            name = "nordic", lazy = false, priority = 1000 },
+	{ "ThePrimeagen/vim-be-good",        lazy = true },
 	{ "Eandrju/cellular-automaton.nvim", lazy = true },
 	-- { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
 	{
@@ -37,34 +45,49 @@ require("lazy").setup({
 	"andweeb/presence.nvim",
 
 	-- Utilities
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
-	{ "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
-	{ "hrsh7th/nvim-cmp", dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" } },
-	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow", lazy = true },
+	{ "akinsho/toggleterm.nvim", version = "*",                          config = true },
+	{ "sindrets/diffview.nvim",  dependencies = "nvim-lua/plenary.nvim", lazy = true },
+	{ "romgrk/barbar.nvim",      dependencies = "nvim-web-devicons" },
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" }
+	},
+	{
+		"ellisonleao/glow.nvim",
+		config = true,
+		cmd = "Glow",
+		lazy = true,
+	},
 	{ "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim", lazy = true },
-	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
-	{ "tpope/vim-sleuth", lazy = true },
-	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
-	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, lazy = true },
-	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", lazy = true },
-	{ "utilyre/barbecue.nvim", name = "barbecue", version = "*", dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },},
-	{ "RaafatTurki/hex.nvim", lazy = true },
-    { "simrat39/rust-tools.nvim", dependencies = {"neovim/nvim-lspconfig"}},
-    { "epwalsh/obsidian.nvim", lazy = true,
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-        "nvim-telescope/telescope.nvim",
-        },
-    },
+	{ "folke/todo-comments.nvim",       dependencies = "nvim-lua/plenary.nvim" },
+	{ "tpope/vim-sleuth",               lazy = true },
+	{ "nvim-pack/nvim-spectre",         dependencies = "nvim-lua/plenary.nvim",         lazy = true },
+	{ "folke/trouble.nvim",             dependencies = "nvim-tree/nvim-web-devicons",   lazy = true },
+	{ "ggandor/leap.nvim",              dependencies = "tpope/vim-repeat",              lazy = true },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
+	},
+	{ "RaafatTurki/hex.nvim",     lazy = true },
+	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
+	{
+		'mrcjkb/haskell-tools.nvim',
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		branch = "1.x.x"
+	},
+	{
+		"epwalsh/obsidian.nvim",
+		lazy = true,
+		dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim", },
+	},
 	"simrat39/symbols-outline.nvim",
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/indent-blankline.nvim",
 	"lukoshkin/highlight-whitespace",
 	"windwp/nvim-autopairs",
-	"ur4ltz/surround.nvim",
 	"NvChad/nvim-colorizer.lua",
 	"mg979/vim-visual-multi",
 	"mizlan/iswap.nvim",
@@ -80,12 +103,12 @@ require("lazy").setup({
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
-	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make",     cond = vim.fn.executable("make") == 1 },
+	{ "nvim-telescope/telescope.nvim",            branch = "0.1.x",   dependencies = "nvim-lua/plenary.nvim" },
 
 	-- Treesitter
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "nvim-treesitter/nvim-treesitter-context", enabled = false },
+	{ "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter-context",  enabled = false },
 
 	-- Which-key
 	{
@@ -110,8 +133,8 @@ require("lazy").setup({
 	},
 
 	-- Neovim Tree Directory
-	{ "nvim-tree/nvim-tree.lua", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
+	{ "nvim-tree/nvim-tree.lua", version = "*",      dependencies = "nvim-tree/nvim-web-devicons" },
 
 	-- Experimental
-	{ "folke/noice.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim" } },
+	{ "folke/noice.nvim",        event = "VeryLazy", dependencies = "MunifTanjim/nui.nvim" },
 })
