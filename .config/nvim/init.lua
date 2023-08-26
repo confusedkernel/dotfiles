@@ -22,10 +22,8 @@ require("lazy").setup({
 	{
 		'nottyl/catppuccin-nvim',
 		name = "catppuccin",
-		config = function()
-			vim.opt.background = "light"
-			vim.cmd.colorscheme("catppuccin")
-		end
+		priority = 1000,
+		lazy = false,
 	},
 
 	{ "AlexvZyl/nordic.nvim",            name = "nordic", lazy = false, priority = 1000 },
@@ -50,7 +48,11 @@ require("lazy").setup({
 	{ "romgrk/barbar.nvim",      dependencies = "nvim-web-devicons" },
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" }
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip"
+		}
 	},
 	{
 		"ellisonleao/glow.nvim",
