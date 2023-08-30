@@ -75,14 +75,6 @@ function M:get_current_filename_with_icon()
     return icon .. ' ' .. f_name .. suffix
 end
 
-local function parent_folder()
-    local current_buffer = vim.api.nvim_get_current_buf()
-    local current_file = vim.api.nvim_buf_get_name(current_buffer)
-    local parent = vim.fn.fnamemodify(current_file, ':h:t')
-    if parent == '.' then return '' end
-    return parent .. '/'
-end
-
 local function get_native_lsp()
     local buf_ft = get_current_filetype()
     local clients = vim.lsp.get_active_clients()
@@ -94,36 +86,9 @@ local function get_native_lsp()
     return ''
 end
 
--- Display the difference in commits between local and head.
-local Job = require 'plenary.job'
-local function get_git_compare()
-    -- Get the path of the current directory.
-    local curr_dir = vim.api.nvim_buf_get_name(0):match('(.*' .. '/' .. ')')
-
-    -- Run job to get git.
-    local result = Job:new({
-            command = 'git',
-            cwd = curr_dir,
-            args = { 'rev-list', '--left-right', '--count', 'HEAD...@{upstream}' },
-        })
-        :sync(100)[1]
-
-    -- Process the result.
-    if type(result) ~= 'string' then return '' end
-    local ok, ahead, behind = pcall(string.match, result, '(%d+)%s*(%d+)')
-    if not ok then return '' end
-
-    -- No file, so no git.
-    if get_current_buftype() == 'nofile' then return '' end
-    local string = ''
-    if behind ~= '0' then string = string .. '󱦳' .. behind end
-    if ahead ~= '0' then string = string .. '󱦲' .. ahead end
-    return string
-end
-
 -- Required to properly set the colors.
 
-local function get_short_cwd() return vim.fn.fnamemodify(vim.fn.getcwd(), ':~') end
+-- local function get_short_cwd() return vim.fn.fnamemodify(vim.fn.getcwd(), ':~') end
 local tree = {
     sections = {
         lualine_a = {
@@ -136,7 +101,7 @@ local tree = {
         lualine_b = {},
         lualine_c = {
             {
-                get_short_cwd,
+                -- get_short_cwd,
                 padding = 0,
                 icon = { '   ' },
             },
@@ -165,11 +130,7 @@ require('lualine').setup {
             statusline = {},
             winbar = {},
         },
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-        }
+
     },
     sections = {
         lualine_a = {

@@ -29,7 +29,6 @@ require("lazy").setup({
 	{ "AlexvZyl/nordic.nvim",            name = "nordic", lazy = false, priority = 1000 },
 	{ "ThePrimeagen/vim-be-good",        lazy = true },
 	{ "Eandrju/cellular-automaton.nvim", lazy = true },
-	-- { 'startup-nvim/startup.nvim', dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' } },
 	{
 		"glepnir/dashboard-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -77,7 +76,8 @@ require("lazy").setup({
 	{
 		'mrcjkb/haskell-tools.nvim',
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-		branch = "1.x.x"
+        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+		branch = "2.x.x"
 	},
 	{
 		"epwalsh/obsidian.nvim",
@@ -137,6 +137,4 @@ require("lazy").setup({
 	-- Neovim Tree Directory
 	{ "nvim-tree/nvim-tree.lua", version = "*",      dependencies = "nvim-tree/nvim-web-devicons" },
 
-	-- Experimental
-	{ "folke/noice.nvim",        event = "VeryLazy", dependencies = "MunifTanjim/nui.nvim" },
 })
