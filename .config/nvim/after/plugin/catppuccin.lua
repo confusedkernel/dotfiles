@@ -47,7 +47,7 @@ require("catppuccin").setup {
             style = "nvchad"
         },
         notify = true,
-
+        bufferline = true,
     },
 }
 

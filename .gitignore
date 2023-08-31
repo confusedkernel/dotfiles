@@ -6,6 +6,7 @@
 /.config/configstore/
 /.config/btop/
 /.config/ytmdl/
+/.config/nvim/lazy-lock.json
 
 **/.DS_Store/
 /.DS_Store/

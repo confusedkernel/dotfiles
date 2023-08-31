@@ -119,7 +119,7 @@ require('dashboard').setup {
         header_bottom_padding = 3,
         footer_top_padding = 3,
         header = config.header,
-        center = custom_center,
+        -- center = custom_center,
         footer = config.footer,
     },
 }

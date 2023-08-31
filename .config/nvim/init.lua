@@ -18,7 +18,6 @@ require("options")
 require("lazy").setup({
     -- Appearance & Others
     { "leana8959/one-nvim",              lazy = true },
-    -- { "catppuccin/nvim", name = "catppuccin" },
     {
         'nottyl/catppuccin-nvim',
         name = "catppuccin",
@@ -44,7 +43,7 @@ require("lazy").setup({
     -- Utilities
     { "akinsho/toggleterm.nvim", version = "*",                          config = true },
     { "sindrets/diffview.nvim",  dependencies = "nvim-lua/plenary.nvim", lazy = true },
-    { "romgrk/barbar.nvim",      dependencies = "nvim-web-devicons" },
+    { 'akinsho/bufferline.nvim', version = "*",                          dependencies = 'nvim-tree/nvim-web-devicons' },
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -115,7 +114,6 @@ require("lazy").setup({
     -- Which-key
     {
         "folke/which-key.nvim",
-        lazy = true,
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
@@ -137,11 +135,10 @@ require("lazy").setup({
     -- Neovim Tree Directory
     { "nvim-tree/nvim-tree.lua", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
-    -- {
-    --     "folke/noice.nvim",
-    --     event = "VeryLazy",
-    --     dependencies = { "MunifTanjim/nui.nvim",
-    --     }
-    -- },
+    -- Unused (but might be useful some day)
+    -- { "catppuccin/nvim", name = "catppuccin" },
+    -- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
+    -- { "romgrk/barbar.nvim",      dependencies = "nvim-web-devicons" },
+
 
 })
