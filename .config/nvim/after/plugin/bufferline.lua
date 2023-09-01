@@ -9,6 +9,14 @@ bufferline.setup {
         modified_icon = '●',
         style_preset = {
             bufferline.style_preset.no_italic,
+        },
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                text_align = "center",
+                separator = true
+            }
         }
     }
 }

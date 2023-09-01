@@ -88,7 +88,7 @@ end
 
 -- Required to properly set the colors.
 
--- local function get_short_cwd() return vim.fn.fnamemodify(vim.fn.getcwd(), ':~') end
+local function get_short_cwd() return vim.fn.fnamemodify(vim.fn.getcwd(), ':~') end
 local tree = {
     sections = {
         lualine_a = {
@@ -98,14 +98,14 @@ local tree = {
                 separator = { right = ' ', left = '' },
             },
         },
-        lualine_b = {},
-        lualine_c = {
+        lualine_b = {
             {
-                -- get_short_cwd,
-                padding = 0,
-                icon = { '   ' },
+                get_short_cwd,
+                padding = 1,
+                icon = { ' ' },
             },
         },
+        lualine_c = {},
         lualine_z = {
             {
                 'location',
@@ -123,7 +123,7 @@ local tree = {
 
 require('lualine').setup {
     options = {
-        globalstatus = true,
+        globalstatus = tree,
         section_separators = { left = ' ', right = ' ' },
         component_separators = { left = '', right = '' },
         disabled_filetypes = {
