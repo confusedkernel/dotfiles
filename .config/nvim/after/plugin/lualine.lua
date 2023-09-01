@@ -159,7 +159,7 @@ require('lualine').setup {
                 'diff',
                 padding = 0,
                 source = diff_source,
-                symbols = { added = ' ', modified = ' ', removed = ' ' },
+                symbols = { added = '  ', modified = '  ', removed = '  ' },
             },
         },
         lualine_x = {

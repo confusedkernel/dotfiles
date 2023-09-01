@@ -43,7 +43,12 @@ require("lazy").setup({
     -- Utilities
     { "akinsho/toggleterm.nvim", version = "*",                          config = true },
     { "sindrets/diffview.nvim",  dependencies = "nvim-lua/plenary.nvim", lazy = true },
-    { 'akinsho/bufferline.nvim', version = "*",                          dependencies = 'nvim-tree/nvim-web-devicons' },
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        enabled = false
+    },
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -139,6 +144,7 @@ require("lazy").setup({
     -- { "catppuccin/nvim", name = "catppuccin" },
     -- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
     -- { "romgrk/barbar.nvim",      dependencies = "nvim-web-devicons" },
+    -- 'Bekaboo/dropbar.nvim',
 
 
 })
