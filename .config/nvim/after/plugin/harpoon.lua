@@ -1,4 +1,6 @@
-require "harpoon".setup()
+require "harpoon".setup({
+    tabline = false
+})
 
 local ui = require "harpoon.ui"
 local mark = require "harpoon.mark"

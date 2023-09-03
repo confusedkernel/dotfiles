@@ -24,8 +24,8 @@ require("lazy").setup({
         priority = 1000,
         lazy = false,
     },
-
-    { "AlexvZyl/nordic.nvim",            name = "nordic", lazy = false, priority = 1000 },
+    { "romgrk/barbar.nvim",              dependencies = "nvim-web-devicons" },
+    { "AlexvZyl/nordic.nvim",            name = "nordic",                   lazy = false, priority = 1000 },
     { "ThePrimeagen/vim-be-good",        lazy = true },
     { "Eandrju/cellular-automaton.nvim", lazy = true },
     {
@@ -43,12 +43,7 @@ require("lazy").setup({
     -- Utilities
     { "akinsho/toggleterm.nvim", version = "*",                          config = true },
     { "sindrets/diffview.nvim",  dependencies = "nvim-lua/plenary.nvim", lazy = true },
-    {
-        'akinsho/bufferline.nvim',
-        version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        enabled = false
-    },
+
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -98,7 +93,7 @@ require("lazy").setup({
     "mg979/vim-visual-multi",
     "mizlan/iswap.nvim",
     "tpope/vim-surround",
-    "ThePrimeagen/harpoon",
+    { "ThePrimeagen/harpoon",                     event = "WinEnter", priority = 100 },
     "tpope/vim-fugitive",
     "rafamadriz/friendly-snippets",
     "mbbill/undotree",
@@ -141,9 +136,14 @@ require("lazy").setup({
     { "nvim-tree/nvim-tree.lua", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
     -- Unused (but might be useful some day)
+    -- {
+    --     'akinsho/bufferline.nvim',
+    --     version = "*",
+    --     dependencies = 'nvim-tree/nvim-web-devicons',
+    --     enabled = false
+    -- },
     -- { "catppuccin/nvim", name = "catppuccin" },
     -- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
-    -- { "romgrk/barbar.nvim",      dependencies = "nvim-web-devicons" },
     -- 'Bekaboo/dropbar.nvim',
 
 

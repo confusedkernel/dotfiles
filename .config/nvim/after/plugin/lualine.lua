@@ -1,10 +1,10 @@
--- Using Lualine as the statusline.
-
 -- Show git status.
 local function diff_source()
     local gitsigns = vim.b.gitsigns_status_dict
     if gitsigns then return { added = gitsigns.added, modified = gitsigns.changed, removed = gitsigns.removed } end
 end
+
+--------------------------------------------------------------------------------
 
 -- Get the current buffer's filetype.
 local function get_current_filetype() return vim.api.nvim_buf_get_option(0, 'filetype') end
@@ -18,6 +18,8 @@ local function get_current_filename()
     return bufname ~= '' and vim.fn.fnamemodify(bufname, ':t') or ' [No Name]'
 end
 
+--------------------------------------------------------------------------------
+
 -- Gets the current buffer's filename with the filetype icon supplied
 -- by devicons.
 local M = require('lualine.components.filetype'):extend()
@@ -27,6 +29,35 @@ local modules = lualine_require.lazy_require {
     highlight = 'lualine.highlight',
     utils = 'lualine.utils.utils',
 }
+
+--------------------------------------------------------------------------------
+
+-- -- Function to check if the current file is marked in Harpoon (WIP)
+--
+-- local function check_harpoon_indicator()
+--     local harpoon_marks = require('harpoon.mark').get_marked_files()
+--     local current_file = vim.fn.expand('%:p')
+--
+--     for _, mark in pairs(harpoon_marks) do
+--         if mark.path == current_file then
+--             return true
+--         end
+--     end
+--
+--     return false
+-- end
+--
+-- -- Define the custom component for Lualine
+-- local function update_harpoon_statusline()
+--     local harpoon = check_harpoon_indicator()
+--     if harpoon == true then
+--         return '󰛢'
+--     else
+--         return '󰛣'
+--     end
+-- end
+
+--------------------------------------------------------------------------------
 
 function M:get_current_filetype_icon()
     -- Get setup.
@@ -86,9 +117,10 @@ local function get_native_lsp()
     return ''
 end
 
--- Required to properly set the colors.
+--------------------------------------------------------------------------------
 
 local function get_short_cwd() return vim.fn.fnamemodify(vim.fn.getcwd(), ':~') end
+
 local tree = {
     sections = {
         lualine_a = {
@@ -121,6 +153,8 @@ local tree = {
     filetypes = { 'NvimTree' },
 }
 
+--------------------------------------------------------------------------------
+
 require('lualine').setup {
     options = {
         globalstatus = tree,
@@ -137,11 +171,16 @@ require('lualine').setup {
             {
                 'mode',
                 icon = { '' },
-                separator = { right = ' ', left = '' },
+                separator = { right = '', left = '' },
             },
         },
         lualine_b = {
-            M.get_current_filename_with_icon,
+            {
+                M.get_current_filename_with_icon,
+            },
+            -- {
+            --     update_harpoon_statusline,
+            -- },
         },
         lualine_c = {
             {
