@@ -1,4 +1,4 @@
-require "todo-comments".setup({
+require("todo-comments").setup({
 	signs = true, -- show icons in the signs column
 	sign_priority = 10, -- sign priority
 	-- keywords recognized as todo comments
@@ -45,7 +45,7 @@ require "todo-comments".setup({
 		info = { "DiagnosticInfo", "#2563EB" },
 		hint = { "DiagnosticHint", "#10B981" },
 		default = { "Identifier", "#7C3AED" },
-		test = { "Identifier", "#FF00FF" }
+		test = { "Identifier", "#FF00FF" },
 	},
 	search = {
 		command = "rg",

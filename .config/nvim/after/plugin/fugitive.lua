@@ -1,5 +1,5 @@
-vim.keymap.set('n', "<leader>gs", vim.cmd.Git, { desc = "[G]it [S]tatus", noremap = true })
-vim.keymap.set('n', "<leader><space>", ":Git<CR>5<Down>", { desc = "open fugitive" })
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "[G]it [S]tatus", noremap = true })
+vim.keymap.set("n", "<leader><space>", ":Git<CR>5<Down>", { desc = "open fugitive" })
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "fugitive" },
 	callback = function()
@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.keymap.set('n', "<leader>gb", ":Git blame<CR>", { desc = "open fugitive blame" })
+vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "open fugitive blame" })
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "fugitiveblame" },
 	callback = function()

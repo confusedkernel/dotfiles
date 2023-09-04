@@ -9,30 +9,30 @@ config.project = {}
 config.project.limit = 10
 
 config.shortcut = {
-    {
-        desc = '   New file ',
-        action = 'enew',
-        group = '@string',
-        key = 'n',
-    },
-    {
-        desc = '   Find File ',
-        action = 'Telescope find_files find_command=rg,--hidden,--files',
-        group = '@string',
-        key = 'f',
-    },
-    {
-        desc = '   Recent Files ',
-        action = 'Telescope oldfiles',
-        group = '@string',
-        key = 'r',
-    },
-    {
-        desc = '   File Browser ',
-        action = 'Telescope file_browser',
-        group = '@string',
-        key = 'b',
-    },
+	{
+		desc = "   New file ",
+		action = "enew",
+		group = "@string",
+		key = "n",
+	},
+	{
+		desc = "   Find File ",
+		action = "Telescope find_files find_command=rg,--hidden,--files",
+		group = "@string",
+		key = "f",
+	},
+	{
+		desc = "   Recent Files ",
+		action = "Telescope oldfiles",
+		group = "@string",
+		key = "r",
+	},
+	{
+		desc = "   File Browser ",
+		action = "Telescope file_browser",
+		group = "@string",
+		key = "b",
+	},
 }
 
 config.week_header = {}
@@ -47,8 +47,8 @@ config.week_header.enable = true
 -- }
 
 config.footer = {
-    '',
-    '󰛨  When in doubt, listen to Taylor Swift',
+	"",
+	"󰛨  When in doubt, listen to Taylor Swift",
 }
 
 config.packages = {}
@@ -70,56 +70,56 @@ config.header_bottom_padding = 1
 config.footer_top_padding = 3
 
 if hyper then
-    require('dashboard').setup {
-        theme = 'hyper',
-        config = config,
-    }
-    return
+	require("dashboard").setup({
+		theme = "hyper",
+		config = config,
+	})
+	return
 end
 
 local custom_center = {
-    {
-        icon = '  ',
-        desc = 'New file      ',
-        action = 'enew',
-    },
-    {
-        icon = '  ',
-        desc = 'Recent files  ',
-        action = 'Telescope oldfiles',
-    },
-    {
-        icon = '  ',
-        desc = 'Find file/path',
-        action = 'Telescope find_files find_command=rg,--hidden,--files',
-    },
-    {
-        icon = '  ',
-        desc = 'Find word     ',
-        action = 'Telescope live_grep',
-    },
-    {
-        icon = '  ',
-        desc = 'Update plugins',
-        action = 'PackerSync',
-    },
-    {
-        icon = '  ',
-        desc = 'Quit          ',
-        action = 'q!',
-    },
+	{
+		icon = "  ",
+		desc = "New file      ",
+		action = "enew",
+	},
+	{
+		icon = "  ",
+		desc = "Recent files  ",
+		action = "Telescope oldfiles",
+	},
+	{
+		icon = "  ",
+		desc = "Find file/path",
+		action = "Telescope find_files find_command=rg,--hidden,--files",
+	},
+	{
+		icon = "  ",
+		desc = "Find word     ",
+		action = "Telescope live_grep",
+	},
+	{
+		icon = "  ",
+		desc = "Update plugins",
+		action = "PackerSync",
+	},
+	{
+		icon = "  ",
+		desc = "Quit          ",
+		action = "q!",
+	},
 }
 
-require('dashboard').setup {
-    theme = 'hyper',
-    config = {
-        week_header = {
-            enable = true,
-        },
-        header_bottom_padding = 3,
-        footer_top_padding = 3,
-        header = config.header,
-        -- center = custom_center,
-        footer = config.footer,
-    },
-}
+require("dashboard").setup({
+	theme = "hyper",
+	config = {
+		week_header = {
+			enable = true,
+		},
+		header_bottom_padding = 3,
+		footer_top_padding = 3,
+		header = config.header,
+		-- center = custom_center,
+		footer = config.footer,
+	},
+})

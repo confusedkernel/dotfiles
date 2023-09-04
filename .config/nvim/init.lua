@@ -38,7 +38,20 @@ require("lazy").setup({
 	-- Utilities
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
-
+	{ "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim", lazy = true },
+	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	{ "tpope/vim-sleuth", lazy = true },
+	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
+	{ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons", lazy = true },
+	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", lazy = true },
+	{ "RaafatTurki/hex.nvim", lazy = true },
+	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
+	},
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -47,26 +60,6 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
-	{
-		"ellisonleao/glow.nvim",
-		config = true,
-		cmd = "Glow",
-		lazy = true,
-	},
-	{ "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim", lazy = true },
-	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
-	{ "tpope/vim-sleuth", lazy = true },
-	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
-	{ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons", lazy = true },
-	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", lazy = true },
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
-	},
-	{ "RaafatTurki/hex.nvim", lazy = true },
-	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
 	{
 		"mrcjkb/haskell-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
@@ -78,7 +71,14 @@ require("lazy").setup({
 		lazy = true,
 		dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim" },
 	},
-	"simrat39/symbols-outline.nvim",
+	{
+		"ellisonleao/glow.nvim",
+		config = true,
+		cmd = "Glow",
+		lazy = true,
+	},
+    "ThePrimeagen/harpoon",
+    "simrat39/symbols-outline.nvim",
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/indent-blankline.nvim",
@@ -88,7 +88,6 @@ require("lazy").setup({
 	"mg979/vim-visual-multi",
 	"mizlan/iswap.nvim",
 	"tpope/vim-surround",
-	{ "ThePrimeagen/harpoon", event = "WinEnter", priority = 100 },
 	"tpope/vim-fugitive",
 	"rafamadriz/friendly-snippets",
 	"mbbill/undotree",
@@ -140,4 +139,5 @@ require("lazy").setup({
 	-- { "catppuccin/nvim", name = "catppuccin" },
 	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
 	-- 'Bekaboo/dropbar.nvim',
+	-- "godlygeek/tabular",
 })

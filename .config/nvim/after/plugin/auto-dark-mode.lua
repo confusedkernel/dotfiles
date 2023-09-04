@@ -2,14 +2,14 @@
 -- TODO: confirm if it's fixed
 -- NOTE: `<leader>gc` to uncomment this entire block.
 
-local auto_dark_mode = require "auto-dark-mode"
+local auto_dark_mode = require("auto-dark-mode")
 
 Set_light_mode = function()
-	vim.cmd('colorscheme catppuccin-latte')
+	vim.cmd("colorscheme catppuccin-latte")
 end
 
 Set_dark_mode = function()
-	vim.cmd('colorscheme nordic')
+	vim.cmd("colorscheme nordic")
 end
 
 auto_dark_mode.setup({

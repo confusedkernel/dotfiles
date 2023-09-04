@@ -1,7 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-require "luasnip.loaders.from_vscode".lazy_load({ paths = { "./snippets" } })
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
 
 local has_words_before = function()
 	unpack = unpack or table.unpack
@@ -15,14 +15,14 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-	mapping = cmp.mapping.preset.insert {
-		['<C-d>'] = cmp.mapping.scroll_docs( -4),
-		['<C-u>'] = cmp.mapping.scroll_docs(4),
+	mapping = cmp.mapping.preset.insert({
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-u>"] = cmp.mapping.scroll_docs(4),
 		-- ['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm {
+		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
-		},
+		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -39,13 +39,13 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif luasnip.jumpable( -1) then
-				luasnip.jump( -1)
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-	},
+	}),
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
