@@ -117,8 +117,13 @@ require "lspconfig".lua_ls.setup {
                 checkThirdParty = false,
             },
             formatting = {
+                align_array_table = "none",
+                align_function_params = false,
+                align_continuous_assign_statement = false,
+                align_continuous_rect_table_field = false,
                 enable = true,
                 indent = 2,
+
             },
             diagnostics = {
                 globals = { 'vim' },
@@ -170,12 +175,12 @@ vim.g.haskell_tools = {
         on_attach = function(client, bufnr)
             local ht = require("haskell-tools")
 
-             vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
+            vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
                 { desc = "Hoogle signature", buffer = bufnr })
             vim.keymap.set('n', '<space>he', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
             vim.keymap.set('n', '<space>hr', ht.repl.toggle, { desc = "Toggle repl" })
 
-             vim.cmd("setlocal shiftwidth=2")
+            vim.cmd("setlocal shiftwidth=2")
             on_attach(client, bufnr)
         end,
         default_settings = {
@@ -185,14 +190,3 @@ vim.g.haskell_tools = {
         }
     }
 }
-
---local null_ls = require("null-ls")
-
---null_ls.setup({
---    sources = {
---        null_ls.builtins.formatting.stylua,
---        null_ls.builtins.diagnostics.eslint,
---        null_ls.builtins.completion.spell,
---        null_ls.
---    },
---})

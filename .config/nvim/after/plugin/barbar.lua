@@ -1,11 +1,12 @@
 require 'barbar'.setup {
+    custom_colors = true,
 	animation = true,
 	tabpages = false,
-    --auto_hide = true,
+    auto_hide = true,
 	clickable = true,
 	sidebar_filetypes = {
-        NvimTree = { text = "File Explorer" },
-        UndoTree = { text = "Everything Bagel"}
+        NvimTree = { text = "Everything Bagel", align = "center" },
+        UndoTree = { text = "UndoTree" }
     },
     preset = 'default',
     no_name_title = nil,
