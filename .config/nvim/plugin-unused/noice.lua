@@ -1,6 +1,7 @@
 -- require("noice").setup({
 --     cmdline = {
---         view = "cmdline_popup",
+--         enabled = true,
+--         view = "cmdline",
 --         format = {
 --             cmdline = { title = '', icon = '  ' },
 --             lua = { title = '', icon = ' 󰢱 ' },

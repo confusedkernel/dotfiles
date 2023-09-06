@@ -37,7 +37,7 @@ require("lazy").setup({
 
 	-- Utilities
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
+    { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
 	{ "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim", lazy = true },
 	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
 	{ "tpope/vim-sleuth", lazy = true },
@@ -46,6 +46,7 @@ require("lazy").setup({
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", lazy = true },
 	{ "RaafatTurki/hex.nvim", lazy = true },
 	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
+    { "simrat39/symbols-outline.nvim", lazy = true },
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
@@ -78,7 +79,6 @@ require("lazy").setup({
 		lazy = true,
 	},
     "ThePrimeagen/harpoon",
-    "simrat39/symbols-outline.nvim",
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/indent-blankline.nvim",
