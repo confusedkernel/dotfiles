@@ -1,19 +1,19 @@
 # A custom color scheme based on One Light theme
 colors:
-  background_color: 'fafafa'
-  white: 'a0a1a7'
-  red: 'ed4747'
-  green: '50a14f'
-  yellow: 'd4a133'
-  blue: '5b8fd4'
-  pink: 'e68a99'
-  cyan: '52adbf'
-  violet: 'a87dd4'
+  background_color: 'fafafa' #fafafa
+  white: 'eceff4' #eceff4
+  red: 'bf616a' #bf616a
+  green: 'a3be8c' #a3be8c
+  yellow: 'ebcb8b' #ebcb8b
+  blue: '8cafd2' #8cafd2
+  pink: 'cca3aa' #cca3aa
+  cyan: '8fbcbb' #8fbcbb
+  violet: 'b48eac' #b48ead
 
-  black: '000000'
-  gray: '999999'
-  darkgray: '666666'
-  darkergray: '333333'
+  black: '000000' #191c24
+  gray: '999999' #2e3440
+  darkgray: '666666' #434c5e
+  darkergray: '333333' #60728a
 
 core:
   normal_text: {}

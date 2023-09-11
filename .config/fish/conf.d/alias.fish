@@ -4,6 +4,7 @@ alias la='lsd -a --tree --depth 1'
 alias pip='pip3'
 alias cf='clear && fish_greeting'
 alias fc='set_fzf_colors'
+alias py='python3'
 
 # Tmux
 alias t='tmux'
@@ -37,3 +38,6 @@ abbr gr 'git reset --hard'
 # For opening apps
 alias nv='nvim'
 alias code='codium'
+
+# For Criterion compiling and other brew stuff
+alias meep='-I /usr/local/include -L /usr/local/lib'

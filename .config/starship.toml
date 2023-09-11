@@ -2,45 +2,61 @@ format = """
 $hostname$directory$c$python$java$lua$rust
 $character
 """
+
 right_format = "$git_branch$git_commit$git_state$git_status"
+
+palette = 'nord'
 
 [hostname]
 disabled = false
 ssh_only = true
-style = "bold #ff5f00"
+style = "bold warning"
 format = "[$hostname]($style):"
 
+[palettes.nord]
+normal = '#aaaaaa'
+lilac = '#b48ead'
+danger = '#bf616a'
+warning = '#d08770'
+forest = '#a3be8c'
+cerulean = '#8cafd2'
+tiffany = '#8fbcbb'
+
 [character]
-success_symbol = "[⮑](#aaaaaa) "
-error_symbol = "[⮑](#ed4747) "
+success_symbol = "[⮑](forest) "
+error_symbol = "[⮑](danger) "
+vimcmd_symbol = "[⮑](normal) "
+vimcmd_replace_symbol = "[⮑](cerulean) "
+vimcmd_replace_one_symbol = "[⮑](cerulean) "
+vimcmd_visual_symbol = "[⮑](lilac) "
 
 [directory]
 truncation_length = 3
 truncation_symbol = "../"
 truncate_to_repo = false
 read_only = " "
-read_only_style = "#ed4747"
+read_only_style = "danger"
 style = "blck"
 format = "[$path]($style)[$read_only]($read_only_style) "
 
 [git_commit]
-style = "#9274ed"
+style = "lilac"
 format = "[\\($hash$tag\\)]($style)"
 
 [git_branch]
 symbol = ""
-style = "#aaaaaa"
+style = "normal"
 format = "[$symbol$branch]($style)"
 
 [git_status]
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-style = "bold #9274ed"
+style = "bold lilac"
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]
-format = "via [$symbol$version]($style)"
+format = '( [$symbol][\($virtualenv\)]($style))'
 symbol = " "
 
 [aws]
