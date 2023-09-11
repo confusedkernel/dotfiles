@@ -2,7 +2,7 @@ require("colorizer").setup({
 	scss = {
 		RGB = true,
 		RRGGBB = true,
-		names = false,
+		name = false,
 		RRGGBBAA = true,
 		rgb_fn = true,
 		hsl_fn = true,

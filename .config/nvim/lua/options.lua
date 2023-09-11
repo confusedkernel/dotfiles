@@ -20,7 +20,7 @@ vim.opt.backup = false
 vim.opt.undofile = true
 
 vim.opt.termguicolors = true
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -29,30 +29,36 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 8
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "markdown", "tex" },
-    callback = function() vim.opt_local.wrap = true end,
+	pattern = { "markdown", "tex" },
+	callback = function()
+		vim.opt_local.wrap = true
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "rust" },
-    callback = function() vim.cmd("set iskeyword+=&") end,
+	pattern = { "rust" },
+	callback = function()
+		vim.cmd("set iskeyword+=&")
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "fish" },
-    callback = function() vim.cmd("set iskeyword+=$") end,
+	pattern = { "fish" },
+	callback = function()
+		vim.cmd("set iskeyword+=$")
+	end,
 })
 
 vim.cmd('command! UseLight lua require("color-mode").UseLight()')
 vim.cmd('command! UseDark lua require("color-mode").UseDark()')
 vim.cmd('command! ColorToggle lua require("color-mode").ColorToggle()')
-vim.api.nvim_set_keymap('n', '<leader>C', ':ColorToggle<CR>', { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>C", ":ColorToggle<CR>", { silent = true })
 
 -- vim.cmd.colorscheme "one-nvim"

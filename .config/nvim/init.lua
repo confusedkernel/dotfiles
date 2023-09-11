@@ -18,10 +18,9 @@ require("options")
 require("lazy").setup({
 	-- Appearance & Others
 	{ "leana8959/one-nvim", lazy = true },
-	{ "nottyl/catppuccin-nvim", name = "catppuccin", priority = 1000, lazy = false },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false },
 	{ "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
 	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
-	{ "ThePrimeagen/vim-be-good", lazy = true },
 	{ "Eandrju/cellular-automaton.nvim", lazy = true },
 	{
 		"glepnir/dashboard-nvim",
@@ -37,16 +36,19 @@ require("lazy").setup({
 
 	-- Utilities
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-    { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
+	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
 	{ "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim", lazy = true },
 	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
 	{ "tpope/vim-sleuth", lazy = true },
 	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
 	{ "folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons", lazy = true },
-	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", lazy = true },
+	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", enabled = false },
 	{ "RaafatTurki/hex.nvim", lazy = true },
 	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
-    { "simrat39/symbols-outline.nvim", lazy = true },
+	{ "simrat39/symbols-outline.nvim", lazy = true },
+	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat" },
+	{ "iamcco/markdown-preview.nvim", lazy = true },
+	{ "ThePrimeagen/harpoon", lazy = true },
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
@@ -78,7 +80,6 @@ require("lazy").setup({
 		cmd = "Glow",
 		lazy = true,
 	},
-    "ThePrimeagen/harpoon",
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/indent-blankline.nvim",
@@ -136,7 +137,6 @@ require("lazy").setup({
 	--     dependencies = 'nvim-tree/nvim-web-devicons',
 	--     enabled = false
 	-- },
-	-- { "catppuccin/nvim", name = "catppuccin" },
 	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
 	-- 'Bekaboo/dropbar.nvim',
 	-- "godlygeek/tabular",

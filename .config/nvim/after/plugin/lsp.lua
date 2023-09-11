@@ -12,10 +12,15 @@ require("mason-lspconfig").setup({
 })
 require("neodev").setup()
 
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { noremap = true, silent = true })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { noremap = true, silent = true })
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP Float", noremap = true, silent = true })
+vim.keymap.set(
+	"n",
+	"[d",
+	vim.diagnostic.goto_prev,
+	{ desc = "Go to previous diagnostic", noremap = true, silent = true }
+)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", noremap = true, silent = true })
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "Show LSP in list", noremap = true, silent = true })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = bufnr })
 
 local on_attach = function(_, bufnr)
@@ -165,6 +170,23 @@ require("lspconfig").clangd.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+
+-- tex
+require "lspconfig".texlab.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+-- Markdown
+require "lspconfig".marksman.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+-- TOML
+require "lspconfig".taplo.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 -- Haskell
 vim.g.haskell_tools = {
 	tools = {

@@ -10,10 +10,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page up with cursor cente
 vim.keymap.set("n", "n", "nzzzv", { desc = "Find next with cursor centered" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Find last with cursor centered" })
 
-vim.keymap.set("n", "<leader>pv",
-	function() vim.cmd("Explore") end,
-	{ desc = "Show file explorer" }
-)
+vim.keymap.set("n", "<leader>pv", function()
+	vim.cmd("Explore")
+end, { desc = "Show file explorer" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join line below without moving cursor" })
 
@@ -24,10 +23,9 @@ vim.keymap.set({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system c
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "It's the worse place in the universe" })
 
-vim.keymap.set("n", "<leader>nf",
-	function() vim.cmd("enew") end,
-	{ desc = "Open new buffer" }
-)
+vim.keymap.set("n", "<leader>nf", function()
+	vim.cmd("enew")
+end, { desc = "Open new buffer" })
 
 vim.keymap.set("c", "#lm", [[\{-}]], { desc = "[L]azy [M]atch" })
 vim.keymap.set("c", "#capl", [[\(.\{-}\)]], { desc = "[CAP]ture [L]ess" })
@@ -38,8 +36,6 @@ vim.keymap.set("n", "k", "gk", { desc = "K that works with line wrap" })
 vim.keymap.set("n", "<Down>", "g<Down>", { desc = "<Down> that works with line wrap" })
 vim.keymap.set("n", "<Up>", "g<Up>", { desc = "<Up> that works with line wrap" })
 
-vim.keymap.set("n", "<leader>w",
-	function() vim.cmd.setlocal("invwrap") end,
-	{ desc = "toggle wrap locally", silent = true }
-)
-
+vim.keymap.set("n", "<leader>w", function()
+	vim.cmd.setlocal("invwrap")
+end, { desc = "toggle wrap locally", silent = true })
