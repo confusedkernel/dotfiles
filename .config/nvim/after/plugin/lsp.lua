@@ -172,20 +172,20 @@ require("lspconfig").clangd.setup({
 })
 
 -- tex
-require "lspconfig".texlab.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+require("lspconfig").texlab.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 -- Markdown
-require "lspconfig".marksman.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+require("lspconfig").marksman.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 -- TOML
-require "lspconfig".taplo.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+require("lspconfig").taplo.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 -- Haskell
 vim.g.haskell_tools = {
