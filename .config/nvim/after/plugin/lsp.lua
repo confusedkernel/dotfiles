@@ -181,10 +181,14 @@ require("lspconfig").marksman.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
--- TOML
-require("lspconfig").taplo.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+-- ASM
+local util = require('lspconfig.util')
+require("lspconfig").asm_lsp.setup({
+    cmd = { "asm-lsp" },
+    filetypes = {"asm", "vmasm"},
+    root_dir = util.root_pattern('*.asm'),
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 -- Haskell
