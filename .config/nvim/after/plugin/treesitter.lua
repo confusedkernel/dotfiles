@@ -4,6 +4,14 @@ require("fidget").setup({
 	},
 })
 
+require('nvim-treesitter.parsers').get_parser_configs().asm = {
+    install_info = {
+        url = 'https://github.com/rush-rs/tree-sitter-asm.git',
+        files = { 'src/parser.c' },
+        branch = 'main',
+    },
+}
+
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all" (the four listed parsers should always be installed)
 	ensure_installed = {},

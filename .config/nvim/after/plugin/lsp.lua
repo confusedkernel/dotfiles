@@ -150,15 +150,15 @@ require("rust-tools").setup({
 		end,
 	},
 })
--- Scala
-require("lspconfig").metals.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
 -- Golang
 require("lspconfig").gopls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+})
+-- Typst
+require("lspconfig").typst_lsp.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
 -- Python
 require("lspconfig").pylsp.setup({
@@ -167,12 +167,6 @@ require("lspconfig").pylsp.setup({
 })
 -- C
 require("lspconfig").clangd.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
--- tex
-require("lspconfig").texlab.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

@@ -45,7 +45,6 @@ require("lazy").setup({
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", enabled = false },
 	{ "RaafatTurki/hex.nvim", lazy = true },
 	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
-	{ "simrat39/symbols-outline.nvim", lazy = true },
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat" },
 	{ "ThePrimeagen/harpoon", lazy = true },
 	{
@@ -94,6 +93,7 @@ require("lazy").setup({
 	"pocco81/auto-save.nvim",
     "kaarmu/typst.vim",
 	"godlygeek/tabular",
+    "rush-rs/tree-sitter-asm",
 
 	-- Telescope related functions
 	{
@@ -146,4 +146,6 @@ require("lazy").setup({
 	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
 	-- "Bekaboo/dropbar.nvim",
 	-- "godlygeek/tabular",
+    -- { "simrat39/symbols-outline.nvim", lazy = true },
+
 })

@@ -1,5 +1,5 @@
 format = """
-$hostname$directory$c$python$java$lua$rust
+$hostname$directory$c$python$java$lua$rust$haskell
 $character
 """
 
@@ -31,7 +31,7 @@ vimcmd_replace_one_symbol = "[⮑](cerulean) "
 vimcmd_visual_symbol = "[⮑](lilac) "
 
 [directory]
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "../"
 truncate_to_repo = false
 read_only = " "
