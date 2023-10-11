@@ -15,6 +15,12 @@ if status is-interactive
 	# FZF color schemes
 	set_fzf_colors
 
+    # Set VI cursor style
+    set -gx fish_cursor_default block
+    set -gx fish_cursor_insert line
+    set -gx fish_cursor_replace_one underscore
+    set -gx fish_cursor_visual block
+
 	# FZF preview theme
 	# set -gx fzf_preview_file_cmd "bat --style=numbers --color=always --theme OneHalfLight"
 	set -gx LS_COLORS (vivid -m 24-bit generate ~/.config/fish/ls_theme.yml)

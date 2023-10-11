@@ -6,3 +6,6 @@ require("nordic").setup({
 		style = "flat",
 	},
 })
+
+vim.opt.background = "dark"
+vim.cmd.colorscheme("nordic")

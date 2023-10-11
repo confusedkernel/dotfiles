@@ -157,8 +157,8 @@ require("lspconfig").gopls.setup({
 })
 -- Typst
 require("lspconfig").typst_lsp.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 -- Python
 require("lspconfig").pylsp.setup({
@@ -176,13 +176,13 @@ require("lspconfig").marksman.setup({
 	capabilities = capabilities,
 })
 -- ASM
-local util = require('lspconfig.util')
+local util = require("lspconfig.util")
 require("lspconfig").asm_lsp.setup({
-    cmd = { "asm-lsp" },
-    filetypes = {"asm", "vmasm"},
-    root_dir = util.root_pattern('*.asm'),
-    on_attach = on_attach,
-    capabilities = capabilities,
+	cmd = { "asm-lsp" },
+	filetypes = { "asm", "vmasm" },
+	root_dir = util.root_pattern("*.asm"),
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 -- Haskell

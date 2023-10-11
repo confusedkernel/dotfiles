@@ -91,9 +91,9 @@ require("lazy").setup({
 	"rafamadriz/friendly-snippets",
 	"mbbill/undotree",
 	"pocco81/auto-save.nvim",
-    "kaarmu/typst.vim",
+	"kaarmu/typst.vim",
 	"godlygeek/tabular",
-    "rush-rs/tree-sitter-asm",
+	"rush-rs/tree-sitter-asm",
 
 	-- Telescope related functions
 	{
@@ -146,6 +146,5 @@ require("lazy").setup({
 	-- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
 	-- "Bekaboo/dropbar.nvim",
 	-- "godlygeek/tabular",
-    -- { "simrat39/symbols-outline.nvim", lazy = true },
-
+	-- { "simrat39/symbols-outline.nvim", lazy = true },
 })
