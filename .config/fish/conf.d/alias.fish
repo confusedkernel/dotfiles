@@ -12,13 +12,13 @@ alias tk='tmux kill session'
 
 
 # For yadm
-alias dot='yadm'
-abbr da 'dot add -u :/'
-abbr dc 'dot commit'
-abbr dp 'dot push'
-abbr dr 'dot reset --hard'
-abbr ds 'dot status -u ./'
-abbr db 'dot blame'
+alias dotfile='yadm'
+abbr da 'dotfile add -u :/'
+abbr dc 'dotfile commit'
+abbr dp 'dotfile push'
+abbr dr 'dotfile reset --hard'
+abbr ds 'dotfile status -u ./'
+abbr db 'dotfile blame'
 
 # For fzf because the binding doesn't work
 alias log='_fzf_search_git_log'
@@ -37,7 +37,7 @@ abbr gr 'git reset --hard'
 
 # For opening apps
 alias nv='nvim'
-alias code='codium'
+# alias code='codium'
 
 # For Criterion compiling and other brew stuff
 alias meep='-I /usr/local/include -L /usr/local/lib'

@@ -141,7 +141,7 @@ local tree = {
 			{
 				"mode",
 				icon = { "" },
-				separator = { right = " ", left = "" },
+				separator = { right = "", left = "" },
 			},
 		},
 		lualine_b = {
@@ -172,7 +172,7 @@ local tree = {
 require("lualine").setup({
 	options = {
 		globalstatus = tree,
-		section_separators = { left = " ", right = " " },
+		section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
 		disabled_filetypes = {
 			statusline = {},

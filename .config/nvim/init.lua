@@ -94,6 +94,7 @@ require("lazy").setup({
 	"kaarmu/typst.vim",
 	"godlygeek/tabular",
 	"rush-rs/tree-sitter-asm",
+	"turbio/bracey.vim",
 
 	-- Telescope related functions
 	{
