@@ -198,7 +198,7 @@ require("lualine").setup({
 		lualine_c = {
 			{
 				"branch",
-				icon = { "" },
+				icon = { " " },
 				separator = " ",
 				padding = 0,
 			},

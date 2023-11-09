@@ -80,7 +80,7 @@ require("lazy").setup({
 	},
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
-	"lukas-reineke/indent-blankline.nvim",
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	"lukoshkin/highlight-whitespace",
 	"windwp/nvim-autopairs",
 	"NvChad/nvim-colorizer.lua",
