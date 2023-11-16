@@ -84,7 +84,7 @@ local common_dictionary = {
 require("lspconfig").ltex.setup({
 	on_attach = on_attach,
 	cmd = { "ltex-ls" },
-	filetypes = { "markdown", "text", "gitcommit" },
+	filetypes = { "text", "gitcommit" },
 	settings = {
 		ltex = {
 			language = "auto",
@@ -150,10 +150,21 @@ require("rust-tools").setup({
 		end,
 	},
 })
--- Golang
-require("lspconfig").gopls.setup({
-	on_attach = on_attach,
+-- Html, CSS, Javascript
+require("lspconfig").html.setup({
 	capabilities = capabilities,
+	cmd = { "vscode-html-language-server", "--stdio" },
+	filetypes = { "html" },
+	init_options = {
+		configurationSection = { "html", "css", "javascript" },
+		embeddedLanguages = {
+			css = true,
+			javascript = true,
+		},
+		provideFormatter = true,
+	},
+	settings = {},
+	single_file_support = true,
 })
 -- Typst
 require("lspconfig").typst_lsp.setup({
