@@ -47,6 +47,7 @@ require("lazy").setup({
 	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat" },
 	{ "ThePrimeagen/harpoon", lazy = true },
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
@@ -80,7 +81,6 @@ require("lazy").setup({
 	},
 	"numToStr/Comment.nvim",
 	"lewis6991/gitsigns.nvim",
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	"lukoshkin/highlight-whitespace",
 	"windwp/nvim-autopairs",
 	"NvChad/nvim-colorizer.lua",

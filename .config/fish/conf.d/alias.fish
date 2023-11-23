@@ -21,12 +21,12 @@ abbr ds 'dotfile status -u ./'
 abbr db 'dotfile blame'
 
 # For fzf because the binding doesn't work
-alias log='_fzf_search_git_log'
-alias sts='_fzf_search_git_status'
+alias gsl='_fzf_search_git_log'
+alias gss='_fzf_search_git_status'
+alias gsk='_fzf_search_checkout'
+alias gsb='_fzf_search_branch'
 alias dir='_fzf_search_directory'
 alias hst='_fzf_search_history'
-alias bh='_fzf_search_branch'
-alias chk='_fzf_search_checkout'
 
 # Abbr for easy access
 abbr gc 'git commit'
