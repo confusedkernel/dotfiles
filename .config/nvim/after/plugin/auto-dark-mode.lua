@@ -5,7 +5,8 @@
 local auto_dark_mode = require "auto-dark-mode"
 
 Set_light_mode = function()
-  vim.cmd "colorscheme catppuccin-latte"
+    vim.opt.background = "light"
+  vim.cmd "colorscheme one-nvim"
 end
 
 Set_dark_mode = function()

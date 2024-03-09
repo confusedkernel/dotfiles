@@ -18,7 +18,7 @@ require "options"
 require("lazy").setup {
   -- Appearance & Others
   { "leana8959/one-nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false },
+  -- { "catppuccin/nvim", name = "catppuccin", lazy = false },
   { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
   { "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
   { "Eandrju/cellular-automaton.nvim", lazy = true },
