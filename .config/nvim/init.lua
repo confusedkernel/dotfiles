@@ -17,22 +17,15 @@ require "options"
 
 require("lazy").setup {
   -- Appearance & Others
-  { "leana8959/one-nvim", lazy = true },
-  -- { "catppuccin/nvim", name = "catppuccin", lazy = false },
+  { "catppuccin/nvim", name = "catppuccin", lazy = false },
   { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
   { "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
   { "Eandrju/cellular-automaton.nvim", lazy = true },
-  {
-    "glepnir/dashboard-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = "VimEnter",
-    lazy = false,
-    priority = 100,
-  },
-  "nvim-lualine/lualine.nvim",
+    "nvim-lualine/lualine.nvim",
   "f-person/auto-dark-mode.nvim",
   "nvim-tree/nvim-web-devicons",
   "andweeb/presence.nvim",
+  { "nottyl/nvchad-ui.nvim", lazy = false, priority = 10 },
 
   -- Utilities
   { "wakatime/vim-wakatime", lazy = false },

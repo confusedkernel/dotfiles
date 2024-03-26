@@ -7,5 +7,4 @@ require("nordic").setup {
   },
 }
 
-vim.opt.background = "dark"
-vim.cmd.colorscheme "nordic"
+
