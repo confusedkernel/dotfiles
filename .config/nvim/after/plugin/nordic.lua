@@ -6,5 +6,3 @@ require("nordic").setup {
     style = "flat",
   },
 }
-
-

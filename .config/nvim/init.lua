@@ -20,12 +20,11 @@ require("lazy").setup {
   { "catppuccin/nvim", name = "catppuccin", lazy = false },
   { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
   { "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
-  { "Eandrju/cellular-automaton.nvim", lazy = true },
-    "nvim-lualine/lualine.nvim",
+  { "nottyl/nvchad-ui.nvim", lazy = false, priority = 10 },
+  "nvim-lualine/lualine.nvim",
   "f-person/auto-dark-mode.nvim",
   "nvim-tree/nvim-web-devicons",
   "andweeb/presence.nvim",
-  { "nottyl/nvchad-ui.nvim", lazy = false, priority = 10 },
 
   -- Utilities
   { "wakatime/vim-wakatime", lazy = false },
@@ -40,6 +39,7 @@ require("lazy").setup {
   { "RaafatTurki/hex.nvim", lazy = true },
   { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
   { "ggandor/leap.nvim", dependencies = "tpope/vim-repeat" },
+  { "github/copilot.vim", lazy = true },
   { "ThePrimeagen/harpoon", lazy = true },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
@@ -68,10 +68,10 @@ require("lazy").setup {
     dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp", "nvim-telescope/telescope.nvim" },
   },
   {
-    "ellisonleao/glow.nvim",
-    config = true,
-    cmd = "Glow",
-    lazy = true,
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
   },
   "numToStr/Comment.nvim",
   "lewis6991/gitsigns.nvim",
@@ -82,12 +82,11 @@ require("lazy").setup {
   "mizlan/iswap.nvim",
   "tpope/vim-surround",
   "tpope/vim-fugitive",
-  "rafamadriz/friendly-snippets",
   "mbbill/undotree",
+  "rafamadriz/friendly-snippets",
   "pocco81/auto-save.nvim",
   "kaarmu/typst.vim",
   "godlygeek/tabular",
-  "rush-rs/tree-sitter-asm",
   "turbio/bracey.vim",
 
   -- Telescope related functions
@@ -140,6 +139,5 @@ require("lazy").setup {
   -- },
   -- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
   -- "Bekaboo/dropbar.nvim",
-  -- "godlygeek/tabular",
   -- { "simrat39/symbols-outline.nvim", lazy = true },
 }
