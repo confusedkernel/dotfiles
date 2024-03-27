@@ -29,8 +29,8 @@ telescope.setup {
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "file_browser")
-pcall(require("telescope").load_extension "harpoon")
-pcall(require("telescope").load_extension "undo")
+pcall(require("telescope").load_extension, "harpoon")
+pcall(require("telescope").load_extension, "undo")
 
 local builtin = require "telescope.builtin"
 vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })

@@ -1,6 +1,7 @@
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.shortmess:append { I = true }
+vim.opt.showmode = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true

@@ -17,11 +17,12 @@ require "options"
 
 require("lazy").setup {
   -- Appearance & Others
+  { "leana8959/curry.nvim", name = "curry" },
   { "catppuccin/nvim", name = "catppuccin", lazy = false },
   { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
   { "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
-  { "nottyl/nvchad-ui.nvim", lazy = false, priority = 10 },
-  "nvim-lualine/lualine.nvim",
+  { "nottyl/nvchad-ui.nvim", branch = "master", lazy = false, priority = 10 },
+  { "nvim-lualine/lualine.nvim"},
   "f-person/auto-dark-mode.nvim",
   "nvim-tree/nvim-web-devicons",
   "andweeb/presence.nvim",
@@ -84,7 +85,7 @@ require("lazy").setup {
   "tpope/vim-fugitive",
   "mbbill/undotree",
   "rafamadriz/friendly-snippets",
-  "pocco81/auto-save.nvim",
+  "okuuva/auto-save.nvim",
   "kaarmu/typst.vim",
   "godlygeek/tabular",
   "turbio/bracey.vim",

@@ -1,7 +1,7 @@
 require("nvchad_ui").setup {
   lazyVim = true,
   statusline = { enabled = false },
-  theme_toggle = { "catppuccin-latte", "nordic" },
+  theme_toggle = { enabled = false },
   nvdash = {
     load_on_startup = true,
     buttons = {
