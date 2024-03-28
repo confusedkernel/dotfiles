@@ -1,24 +1,14 @@
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  }
-end
-vim.opt.rtp:prepend(lazypath)
-vim.opt.cmdheight = 0
-
-require "keymap"
-require "options"
-
-require("lazy").setup {
+local plugins = {
   -- Appearance & Others
   { "catppuccin/nvim", name = "catppuccin", lazy = false },
-  { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
+  {
+    "romgrk/barbar.nvim",
+    dependencies = "nvim-web-devicons",
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    version = "^1.0.0",
+  },
   { "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
   { "nottyl/nvchad-ui.nvim", branch = "master", lazy = false, priority = 10 },
   "nvim-lualine/lualine.nvim",
@@ -137,22 +127,54 @@ require("lazy").setup {
     cmd = "ASToggle",
     event = { "InsertLeave", "TextChanged" },
     opts = {
-        enabled = true,
-        trigger_events = {
-            immediate_save = {
-                { "InsertLeave", "TextChanged" },
-            },
+      enabled = true,
+      trigger_events = {
+        immediate_save = {
+          { "InsertLeave", "TextChanged" },
         },
-        condition = function(buf)
+      },
+      condition = function(buf)
         local fn = vim.fn
-        local utils = require("auto-save.utils.data")
+        local utils = require "auto-save.utils.data"
 
         -- don't save for `sql` file types
-        if utils.not_in(fn.getbufvar(buf, "&filetype"), {'TelescopePrompt'}) then
-            return true
+        if utils.not_in(fn.getbufvar(buf, "&filetype"), { "TelescopePrompt" }) then
+          return true
         end
         return false
-        end
-    }
+      end,
+    },
+  },
+
+  -- Testing colorschemes
+  {
+    "https://github.com/nottyl/curry.nvim",
+    branch = "custom-config",
+    dev = true,
   },
 }
+
+local opts = {
+  dev = {
+    path = "~/coding/repos/neovim",
+  },
+}
+
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+vim.opt.cmdheight = 0
+
+require "keymap"
+require "options"
+
+require("lazy").setup(plugins, opts)
