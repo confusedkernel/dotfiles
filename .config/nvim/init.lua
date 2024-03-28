@@ -17,12 +17,11 @@ require "options"
 
 require("lazy").setup {
   -- Appearance & Others
-  { "leana8959/curry.nvim", name = "curry" },
   { "catppuccin/nvim", name = "catppuccin", lazy = false },
   { "romgrk/barbar.nvim", dependencies = "nvim-web-devicons" },
   { "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
   { "nottyl/nvchad-ui.nvim", branch = "master", lazy = false, priority = 10 },
-  { "nvim-lualine/lualine.nvim"},
+  "nvim-lualine/lualine.nvim",
   "f-person/auto-dark-mode.nvim",
   "nvim-tree/nvim-web-devicons",
   "andweeb/presence.nvim",
@@ -131,14 +130,29 @@ require("lazy").setup {
   -- Neovim Tree Directory
   { "nvim-tree/nvim-tree.lua", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
-  -- Unused (but might be useful some day)
-  -- {
-  --     'akinsho/bufferline.nvim',
-  --     version = "*",
-  --     dependencies = 'nvim-tree/nvim-web-devicons',
-  --     enabled = false
-  -- },
-  -- { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim"}},
-  -- "Bekaboo/dropbar.nvim",
-  -- { "simrat39/symbols-outline.nvim", lazy = true },
+  -- Experimental
+  {
+    "okuuva/auto-save.nvim",
+    lazy = false,
+    cmd = "ASToggle",
+    event = { "InsertLeave", "TextChanged" },
+    opts = {
+        enabled = true,
+        trigger_events = {
+            immediate_save = {
+                { "InsertLeave", "TextChanged" },
+            },
+        },
+        condition = function(buf)
+        local fn = vim.fn
+        local utils = require("auto-save.utils.data")
+
+        -- don't save for `sql` file types
+        if utils.not_in(fn.getbufvar(buf, "&filetype"), {'TelescopePrompt'}) then
+            return true
+        end
+        return false
+        end
+    }
+  },
 }
