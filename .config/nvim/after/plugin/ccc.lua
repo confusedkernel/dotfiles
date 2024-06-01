@@ -1,6 +1,6 @@
-require("ccc").setup({
-    highlighter = {
-        auto_enable = true,
-        lsp = true,
-    },
-})
+require("ccc").setup {
+  highlighter = {
+    auto_enable = true,
+    lsp = true,
+  },
+}

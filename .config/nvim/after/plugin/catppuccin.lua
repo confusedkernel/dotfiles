@@ -11,7 +11,7 @@ require("catppuccin").setup {
   },
   highlight_overrides = {
     latte = function(C)
-      return { 
+      return {
         BufferCurrent = { bg = "#fafafa", fg = C.text },
         BufferCurrentIndex = { bg = "#fafafa", fg = C.blue },
         BufferCurrentMod = { bg = "#fafafa", fg = C.yellow },

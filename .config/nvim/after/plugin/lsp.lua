@@ -1,39 +1,108 @@
+require("fidget").setup()
+require("mason").setup()
+require("neodev").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {},
+    automatic_installation = false,
+})
+
 local map = vim.keymap.set
 local def = vim.fn.sign_define
 
+----------------------
+-- Language Servers --
+----------------------
 
-require("fidget").setup()
-require("mason").setup()
-require("mason-lspconfig").setup {
-    ensure_installed = {},
-    automatic_installation = false,
+local servers = {
+    clangd = {},  -- C, C++
+    cssls = {},   -- CSS
+    jsonls = {},  -- JSON
+    lemminx = {}, -- XML
+    pylsp = {},   -- Python
+    marksman = {},
+    lua_ls = {
+        on_attach = function(_, bufno)
+            map("n", "<leader>f", function()
+                vim.cmd(":w")
+                vim.cmd([[silent exec "!stylua %"]])
+                vim.cmd(":e")
+            end, { buffer = bufno })
+        end,
+        settings = {
+            Lua = {
+                workspace = {
+                    checkThirdParty = false,
+                },
+                formatting = {
+                    align_array_table = "none",
+                    align_function_params = false,
+                    align_continuous_assign_statement = false,
+                    align_continuous_rect_table_field = false,
+                    enable = true,
+                    indent = 2,
+                },
+                diagnostics = {
+                    globals = { "vim" },
+                },
+            },
+        },
+    },
+    html = {
+        cmd = { "vscode-html-language-server", "--stdio" },
+        filetypes = { "html" },
+        init_options = {
+            configurationSection = { "html", "css", "javascript" },
+            embeddedLanguages = {
+                css = true,
+                javascript = true,
+            },
+            provideFormatter = true,
+        },
+        settings = {},
+        single_file_support = true,
+    },
+    ltex = {
+        cmd = { "ltex-ls" },
+        filetypes = { "text", "gitcommit" },
+        settings = {
+            ltex = {
+                language = "auto",
+                additionalRules = {
+                    motherTongue = "en-US",
+                },
+                trace = { server = "verbose" },
+                dictionary = {},
+            },
+        },
+        flags = { debounce_text_changes = 5000 },
+    },
 }
 
 map("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP Float", noremap = true, silent = true })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", noremap = true, silent = true })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", noremap = true, silent = true })
 map("n", "<space>q", vim.diagnostic.setloclist, { desc = "Show LSP in list", noremap = true, silent = true })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = bufnr })
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = bufno })
 
-local on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+local on_attach = function(_, bufno)
+    vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- See `:help vim.lsp.*`
-    local ts = require "telescope.builtin"
+    local ts = require("telescope.builtin")
 
-    map("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufnr })
-    map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufnr })
-    map("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
-    map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definitions", buffer = bufnr })
-    map("n", "gtd", vim.lsp.buf.type_definition, { desc = "LSP Type definitions", buffer = bufnr })
-    map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Implementations", buffer = bufnr })
-    map("n", "gu", ts.lsp_references, { desc = "LSP Usages (Telescope)", buffer = bufnr })
-    map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = bufnr })
-    map("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Code lens", buffer = bufnr })
+    map("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufno })
+    map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufno })
+    map("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufno })
+    map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definitions", buffer = bufno })
+    map("n", "gtd", vim.lsp.buf.type_definition, { desc = "LSP Type definitions", buffer = bufno })
+    map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Implementations", buffer = bufno })
+    map("n", "gu", ts.lsp_references, { desc = "LSP Usages (Telescope)", buffer = bufno })
+    map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code action", buffer = bufno })
+    map("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Code lens", buffer = bufno })
     map("n", "<leader>f", function()
-        vim.lsp.buf.format { async = true }
-    end, { desc = "LSP format", buffer = bufnr })
-    map("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename symbol", buffer = bufnr })
+        vim.lsp.buf.format({ async = true })
+    end, { desc = "LSP format", buffer = bufno })
+    map("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename symbol", buffer = bufno })
 end
 
 -- Gutter symbols setup
@@ -61,115 +130,28 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
+-- Diagnostic display configuration
+vim.diagnostic.config({ virtual_text = false, severity_sort = true })
+
 -- Language servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+for name, config in pairs(servers) do
+    require("lspconfig")[name].setup({
+        capabilities = capabilities,
+        settings = config.settings,
+        on_attach = function(client, bufno)
+            -- Call the config.on_attach function if it exists
+            on_attach(client, bufno);
+            (config.on_attach or function(...) end)(client, bufno)
+        end,
+    })
+end
 
-require("lspconfig").ltex.setup {
-    on_attach = on_attach,
-    cmd = { "ltex-ls" },
-    filetypes = { "text", "gitcommit" },
-    settings = {
-        ltex = {
-            language = "auto",
-            additionalRules = {
-                motherTongue = "en-US",
-            },
-            trace = { server = "verbose" },
-            dictionary = {
-                ["en-US"] = common_dictionary,
-            },
-        },
-    },
-    flags = { debounce_text_changes = 5000 },
-    capabilities = capabilities,
-}
--- JSON
-require("lspconfig").jsonls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- XML
-require("lspconfig").lemminx.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- CSS
-require("lspconfig").cssls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- Lua
-require("lspconfig").lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            workspace = {
-                checkThirdParty = false,
-            },
-            formatting = {
-                align_array_table = "none",
-                align_function_params = false,
-                align_continuous_assign_statement = false,
-                align_continuous_rect_table_field = false,
-                enable = true,
-                indent = 2,
-            },
-            diagnostics = {
-                globals = { "vim" },
-            },
-        },
-    },
-}
--- Html, CSS, Javascript
-require("lspconfig").html.setup {
-    capabilities = capabilities,
-    cmd = { "vscode-html-language-server", "--stdio" },
-    filetypes = { "html" },
-    init_options = {
-        configurationSection = { "html", "css", "javascript" },
-        embeddedLanguages = {
-            css = true,
-            javascript = true,
-        },
-        provideFormatter = true,
-    },
-    settings = {},
-    single_file_support = true,
-}
--- Typst
-require("lspconfig").typst_lsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- Python
-require("lspconfig").pylsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- C
-require("lspconfig").clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- Markdown
-require("lspconfig").marksman.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
--- ASM
-local util = require "lspconfig.util"
-require("lspconfig").asm_lsp.setup {
-    cmd = { "asm-lsp" },
-    filetypes = { "asm", "vmasm" },
-    root_dir = util.root_pattern "*.asm",
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
+------------------------
 -- Standalone plugins --
+------------------------
 
 -- Haskell
 vim.g.haskell_tools = {
@@ -181,13 +163,13 @@ vim.g.haskell_tools = {
     },
     hls = {
         on_attach = function(client, bufnr)
-            local ht = require "haskell-tools"
+            local ht = require("haskell-tools")
 
             vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, { desc = "Hoogle signature", buffer = bufnr })
             vim.keymap.set("n", "<space>he", ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
             vim.keymap.set("n", "<space>hr", ht.repl.toggle, { desc = "Toggle repl" })
 
-            vim.cmd "setlocal shiftwidth=2"
+            vim.cmd("setlocal shiftwidth=2")
             on_attach(client, bufnr)
         end,
         default_settings = {

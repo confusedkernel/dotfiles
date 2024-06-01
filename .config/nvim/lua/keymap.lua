@@ -1,25 +1,31 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- From THE one and only "Primeagen"
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
+local map = vim.keymap.set
+local unmap = vim.keymap.del
+local autocmd = vim.api.nvim_create_autocmd
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move page down with cursor centered" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page up with cursor centered" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "Find next with cursor centered" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Find last with cursor centered" })
+-- Move
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
+map("v", ">", ">gv", { desc = "Indent to right" })
+map("v", "<", "<gv", { desc = "Indent to left" })
+map("v", "=", "=gv", { desc = "Move up one line"} )
 
-vim.keymap.set("n", "<leader>pv", function()
-  vim.cmd "Explore"
-end, { desc = "Show file explorer" })
+-- Centered Motions
+map("n", "<C-d>", "<C-d>zz", { desc = "Move page down with cursor centered" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Move page up with cursor centered" })
+map("n", "n", "nzzzv", { desc = "Find next with cursor centered" })
+map("n", "N", "Nzzzv", { desc = "Find last with cursor centered" })
 
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Join line below without moving cursor" })
+-- Join line below
+map("n", "J", "mzJ`z", { desc = "Join line below without moving cursor" })
 
-vim.keymap.set({ "n", "x", "v" }, "<leader>d", '"_d', { desc = "Delete without cutting" })
-vim.keymap.set({ "n", "x", "v" }, "<leader>c", '"_dc', { desc = "Change without cutting" })
-vim.keymap.set({ "n", "x", "v" }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
-vim.keymap.set({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+-- Clipboard system
+map({ "n", "x", "v" }, "<leader>d", '"_d', { desc = "Delete without cutting" })
+map({ "n", "x", "v" }, "<leader>c", '"_dc', { desc = "Change without cutting" })
+map({ "n", "x", "v" }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
+map({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "It's the worse place in the universe" })
 
