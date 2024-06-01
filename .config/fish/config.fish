@@ -28,6 +28,9 @@ if status is-interactive
 	# tty for GPG
 	set -gx GPG_TTY (tty)
 
+    # Source the fuck
+    thefuck --alias | source
+
 	# Source starship
 	starship init fish | source
 

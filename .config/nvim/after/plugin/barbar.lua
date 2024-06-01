@@ -12,6 +12,7 @@ require("barbar").setup {
   },
   preset = "default",
   no_name_title = nil,
+  separator = {left = '▎', right = ''},
 }
 
 -- Keymap Setting

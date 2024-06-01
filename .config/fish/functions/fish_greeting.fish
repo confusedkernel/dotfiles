@@ -8,11 +8,11 @@ function fish_greeting
     if test "$subfolder_name" = "Midnights"
         set_color --bold --italic 3F5FB5 #3F5FB5
     else if test "$subfolder_name" = "folklore"
-        set_color --bold --italic 587575 #587575
+        set_color --bold --italic 66685B #66685B
     else if test "$subfolder_name" = "evermore"
         set_color --bold --italic D89079 #D89079
     else if test "$subfolder_name" = "Lover"
-        set_color --bold --italic E687E6 #E687E6
+        set_color --bold --italic E092E0 #E092E0
     else if test "$subfolder_name" = "reputation"
         set_color --bold --italic 878787 #878787
     else if test "$subfolder_name" = "1989"
@@ -25,6 +25,8 @@ function fish_greeting
         set_color --bold --italic D9B263 #D9B263
     else if test "$subfolder_name" = "Taylor Swift"
         set_color --bold --italic A3BE8C #A3BE8C
+    else if test "$subfolder_name" = "TTPD"
+        set color --bold --italic A59E91 #A59E91
     else if test "$subfolder_name" = "Droplets"
         set_color --bold --italic 
     else
