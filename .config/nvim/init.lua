@@ -77,7 +77,6 @@ local plugins = {
   "lewis6991/gitsigns.nvim",
   "lukoshkin/highlight-whitespace",
   "windwp/nvim-autopairs",
-  "NvChad/nvim-colorizer.lua",
   "mg979/vim-visual-multi",
   "mizlan/iswap.nvim",
   "tpope/vim-surround",
@@ -124,7 +123,6 @@ local plugins = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { "j-hui/fidget.nvim", tag = "legacy" },
-      "folke/neodev.nvim",
     },
   },
 

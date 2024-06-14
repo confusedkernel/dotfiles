@@ -37,7 +37,7 @@ abbr gr 'git reset --hard'
 
 # For opening apps
 alias nv='nvim'
-# alias code='codium'
+alias code='open -b com.microsoft.VSCode'
 
 # For Criterion compiling and other brew stuff
 alias meep='-I /usr/local/include -L /usr/local/lib'

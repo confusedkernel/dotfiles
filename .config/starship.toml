@@ -1,5 +1,5 @@
 format = """
-$hostname$directory$c$python$java$lua$rust$haskell
+$hostname$directory$username$c$python$java$lua$rust$haskell
 $character
 """
 
@@ -39,9 +39,24 @@ read_only_style = "danger"
 style = "blck"
 format = "[$path]($style)[$read_only]($read_only_style) "
 
+[status]
+format   = '([\[$status\]](bold red) )'
+disabled = false
+
+[cmd_duration]
+min_time          = 5_000
+show_milliseconds = true
+style             = 'normal'
+format            = '([$duration]($style) )'
+
 [git_commit]
 style = "lilac"
 format = "[\\($hash$tag\\)]($style)"
+
+[username]
+style_root = 'bold warning'
+style_user = 'normal'
+format     = '( [\($user\)]($style))'
 
 [git_branch]
 symbol = ""
@@ -56,7 +71,7 @@ style = "bold lilac"
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]
-format = '( [$symbol][\($virtualenv\)]($style))'
+format = '( [\($virtualenv\)]($style))'
 symbol = " "
 
 [aws]

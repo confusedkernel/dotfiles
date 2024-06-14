@@ -27,7 +27,7 @@ map({ "n", "x", "v" }, "<leader>c", '"_dc', { desc = "Change without cutting" })
 map({ "n", "x", "v" }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
 map({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 
-vim.keymap.set("n", "Q", "<nop>", { desc = "It's the worse place in the universe" })
+map("n", "Q", "<nop>", { desc = "It's the worse place in the universe" })
 
 vim.keymap.set("n", "<leader>nf", function()
   vim.cmd "enew"
@@ -45,3 +45,7 @@ vim.keymap.set("n", "<Up>", "g<Up>", { desc = "<Up> that works with line wrap" }
 vim.keymap.set("n", "<leader>w", function()
   vim.cmd.setlocal "invwrap"
 end, { desc = "toggle wrap locally", silent = true })
+
+-- Tree
+vim.api.nvim_set_keymap("n", "<C-1>", ":NvimTreeToggle<CR>", { desc = "NvimTree", noremap = true, silent = true })
+
