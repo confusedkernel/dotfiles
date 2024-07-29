@@ -71,7 +71,7 @@ style = "bold lilac"
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]
-format = '( [\($virtualenv\)]($style))'
+format = '(via [$symbol$version \($virtualenv\)]($style))'
 symbol = " "
 
 [aws]

@@ -1,0 +1,86 @@
+tap "epk/epk"
+tap "homebrew/bundle"
+# Record and share terminal sessions
+brew "asciinema"
+# MPEG-4 command-line tool
+brew "atomicparsley"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# GNU compiler collection
+brew "gcc"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
+# Cross-platform make
+brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Cross-platform C and C++ unit testing framework for the 21st century
+brew "criterion"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Text-based UI library
+brew "ncurses"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU debugger
+brew "gdb"
+# GitHub command-line tool
+brew "gh"
+# Glorious Glasgow Haskell Compilation System
+brew "ghc"
+# Installer for the general purpose language Haskell
+brew "ghcup"
+# Distributed revision control system
+brew "git"
+# Open-source GitLab command-line tool
+brew "glab"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Configurable static site generator
+brew "hugo"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# LSP for LanguageTool with support for Latex, Markdown and Others
+brew "ltex-ls"
+# Language Server for the Lua language
+brew "lua-language-server"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Platform built on V8 to build network applications
+brew "node"
+# Safe, concurrent, practical language
+brew "rust"
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
+# Format Rust code
+brew "rustfmt"
+# SMART hard drive monitoring
+brew "smartmontools"
+# Formatting tool for reformatting Swift code
+brew "swiftformat"
+# Programmatically correct mistyped console commands
+brew "thefuck"
+# Simplified and community-driven man pages
+brew "tldr"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Markup-based typesetting system
+brew "typst"
+# Generator for LS_COLORS with support for multiple color themes
+brew "vivid"
+# Yet Another Dotfiles Manager
+brew "yadm"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"

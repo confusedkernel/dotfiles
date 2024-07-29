@@ -18,6 +18,12 @@ local plugins = {
   "nvim-tree/nvim-web-devicons",
   "andweeb/presence.nvim",
 
+  {
+    "jim-at-jibba/micropython.nvim",
+    dependencies = { "akinsho/toggleterm.nvim" },
+    lazy = true,
+  },
+
   -- Utilities
   { "wakatime/vim-wakatime", lazy = false },
   {
@@ -164,6 +170,13 @@ local plugins = {
   {
     "nottyl/nvchad-ui.nvim",
     branch = "master",
+    lazy = false,
+    priority = 10,
+    dev = true,
+  },
+  {
+    "nottyl/center-stage.nvim",
+    branch = "test",
     lazy = false,
     priority = 10,
     dev = true,
