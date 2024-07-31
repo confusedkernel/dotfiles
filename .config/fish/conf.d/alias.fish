@@ -5,6 +5,7 @@ alias pip='pip3'
 alias cf='clear && fish_greeting'
 alias fc='set_fzf_colors'
 alias py='python3'
+alias brewdeps="brew leaves | xargs brew deps --include-build --tree"
 
 # Tmux
 alias t='tmux'

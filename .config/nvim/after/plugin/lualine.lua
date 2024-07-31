@@ -238,12 +238,11 @@ require("lualine").setup({
 		},
 		lualine_y = {
 			{
-				-- get_native_lsp,
-				-- padding = 1,
-				-- separator = " ",
-				-- icon = { " " },
-				require("micropython_nvim").statusline,
-				cond = package.loaded["micropython_nvim"] and require("micropython_nvim").exists,
+				get_native_lsp,
+				padding = 1,
+				separator = " ",
+				icon = { " " },
+
 			},
 		},
 		lualine_z = {
