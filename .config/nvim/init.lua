@@ -130,46 +130,46 @@ local plugins = {
   { "nvim-tree/nvim-tree.lua", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
   -- Experimental
-  -- {
-  --   "okuuva/auto-save.nvim",
-  --   lazy = false,
-  --   cmd = "ASToggle",
-  --   event = { "InsertLeave", "TextChanged" },
-  --   opts = {
-  --     enabled = true,
-  --     trigger_events = {
-  --       immediate_save = {
-  --         { "InsertLeave", "TextChanged" },
-  --       },
-  --     },
-  --     condition = function(buf)
-  --       local fn = vim.fn
-  --       local utils = require "auto-save.utils.data"
-  --
-  --       -- don't save for `sql` file types
-  --       if utils.not_in(fn.getbufvar(buf, "&filetype"), { "TelescopePrompt" }) then
-  --         return true
-  --       end
-  --       return false
-  --     end,
-  --   },
-  -- },
-  --
+  {
+    "okuuva/auto-save.nvim",
+    lazy = false,
+    cmd = "ASToggle",
+    event = { "InsertLeave", "TextChanged" },
+    opts = {
+      enabled = true,
+      trigger_events = {
+        immediate_save = {
+          { "InsertLeave", "TextChanged" },
+        },
+      },
+      condition = function(buf)
+        local fn = vim.fn
+        local utils = require "auto-save.utils.data"
+
+        -- don't save for `sql` file types
+        if utils.not_in(fn.getbufvar(buf, "&filetype"), { "TelescopePrompt" }) then
+          return true
+        end
+        return false
+      end,
+    },
+  },
+
   -- Testing colorschemes
   {
-    "https://github.com/nottyl/curry.nvim",
+    "https://github.com/confusedkernel/curry.nvim",
     branch = "custom-config",
     dev = true,
   },
   {
-    "nottyl/nvchad-ui.nvim",
+    "confusedkernel/nvchad-ui.nvim",
     branch = "master",
     lazy = false,
     priority = 10,
     dev = true,
   },
   {
-    "nottyl/center-stage.nvim",
+    "confusedkernel/center-stage.nvim",
     branch = "test",
     lazy = false,
     priority = 10,

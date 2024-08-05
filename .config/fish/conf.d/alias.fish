@@ -5,12 +5,13 @@ alias pip='pip3'
 alias cf='clear && fish_greeting'
 alias fc='set_fzf_colors'
 alias py='python3'
+
+# Useful brew alias
 alias brewdeps="brew leaves | xargs brew deps --include-build --tree"
 
 # Tmux
 alias t='tmux'
 alias tk='tmux kill session'
-
 
 # For yadm
 alias dotfile='yadm'
@@ -35,6 +36,7 @@ abbr gp 'git push'
 abbr ga 'git add .'
 abbr gb 'git blame'
 abbr gr 'git reset --hard'
+abbr lg 'lazygit'
 
 # For opening apps
 alias nv='nvim'
