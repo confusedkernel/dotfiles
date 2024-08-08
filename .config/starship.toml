@@ -59,7 +59,7 @@ style_user = 'normal'
 format     = '( [\($user\)]($style))'
 
 [git_branch]
-symbol = ""
+symbol = "󰊢 "
 style = "normal"
 format = "[$symbol$branch]($style)"
 

@@ -12,6 +12,7 @@ require("barbar").setup {
   },
   preset = "default",
   no_name_title = nil,
+  hide = {extensions = true, inactive = true},
   separator = { left = "▎", right = "" },
 }
 
