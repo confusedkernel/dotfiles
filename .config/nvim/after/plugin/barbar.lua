@@ -11,8 +11,8 @@ require("barbar").setup {
     UndoTree = { text = "UndoTree" },
   },
   preset = "default",
+  exclude_ft = {''},
   no_name_title = nil,
-  hide = {extensions = true, inactive = true},
   separator = { left = "▎", right = "" },
 }
 
