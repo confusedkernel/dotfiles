@@ -170,7 +170,7 @@ local plugins = {
 	},
 	{
 		"confusedkernel/center-stage.nvim",
-		branch = "test",
+		branch = "master",
 		lazy = false,
 		priority = 10,
 		dev = true,

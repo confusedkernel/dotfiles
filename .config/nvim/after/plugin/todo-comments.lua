@@ -12,7 +12,7 @@ require("todo-comments").setup {
     TODO = { icon = " ", color = "info" },
     HACK = { icon = " ", color = "warning" },
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-    PERF = { icon = "P", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+    PERF = { icon = "P", alt = { "OPTIM", "OPTM", "PERFORMANCE", "OPTIMIZE" } },
     NOTE = { icon = "·", color = "hint", alt = { "INFO" } },
     TEST = { icon = "T", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
   },

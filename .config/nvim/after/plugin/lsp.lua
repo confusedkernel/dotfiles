@@ -18,7 +18,7 @@ local servers = {
 	jsonls = {}, -- JSON
 	lemminx = {}, -- XML
 	pylsp = {}, -- Python
-	marksman = {},
+	marksman = {}, -- Markdown
 	lua_ls = {
 		on_attach = function(_, bufno)
 			map("n", "<leader>f", function()
