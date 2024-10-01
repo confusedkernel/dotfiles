@@ -79,9 +79,25 @@ local servers = {
 		flags = { debounce_text_changes = 5000 },
 	},
 	volar = {
+		on_attach = function(_, bufno)
+			map("n", "<leader>f", function()
+				vim.cmd(":w")
+				vim.cmd([[silent exec "!npx prettier --write %"]])
+				vim.cmd(":e")
+			end, { buffer = bufno })
+		end,
 		filetypes = { "typescript", "javascript", "vue" },
 		on_new_config = function(new_config, new_root_dir)
 			new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+		end,
+	},
+	tinymist = {
+		on_attach = function(_, bufno)
+			map("n", "<leader>f", function()
+				local saved = vim.fn.winsaveview()
+				vim.cmd([[silent exec "%!typstyle"]])
+				vim.fn.winrestview(saved)
+			end, { buffer = bufno })
 		end,
 	},
 }
@@ -176,6 +192,10 @@ end
 -- Standalone plugins --
 ------------------------
 
+vim.cmd([[
+    let g:neoformat_basic_format_retab = 1
+    let g:neoformat_try_node_exe = 1
+    ]])
 -- Haskell
 vim.g.haskell_tools = {
 	tools = {
@@ -221,3 +241,18 @@ vim.g.rustaceanvim = {
 		log = { level = vim.log.levels.OFF },
 	},
 }
+
+---------------
+-- Neoformat --
+---------------
+
+-- Create an augroup for formatting
+local fmt_group = vim.api.nvim_create_augroup("fmt", { clear = true })
+
+-- Set up an autocmd to format files before saving
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = fmt_group,
+	pattern = "*",
+	command = "undojoin | Neoformat",
+})
+vim.g.neoformat_try_node_exe = 1

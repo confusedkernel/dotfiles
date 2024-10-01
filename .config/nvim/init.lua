@@ -33,8 +33,11 @@ local plugins = {
 	----------------------
 	-- Language Servers --
 	----------------------
-	"kaarmu/typst.vim",
-	"lukas-reineke/lsp-format.nvim",
+	{
+		"kaarmu/typst.vim",
+		ft = "typst",
+		lazy = false,
+	},
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^4",
@@ -46,14 +49,14 @@ local plugins = {
 		ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
 		branch = "2.x.x",
 	},
-	({
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy" },
 		},
-	}),
+	},
 
 	----------------------
 	-- Misc / utilities --
@@ -64,6 +67,7 @@ local plugins = {
 	"windwp/nvim-autopairs",
 	"mg979/vim-visual-multi",
 	"mizlan/iswap.nvim",
+	"lukas-reineke/lsp-format.nvim",
 	"tpope/vim-surround",
 	"tpope/vim-fugitive",
 	"mbbill/undotree",
