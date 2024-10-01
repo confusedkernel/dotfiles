@@ -78,6 +78,12 @@ local servers = {
 		},
 		flags = { debounce_text_changes = 5000 },
 	},
+	volar = {
+		filetypes = { "typescript", "javascript", "vue" },
+		on_new_config = function(new_config, new_root_dir)
+			new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+		end,
+	},
 }
 
 map("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP Float", noremap = true, silent = true })
