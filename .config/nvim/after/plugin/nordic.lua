@@ -1,5 +1,3 @@
-local palette = require("nordic.colors")
-
 require("nordic").setup({
 	theme = "nordic",
 	bright_border = true,
@@ -7,12 +5,12 @@ require("nordic").setup({
 		-- Available styles: `classic`, `flat`.
 		style = "flat",
 	},
-	on_highlight = {
-		WinBar = {
+	on_highlight = function(highlights, palette)
+		highlights.WinBar = {
 			bg = palette.gray0,
-		},
-		WinBarNC = {
+		}
+		highlights.WinBarNC = {
 			bg = palette.gray0,
-		},
-	},
+		}
+	end,
 })
