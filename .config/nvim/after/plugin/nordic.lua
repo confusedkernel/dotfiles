@@ -7,7 +7,7 @@ require("nordic").setup({
 		-- Available styles: `classic`, `flat`.
 		style = "flat",
 	},
-	override = {
+	on_highlight = {
 		WinBar = {
 			bg = palette.gray0,
 		},
