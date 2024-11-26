@@ -57,6 +57,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        local bufname = vim.api.nvim_buf_get_name(0)
+        if vim.fn.isdirectory(bufname) == 1 then
+            require("telescope").extensions.file_browser.file_browser({ cwd = bufname })
+        end
+    end,
+})
+
 vim.cmd 'command! UseLight lua require("color-mode").UseLight()'
 vim.cmd 'command! UseDark lua require("color-mode").UseDark()'
 vim.cmd 'command! ColorToggle lua require("color-mode").ColorToggle()'
