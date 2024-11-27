@@ -187,9 +187,9 @@ require("lualine").setup({
 			winbar = {},
 		},
 		refresh = {
-			statusline = 0,
-			tabline = 0,
-			winbar = 0,
+			statusline = 100,
+			tabline = 100,
+			winbar = 100,
 		},
 	},
 	sections = {
@@ -216,11 +216,6 @@ require("lualine").setup({
 				padding = 0,
 			},
 			{
-				get_git_compare,
-				separator = " ",
-				padding = 0,
-			},
-			{
 				"diff",
 				padding = 1,
 				source = diff_source,
@@ -242,7 +237,6 @@ require("lualine").setup({
 				padding = 1,
 				separator = " ",
 				icon = { " " },
-
 			},
 		},
 		lualine_z = {
