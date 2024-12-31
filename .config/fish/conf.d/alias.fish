@@ -36,10 +36,10 @@ abbr gp 'git push'
 abbr ga 'git add .'
 abbr gb 'git blame'
 abbr gr 'git reset --hard'
-abbr lg 'lazygit'
+abbr lg lazygit
 
 # For opening apps
-alias nv='nvim'
+alias nv='nvim .'
 alias code='open -b com.microsoft.VSCode'
 
 # For Criterion compiling and other brew stuff

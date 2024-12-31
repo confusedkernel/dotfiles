@@ -8,6 +8,7 @@ local plugins = {
 	"f-person/auto-dark-mode.nvim",
 	"nvim-tree/nvim-web-devicons",
 	"andweeb/presence.nvim",
+	{ "krivahtoo/silicon.nvim", run = "./install.sh build" },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
 	{ "wakatime/vim-wakatime", lazy = false },
