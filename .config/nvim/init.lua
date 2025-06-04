@@ -35,11 +35,6 @@ local plugins = {
 	-- Language Servers --
 	----------------------
 	{
-		"kaarmu/typst.vim",
-		ft = "typst",
-		lazy = false,
-	},
-	{
 		"mrcjkb/rustaceanvim",
 		version = "^4",
 		ft = "rust",
@@ -53,7 +48,7 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"williamboman/mason.nvim",
+			{ "williamboman/mason.nvim", opts = { ensure_installed = { "tinymist" } } },
 			"williamboman/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy" },
 		},

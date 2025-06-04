@@ -7,7 +7,7 @@ require("mason-lspconfig").setup({
 
 local map = vim.keymap.set
 local def = vim.fn.sign_define
-
+local util = require("lspconfig.util")
 ----------------------
 -- Language Servers --
 ----------------------
@@ -92,13 +92,14 @@ local servers = {
 		end,
 	},
 	tinymist = {
-		on_attach = function(_, bufno)
-			map("n", "<leader>f", function()
-				local saved = vim.fn.winsaveview()
-				vim.cmd([[silent exec "%!typstyle"]])
-				vim.fn.winrestview(saved)
-			end, { buffer = bufno })
+		root_dir = function(_, bufnr)
+			return vim.fs.root(bufnr, { ".git" }) or vim.fn.expand("%:p:h")
 		end,
+		settings = {
+			formatterMode = "typstyle",
+			exportPdf = "onSave",
+			semanticTokens = "disable",
+		},
 	},
 }
 
