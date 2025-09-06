@@ -26,10 +26,6 @@ local plugins = {
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
 	},
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-	},
 
 	----------------------
 	-- Language Servers --
@@ -52,17 +48,6 @@ local plugins = {
 			"williamboman/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy" },
 		},
-	},
-	{
-		"luckasRanarison/tailwind-tools.nvim",
-		name = "tailwind-tools",
-		build = ":UpdateRemotePlugins",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-telescope/telescope.nvim", -- optional
-			"neovim/nvim-lspconfig", -- optional
-		},
-		opts = {}, -- your configuration
 	},
 
 	----------------------
@@ -94,6 +79,15 @@ local plugins = {
 	{ "RaafatTurki/hex.nvim", lazy = true },
 	{ "github/copilot.vim", lazy = true },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	{
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		lazy = true,
+		ft = "markdown",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {

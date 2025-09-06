@@ -63,21 +63,6 @@ local servers = {
 		settings = {},
 		single_file_support = true,
 	},
-	ltex = {
-		cmd = { "ltex-ls" },
-		filetypes = { "gitcommit" },
-		settings = {
-			ltex = {
-				language = "auto",
-				additionalRules = {
-					motherTongue = "en-US",
-				},
-				trace = { server = "verbose" },
-				dictionary = {},
-			},
-		},
-		flags = { debounce_text_changes = 5000 },
-	},
 	volar = {
 		on_attach = function(_, bufno)
 			map("n", "<leader>f", function()

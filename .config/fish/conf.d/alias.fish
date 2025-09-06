@@ -36,6 +36,7 @@ abbr gp 'git push'
 abbr ga 'git add .'
 abbr gb 'git blame'
 abbr gr 'git reset --hard'
+abbr gpl 'git pull'
 abbr lg lazygit
 
 # For opening apps
