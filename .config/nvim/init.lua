@@ -41,6 +41,18 @@ local plugins = {
 		ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
 		branch = "2.x.x",
 	},
+	-- configures the lua lsp to function with neovim
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -162,21 +174,21 @@ local plugins = {
 	{
 		"https://github.com/confusedkernel/curry.nvim",
 		branch = "custom-config",
-		dev = true,
+		-- dev = true,
 	},
 	{
 		"confusedkernel/nvchad-ui.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,
-		dev = true,
+		-- dev = true,
 	},
 	{
 		"confusedkernel/center-stage.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,
-		dev = true,
+		-- dev = true,
 		opts = {
 			enabled = true,
 		},
