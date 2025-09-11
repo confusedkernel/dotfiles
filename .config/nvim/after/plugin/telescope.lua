@@ -20,6 +20,12 @@ telescope.setup({
 		},
 	},
 
+	pickers = {
+		find_files = {
+		    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+		},
+	},
+
 	on_enter = function()
 		vim.cmd("doautocmd CursorMoved")
 		vim.cmd("doautocmd CursorMovedI")
