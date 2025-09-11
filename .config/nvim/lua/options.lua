@@ -1,6 +1,6 @@
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.shortmess:append { I = true }
+vim.opt.shortmess:append({ I = true })
 vim.opt.showmode = false
 
 vim.opt.number = true
@@ -29,48 +29,49 @@ vim.opt.smartindent = true
 
 vim.opt.scrolloff = 8
 
+-- For obsidian
+vim.opt.conceallevel = 2
+
 vim.api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "tex" },
-  callback = function()
-    vim.opt_local.wrap = true
-  end,
+	pattern = { "markdown", "tex" },
+	callback = function()
+		vim.opt_local.wrap = true
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "rust" },
-  callback = function()
-    vim.cmd "set iskeyword+=&"
-  end,
+	pattern = { "rust" },
+	callback = function()
+		vim.cmd("set iskeyword+=&")
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "fish" },
-  callback = function()
-    vim.cmd "set iskeyword+=$"
-  end,
+	pattern = { "fish" },
+	callback = function()
+		vim.cmd("set iskeyword+=$")
+	end,
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        local bufname = vim.api.nvim_buf_get_name(0)
-        if vim.fn.isdirectory(bufname) == 1 then
-            require("telescope").extensions.file_browser.file_browser({ cwd = bufname })
-        end
-    end,
+	callback = function()
+		local bufname = vim.api.nvim_buf_get_name(0)
+		if vim.fn.isdirectory(bufname) == 1 then
+			require("telescope").extensions.file_browser.file_browser({ cwd = bufname })
+		end
+	end,
 })
 
-vim.cmd 'command! UseLight lua require("color-mode").UseLight()'
-vim.cmd 'command! UseDark lua require("color-mode").UseDark()'
-vim.cmd 'command! ColorToggle lua require("color-mode").ColorToggle()'
+vim.cmd('command! UseLight lua require("color-mode").UseLight()')
+vim.cmd('command! UseDark lua require("color-mode").UseDark()')
+vim.cmd('command! ColorToggle lua require("color-mode").ColorToggle()')
 vim.api.nvim_set_keymap("n", "<leader>C", ":ColorToggle<CR>", { silent = true })
-
-
 
 -- vim.cmd.colorscheme "one-nvim"

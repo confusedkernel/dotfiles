@@ -80,7 +80,7 @@ local plugins = {
 	{ "github/copilot.vim", lazy = true },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{
-		"epwalsh/obsidian.nvim",
+		"obsidian-nvim/obsidian.nvim",
 		version = "*",
 		lazy = true,
 		ft = "markdown",
