@@ -26,8 +26,7 @@ telescope.setup({
 	end,
 })
 
--- Enable telescope fzf native, if installed
-require("telescope").load_extension("fzf")
+pcall(require("telescope").load_extension, "fzf") -- Enable telescope fzf native, if installed
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("undo")
 
