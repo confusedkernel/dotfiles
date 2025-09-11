@@ -37,9 +37,8 @@ local plugins = {
 	},
 	{
 		"mrcjkb/haskell-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-		ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-		branch = "2.x.x",
+		lazy = false,
+		version = "^6",
 	},
 	-- configures the lua lsp to function with neovim
 	{
