@@ -36,6 +36,3 @@ require("catppuccin").setup({
 		which_key = true,
 	},
 })
-
-vim.opt.background = "light"
-vim.cmd.colorscheme("catppuccin")

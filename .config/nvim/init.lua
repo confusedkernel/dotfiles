@@ -77,7 +77,6 @@ local plugins = {
 	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", enabled = false },
 	{ "RaafatTurki/hex.nvim", lazy = true },
-	{ "github/copilot.vim", lazy = true },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	{
 		"obsidian-nvim/obsidian.nvim",
@@ -207,3 +206,6 @@ require("keymap")
 require("options")
 
 require("lazy").setup(plugins, opts)
+
+vim.opt.background = "light"
+vim.cmd.colorscheme("catppuccin")
