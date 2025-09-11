@@ -32,14 +32,25 @@ local plugins = {
 	----------------------
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^4",
-		ft = "rust",
+		version = "^6",
+		lazy = false,
 	},
 	{
 		"mrcjkb/haskell-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-		ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-		branch = "2.x.x",
+		lazy = false,
+		version = "^6",
+	},
+	-- configures the lua lsp to function with neovim
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -145,8 +156,7 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		dependencies = "nvim-lua/plenary.nvim",
-		"debugloop/telescope-undo.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim" },
 	},
 
 	----------------
@@ -161,21 +171,21 @@ local plugins = {
 	{
 		"https://github.com/confusedkernel/curry.nvim",
 		branch = "custom-config",
-		dev = true,
+		-- dev = true,
 	},
 	{
 		"confusedkernel/nvchad-ui.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,
-		dev = true,
+		-- dev = true,
 	},
 	{
 		"confusedkernel/center-stage.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,
-		dev = true,
+		-- dev = true,
 		opts = {
 			enabled = true,
 		},
