@@ -6,7 +6,6 @@ require("mason-lspconfig").setup({
 })
 
 local map = vim.keymap.set
-local def = vim.fn.sign_define
 local util = require("lspconfig.util")
 ----------------------
 -- Language Servers --
@@ -124,12 +123,6 @@ local on_attach = function(_, bufno)
 	--end
 end
 
--- Gutter symbols setup
-def("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
-def("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
-def("DiagnosticSignHint", { text = "·", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
-def("DiagnosticSignInfo", { text = "·", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
-
 -- Border setup
 local border = {
 	{ " ", "FloatBorder" },
@@ -150,7 +143,16 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Diagnostic display configuration
-vim.diagnostic.config({ virtual_text = false, severity_sort = true })
+vim.diagnostic.config({ virtual_text = false, severity_sort = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "·",
+			[vim.diagnostic.severity.INFO] = "·",
+		}
+	}
+})
 
 -- Language servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
