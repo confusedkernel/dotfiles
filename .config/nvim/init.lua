@@ -32,8 +32,8 @@ local plugins = {
 	----------------------
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^4",
-		ft = "rust",
+		version = "^6",
+		lazy = false,
 	},
 	{
 		"mrcjkb/haskell-tools.nvim",
