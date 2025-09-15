@@ -1,4 +1,8 @@
 require("catppuccin").setup({
+	float = {
+		transparent = false, -- enable transparent floating windows
+		solid = false, -- use solid styling for floating windows, see |winborder|
+	},
 	color_overrides = {
 		latte = {
 			base = "#fafafa",
@@ -18,21 +22,21 @@ require("catppuccin").setup({
 				BufferCurrentSign = { bg = "#fafafa", fg = C.blue },
 				BufferCurrentTarget = { bg = "#fafafa", fg = C.red },
 				Special = { fg = C.blue },
+				TelescopeTitle = { bg = C.lavender, fg = C.base },
+				TelescopePromptBorder = { bg = C.crust },
+				TelescopePromptNormal = { link = "TelescopePromptBorder" },
+				LeapBackdrop = { link = "Comment" },
 			}
 		end,
 	},
 	integrations = {
 		barbar = false,
 		harpoon = true,
+		leap = true,
 		telescope = {
 			enabled = true,
 			style = "nvchad",
 		},
-		noice = {
-			enabled = true,
-			style = "nvchad",
-		},
-		notify = true,
 		which_key = true,
 	},
 })

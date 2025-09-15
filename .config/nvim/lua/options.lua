@@ -29,9 +29,6 @@ vim.opt.smartindent = true
 
 vim.opt.scrolloff = 8
 
--- For obsidian
-vim.opt.conceallevel = 2
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function()

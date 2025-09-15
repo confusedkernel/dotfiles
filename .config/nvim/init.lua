@@ -86,9 +86,19 @@ local plugins = {
 	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
 	{ "tpope/vim-sleuth", lazy = true },
 	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", lazy = true },
-	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", enabled = false },
+	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat" },
 	{ "RaafatTurki/hex.nvim", lazy = true },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	-- {
+	-- 	"confusedkernel/obsidian.nvim",
+	-- 	version = "*",
+	-- 	branch = "hl_groups",
+	-- 	lazy = true,
+	-- 	ft = "markdown",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- },
 	{
 		"obsidian-nvim/obsidian.nvim",
 		version = "*",
@@ -144,6 +154,13 @@ local plugins = {
 			vim.o.timeoutlen = 300
 		end,
 	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you use the mini.nvim suite
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
 
 	---------------
 	-- Telescope --
@@ -162,15 +179,18 @@ local plugins = {
 	----------------
 	-- Treesitter --
 	----------------
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = { "OXY2DEV/markview.nvim", enabled = false },
+		build = ":TSUpdate",
+	},
 	{ "nvim-treesitter/nvim-treesitter-context", enabled = false },
 
 	------------------------
 	-- Plugin Development --
 	------------------------
 	{
-		"https://github.com/confusedkernel/curry.nvim",
-		branch = "custom-config",
+		"https://github.com/leana8959/curry.nvim",
 		-- dev = true,
 	},
 	{

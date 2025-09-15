@@ -21,6 +21,7 @@ abbr dp 'dotfile push'
 abbr dr 'dotfile reset --hard'
 abbr ds 'dotfile status -u ./'
 abbr db 'dotfile blame'
+abbr dpl 'dotfile pull'
 
 # For fzf because the binding doesn't work
 alias gsl='_fzf_search_git_log'

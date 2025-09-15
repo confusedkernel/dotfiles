@@ -143,15 +143,17 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Diagnostic display configuration
-vim.diagnostic.config({ virtual_text = false, severity_sort = true,
+vim.diagnostic.config({
+	virtual_text = false,
+	severity_sort = true,
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "",
 			[vim.diagnostic.severity.WARN] = "",
 			[vim.diagnostic.severity.HINT] = "·",
 			[vim.diagnostic.severity.INFO] = "·",
-		}
-	}
+		},
+	},
 })
 
 -- Language servers

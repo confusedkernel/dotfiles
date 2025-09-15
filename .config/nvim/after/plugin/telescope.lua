@@ -1,7 +1,9 @@
 local actions = require("telescope.actions")
+local themes = require("telescope.themes")
 local telescope = require("telescope")
 
 telescope.setup({
+	-- universal theme settings
 	defaults = {
 		mappings = {
 			i = {
@@ -13,6 +15,8 @@ telescope.setup({
 			results = { " ", " ", " ", " ", " ", " ", " ", " " },
 			preview = { " ", " ", " ", " ", " ", " ", " ", " " },
 		},
+		-- borderchars = { "", "", "", "│", "", "", "", "" },
+		-- layout_config = { height = 0.6 },
 	},
 	extensions = {
 		file_browser = {
@@ -22,7 +26,16 @@ telescope.setup({
 
 	pickers = {
 		find_files = {
-		    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			layout_config = { height = 0.7 },
+		},
+		lsp_references = {
+			theme = "ivy",
+			layout_config = { height = 0.7 },
+		},
+		live_grep = {
+			theme = "ivy",
+			layout_config = { height = 0.7 },
 		},
 	},
 
@@ -41,6 +54,12 @@ vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently o
 vim.keymap.set("n", "<leader>/", function()
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		previewer = false,
+
+		borderchars = {
+			prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+			results = { " ", " ", " ", " ", " ", " ", " ", " " },
+			preview = { " ", " ", " ", " ", " ", " ", " ", " " },
+		},
 	}))
 end, { desc = "[/] Fuzzily search in current buffer]" })
 vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch All [F]iles" })
