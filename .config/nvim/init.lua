@@ -7,7 +7,6 @@ local plugins = {
 	"nvim-lualine/lualine.nvim",
 	"f-person/auto-dark-mode.nvim",
 	"nvim-tree/nvim-web-devicons",
-	"andweeb/presence.nvim",
 	{ "krivahtoo/silicon.nvim", run = "./install.sh build" },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
@@ -69,16 +68,14 @@ local plugins = {
 	"lukoshkin/highlight-whitespace",
 	"windwp/nvim-autopairs",
 	"mg979/vim-visual-multi",
-	"mizlan/iswap.nvim",
 	"lukas-reineke/lsp-format.nvim",
 	"tpope/vim-surround",
 	"tpope/vim-fugitive",
 	"mbbill/undotree",
 	"rafamadriz/friendly-snippets",
-	"godlygeek/tabular",
 	"uga-rosa/ccc.nvim",
-	"turbio/bracey.vim",
 	"sbdchd/neoformat",
+	{ "mizlan/iswap.nvim", event = "VeryLazy" },
 	{ "nvim-tree/nvim-tree.lua", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim", lazy = true },
@@ -89,16 +86,17 @@ local plugins = {
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat" },
 	{ "RaafatTurki/hex.nvim", lazy = true },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-	-- {
-	-- 	"confusedkernel/obsidian.nvim",
-	-- 	version = "*",
-	-- 	branch = "hl_groups",
-	-- 	lazy = true,
-	-- 	ft = "markdown",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- },
+	{
+		"chrisgrieser/nvim-origami",
+		event = "VeryLazy",
+		opts = {}, -- needed even when using default config
+
+		-- recommended: disable vim's auto-folding
+		init = function()
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+		end,
+	},
 	{
 		"obsidian-nvim/obsidian.nvim",
 		version = "*",
@@ -116,30 +114,30 @@ local plugins = {
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
-	{
-		"okuuva/auto-save.nvim",
-		lazy = false,
-		cmd = "ASToggle",
-		event = { "InsertLeave", "TextChanged" },
-		opts = {
-			enabled = true,
-			trigger_events = {
-				immediate_save = {
-					{ "InsertLeave", "TextChanged" },
-				},
-			},
-			condition = function(buf)
-				local fn = vim.fn
-				local utils = require("auto-save.utils.data")
-
-				-- don't save for `sql` file types
-				if utils.not_in(fn.getbufvar(buf, "&filetype"), { "TelescopePrompt" }) then
-					return true
-				end
-				return false
-			end,
-		},
-	},
+	-- {
+	-- 	"okuuva/auto-save.nvim",
+	-- 	lazy = false,
+	-- 	cmd = "ASToggle",
+	-- 	event = { "InsertLeave", "TextChanged" },
+	-- 	opts = {
+	-- 		enabled = true,
+	-- 		trigger_events = {
+	-- 			immediate_save = {
+	-- 				{ "InsertLeave", "TextChanged" },
+	-- 			},
+	-- 		},
+	-- 		condition = function(buf)
+	-- 			local fn = vim.fn
+	-- 			local utils = require("auto-save.utils.data")
+	--
+	-- 			-- don't save for `sql` file types
+	-- 			if utils.not_in(fn.getbufvar(buf, "&filetype"), { "TelescopePrompt" }) then
+	-- 				return true
+	-- 			end
+	-- 			return false
+	-- 		end,
+	-- 	},
+	-- },
 
 	{
 		"L3MON4D3/LuaSnip",
@@ -169,7 +167,7 @@ local plugins = {
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",

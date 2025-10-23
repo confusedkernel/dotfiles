@@ -71,4 +71,12 @@ vim.cmd('command! UseDark lua require("color-mode").UseDark()')
 vim.cmd('command! ColorToggle lua require("color-mode").ColorToggle()')
 vim.api.nvim_set_keymap("n", "<leader>C", ":ColorToggle<CR>", { silent = true })
 
+-- vim.o.foldenable = true
+-- vim.o.foldlevel = 99
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
+-- vim.o.foldtext = ""
+-- vim.opt.foldcolumn = "0"
+-- vim.opt.fillchars:append({ fold = " " })
+
 -- vim.cmd.colorscheme "one-nvim"

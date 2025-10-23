@@ -81,7 +81,7 @@ local servers = {
 		end,
 		settings = {
 			formatterMode = "typstyle",
-			exportPdf = "onSave",
+			-- exportPdf = "onSave",
 			semanticTokens = "disable",
 		},
 	},

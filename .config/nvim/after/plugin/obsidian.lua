@@ -6,12 +6,8 @@ require("obsidian").setup({
 			path = "~/documents/la-mente/",
 		},
 		{
-			name = "lab",
-			path = "~/desktop/lab",
-		},
-		{
-			name = "2025 fall",
-			path = "~/desktop/2025 fall",
+			name = "linguistics",
+			path = "~/linguistics/",
 		},
 	},
 	completion = {
@@ -23,6 +19,25 @@ require("obsidian").setup({
 	ui = {
 		enable = false,
 	},
+	picker = {
+		-- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
+		name = "telescope.nvim",
+		-- Optional, configure key mappings for the picker. These are the defaults.
+		-- Not all pickers support all mappings.
+		note_mappings = {
+			-- Create a new note from your query.
+			new = "<C-x>",
+			-- Insert a link to the selected note.
+			insert_link = "<C-l>",
+		},
+		tag_mappings = {
+			-- Add tag(s) to current note.
+			tag_note = "<C-x>",
+			-- Insert a tag at the current location.
+			insert_tag = "<C-l>",
+		},
+	},
+
 	-- Sets how you follow URLs
 	---@param url string
 	follow_url_func = function(url)

@@ -22,6 +22,12 @@ telescope.setup({
 		file_browser = {
 			hijack_netrw = true,
 		},
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+		},
 	},
 
 	pickers = {
@@ -31,10 +37,22 @@ telescope.setup({
 		},
 		lsp_references = {
 			theme = "ivy",
+
+			borderchars = {
+				prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+				results = { " ", " ", " ", " ", " ", " ", " ", " " },
+				preview = { " ", " ", " ", " ", " ", " ", " ", " " },
+			},
 			layout_config = { height = 0.7 },
 		},
 		live_grep = {
 			theme = "ivy",
+
+			borderchars = {
+				prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+				results = { " ", " ", " ", " ", " ", " ", " ", " " },
+				preview = { " ", " ", " ", " ", " ", " ", " ", " " },
+			},
 			layout_config = { height = 0.7 },
 		},
 	},
@@ -45,7 +63,7 @@ telescope.setup({
 	end,
 })
 
-pcall(require("telescope").load_extension, "fzf") -- Enable telescope fzf native, if installed
+require("telescope").load_extension("fzf") -- Enable telescope fzf native, if installed
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("undo")
 
