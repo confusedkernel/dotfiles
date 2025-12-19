@@ -10,7 +10,6 @@ local plugins = {
 	{ "krivahtoo/silicon.nvim", run = "./install.sh build" },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
-	{ "wakatime/vim-wakatime", lazy = false },
 	{
 		"romgrk/barbar.nvim",
 		dependencies = "nvim-web-devicons",
@@ -54,7 +53,7 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "williamboman/mason.nvim", opts = { ensure_installed = { "tinymist" } } },
+			{ "williamboman/mason.nvim" },
 			"williamboman/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy" },
 		},
