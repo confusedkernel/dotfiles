@@ -187,24 +187,22 @@ local plugins = {
 	-- Plugin Development --
 	------------------------
 	{
-		"https://github.com/leana8959/curry.nvim",
-		-- dev = true,
-	},
-	{
 		"confusedkernel/nvchad-ui.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,
-		-- dev = true,
+		dev = true,
 	},
 	{
 		"confusedkernel/center-stage.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,
-		-- dev = true,
+		dev = true,
 		opts = {
 			enabled = true,
+			center_on = { "CursorMovedI" },
+			offset = -2,
 		},
 	},
 }
