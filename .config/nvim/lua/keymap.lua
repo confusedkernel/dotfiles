@@ -5,26 +5,6 @@ local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-local function lazy_load(plugin)
-	local ok, lazy = pcall(require, "lazy")
-	if ok then
-		lazy.load({ plugins = { plugin } })
-	end
-end
-
-local function with_telescope(callback)
-	return function()
-		lazy_load("telescope.nvim")
-		local ok, builtin = pcall(require, "telescope.builtin")
-		if not ok then
-			vim.notify("telescope.nvim is unavailable", vim.log.levels.WARN)
-			return
-		end
-
-		callback(builtin)
-	end
-end
-
 -- Core Editing
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
@@ -79,43 +59,14 @@ map("n", "<space>q", vim.diagnostic.setloclist, { desc = "Show diagnostics in li
 map("n", "<C-1>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree", silent = true })
 
 -- Telescope plugin
-map("n", "<leader>?", with_telescope(function(builtin)
-	builtin.oldfiles()
-end), { desc = "[?] Find recently opened files" })
-
-map("n", "<leader>/", with_telescope(function(builtin)
-	local ok, themes = pcall(require, "telescope.themes")
-	if ok then
-		builtin.current_buffer_fuzzy_find(themes.get_dropdown({ previewer = false }))
-		return
-	end
-
-	builtin.current_buffer_fuzzy_find()
-end), { desc = "[/] Fuzzily search in current buffer" })
-
-map("n", "<leader>sf", with_telescope(function(builtin)
-	builtin.find_files()
-end), { desc = "[S]earch all [F]iles" })
-
-map("n", "<leader>gf", with_telescope(function(builtin)
-	builtin.git_files()
-end), { desc = "Search [G]it [F]iles" })
-
-map("n", "<leader>sh", with_telescope(function(builtin)
-	builtin.help_tags()
-end), { desc = "[S]earch [H]elp" })
-
-map("n", "<leader>sw", with_telescope(function(builtin)
-	builtin.grep_string()
-end), { desc = "[S]earch current [W]ord" })
-
-map("n", "<leader>sg", with_telescope(function(builtin)
-	builtin.live_grep()
-end), { desc = "[S]earch by [G]rep" })
-
-map("n", "<leader>sd", with_telescope(function(builtin)
-	builtin.diagnostics()
-end), { desc = "[S]earch [D]iagnostics" })
+map("n", "<leader>?", "<cmd>Telescope oldfiles<CR>", { desc = "[?] Find recently opened files", silent = true })
+map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find theme=dropdown previewer=false<CR>", { desc = "[/] Fuzzily search in current buffer", silent = true })
+map("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "[S]earch all [F]iles", silent = true })
+map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "Search [G]it [F]iles", silent = true })
+map("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "[S]earch [H]elp", silent = true })
+map("n", "<leader>sw", "<cmd>Telescope grep_string<CR>", { desc = "[S]earch current [W]ord", silent = true })
+map("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "[S]earch by [G]rep", silent = true })
+map("n", "<leader>sd", "<cmd>Telescope diagnostics<CR>", { desc = "[S]earch [D]iagnostics", silent = true })
 
 -- Barbar plugin
 map("n", "<A-[>", "<cmd>BufferPrevious<CR>", { desc = "Barbar previous buffer", silent = true })

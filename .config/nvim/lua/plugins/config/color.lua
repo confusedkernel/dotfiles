@@ -1,5 +1,3 @@
-vim.opt.termguicolors = true
-
 local ccc = require("ccc")
 
 ccc.setup({
