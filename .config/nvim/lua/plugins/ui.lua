@@ -4,8 +4,8 @@ return {
 	{ "nvim-lualine/lualine.nvim", event = "VeryLazy", config = plugin_config("lualine") },
 	{ "f-person/auto-dark-mode.nvim", lazy = false, config = plugin_config("auto-dark-mode") },
 	"nvim-tree/nvim-web-devicons",
-	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000, config = plugin_config("catppuccin") },
-	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 900, config = plugin_config("nordic") },
+	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
+	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 900, config = plugin_config("colorschemes") },
 	{
 		"romgrk/barbar.nvim",
 		dependencies = "nvim-web-devicons",

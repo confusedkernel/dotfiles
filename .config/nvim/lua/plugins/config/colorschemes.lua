@@ -1,7 +1,7 @@
 require("catppuccin").setup({
 	float = {
-		transparent = false, -- enable transparent floating windows
-		solid = false, -- use solid styling for floating windows, see |winborder|
+		transparent = false,
+		solid = false,
 	},
 	color_overrides = {
 		latte = {
@@ -39,4 +39,20 @@ require("catppuccin").setup({
 		},
 		which_key = true,
 	},
+})
+
+require("nordic").setup({
+	theme = "nordic",
+	bright_border = true,
+	noice = {
+		style = "flat",
+	},
+	on_highlight = function(highlights, palette)
+		highlights.WinBar = {
+			bg = palette.gray0,
+		}
+		highlights.WinBarNC = {
+			bg = palette.gray0,
+		}
+	end,
 })
