@@ -7,6 +7,16 @@ require("mason-lspconfig").setup({
 
 local map = vim.keymap.set
 
+local function lsp_references_picker()
+	local ok, telescope_builtin = pcall(require, "telescope.builtin")
+	if ok then
+		telescope_builtin.lsp_references()
+		return
+	end
+
+	vim.lsp.buf.references()
+end
+
 local function get_typescript_server_path(root_dir)
 	local project_ts = vim.fs.joinpath(root_dir, "node_modules", "typescript", "lib")
 	if (vim.uv or vim.loop).fs_stat(project_ts) then
@@ -96,16 +106,13 @@ local on_attach = function(client, bufno)
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufno })
 	end
 
-	-- See `:help vim.lsp.*`
-	local ts = require("telescope.builtin")
-
 	map("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufno })
 	map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufno })
 	map("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufno })
 	map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definitions", buffer = bufno })
 	map("n", "gtd", vim.lsp.buf.type_definition, { desc = "LSP Type definitions", buffer = bufno })
 	map("n", "gi", vim.lsp.buf.implementation, { desc = "LSP Implementations", buffer = bufno })
-	map("n", "gu", ts.lsp_references, { desc = "LSP Usages (Telescope)", buffer = bufno })
+	map("n", "gu", lsp_references_picker, { desc = "LSP Usages", buffer = bufno })
 	map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code action", buffer = bufno })
 	map("n", "<leader>cl", vim.lsp.codelens.run, { desc = "Code lens", buffer = bufno })
 	map("n", "<leader>f", function()

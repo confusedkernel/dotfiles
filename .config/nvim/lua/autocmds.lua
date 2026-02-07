@@ -43,6 +43,8 @@ autocmd("VimEnter", {
 			return
 		end
 
+		require("lazy").load({ plugins = { "telescope.nvim" } })
+
 		local ok, telescope = pcall(require, "telescope")
 		if not ok or not telescope.extensions or not telescope.extensions.file_browser then
 			return

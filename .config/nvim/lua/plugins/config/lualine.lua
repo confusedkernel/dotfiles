@@ -41,7 +41,12 @@ local modules = lualine_require.lazy_require({
 -- Function to check if the current file is marked in Harpoon (WIP)
 
 local function check_harpoon_indicator()
-	local harpoon_marks = require("harpoon.mark").get_marked_files()
+	local ok, harpoon_mark = pcall(require, "harpoon.mark")
+	if not ok then
+		return false
+	end
+
+	local harpoon_marks = harpoon_mark.get_marked_files()
 	local current_file = vim.fn.expand("%:p")
 
 	for _, mark in pairs(harpoon_marks) do
