@@ -16,8 +16,6 @@ telescope.setup({
 			},
 		},
 		borderchars = borderchars,
-		-- borderchars = { "", "", "", "│", "", "", "", "" },
-		-- layout_config = { height = 0.6 },
 	},
 	extensions = {
 		file_browser = {
@@ -38,12 +36,10 @@ telescope.setup({
 		},
 		lsp_references = {
 			theme = "ivy",
-			borderchars = borderchars,
 			layout_config = { height = 0.7 },
 		},
 		live_grep = {
 			theme = "ivy",
-			borderchars = borderchars,
 			layout_config = { height = 0.7 },
 		},
 	},

@@ -1,7 +1,7 @@
 local plugin_config = require("plugins.helpers").config
 
 return {
-	{ "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, config = plugin_config("gitsigns") },
+	{ "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
 	{
 		"tpope/vim-fugitive",
 		cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gblame" },

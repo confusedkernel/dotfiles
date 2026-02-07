@@ -8,14 +8,12 @@ end
 
 --------------------------------------------------------------------------------
 
--- Get the current buffer's filetype.
 local function get_current_filetype()
-	return vim.api.nvim_buf_get_option(0, "filetype")
+	return vim.bo[0].filetype
 end
 
--- Get the current buffer's type.
 local function get_current_buftype()
-	return vim.api.nvim_buf_get_option(0, "buftype")
+	return vim.bo[0].buftype
 end
 
 -- Get the buffer's filename.
@@ -38,38 +36,6 @@ local modules = lualine_require.lazy_require({
 
 --------------------------------------------------------------------------------
 
--- Function to check if the current file is marked in Harpoon (WIP)
-
-local function check_harpoon_indicator()
-	local ok, harpoon_mark = pcall(require, "harpoon.mark")
-	if not ok then
-		return false
-	end
-
-	local harpoon_marks = harpoon_mark.get_marked_files()
-	local current_file = vim.fn.expand("%:p")
-
-	for _, mark in pairs(harpoon_marks) do
-		if mark.path == current_file then
-			return true
-		end
-	end
-
-	return false
-end
-
--- Define the custom component for Lualine
-local function update_harpoon_statusline()
-	local harpoon = check_harpoon_indicator()
-	if harpoon == true then
-		return "󰛢"
-	else
-		return "󰛣"
-	end
-end
-
---------------------------------------------------------------------------------
-
 function M:get_current_filetype_icon()
 	-- Get setup.
 	local icon, icon_highlight_group
@@ -87,13 +53,11 @@ function M:get_current_filetype_icon()
 	-- Set colors.
 	local highlight_color = modules.utils.extract_highlight_colors(icon_highlight_group, "fg")
 	if highlight_color then
-		-- local default_highlight = self:get_default_hl()
 		local icon_highlight = Icon_hl_cache[highlight_color]
 		if not icon_highlight or not modules.highlight.highlight_exists(icon_highlight.name .. "_normal") then
 			icon_highlight = self:create_hl({ fg = highlight_color }, icon_highlight_group)
 			Icon_hl_cache[highlight_color] = icon_highlight
 		end
-		-- icon = self:format_hl(icon_highlight) .. icon .. default_highlight
 	end
 
 	-- Return the formatted string.
@@ -115,9 +79,8 @@ function M:get_current_filename_with_icon()
 		icon = "󰭎"
 	end
 
-	-- Add readonly icon.
-	local readonly = vim.api.nvim_buf_get_option(0, "readonly")
-	local modifiable = vim.api.nvim_buf_get_option(0, "modifiable")
+	local readonly = vim.bo[0].readonly
+	local modifiable = vim.bo[0].modifiable
 	local nofile = get_current_buftype() == "nofile"
 	if readonly or nofile or not modifiable then
 		suffix = " "
@@ -166,10 +129,6 @@ local tree = {
 		},
 		lualine_c = {},
 		lualine_z = {
-			-- {
-			-- 	"location",
-			-- 	icon = { "", align = "left" },
-			-- },
 			{
 				"progress",
 				icon = { "", align = "left" },
@@ -209,9 +168,6 @@ require("lualine").setup({
 			{
 				M.get_current_filename_with_icon,
 			},
-			{
-				update_harpoon_statusline,
-			},
 		},
 		lualine_c = {
 			{
@@ -245,10 +201,6 @@ require("lualine").setup({
 			},
 		},
 		lualine_z = {
-			-- {
-			-- 	"location",
-			-- 	icon = { "", align = "left" },
-			-- },
 			{
 				"progress",
 				icon = { "", align = "left" },
@@ -260,11 +212,3 @@ require("lualine").setup({
 	extensions = { ["nvim-tree"] = tree },
 })
 
--- Ensure correct backgrond for lualine.
-vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
-	callback = function(_)
-		require("lualine").setup()
-	end,
-	pattern = { "*.*" },
-	once = true,
-})

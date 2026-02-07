@@ -23,7 +23,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-vim.opt.cmdheight = 0
 
 require("keymap")
 require("options")
@@ -33,4 +32,4 @@ require("commands")
 require("lazy").setup(plugins, opts)
 
 vim.opt.background = "light"
-vim.cmd.colorscheme("catppuccin-latte")
+vim.cmd.colorscheme(require("color-mode").light_scheme)

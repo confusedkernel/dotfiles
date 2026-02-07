@@ -30,7 +30,7 @@ return {
 			{ "williamboman/mason.nvim" },
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
-			{ "j-hui/fidget.nvim", tag = "legacy", config = plugin_config("fidget") },
+			{ "j-hui/fidget.nvim", config = plugin_config("fidget") },
 		},
 	},
 	{ "lukas-reineke/lsp-format.nvim", event = "LspAttach" },

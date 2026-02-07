@@ -81,14 +81,10 @@ local servers = {
 		end,
 		settings = {
 			formatterMode = "typstyle",
-			-- exportPdf = "onSave",
 			semanticTokens = "disable",
 		},
 	},
 }
-
--- Diagnostic display configuration
-lsp_shared.setup_handlers()
 
 vim.diagnostic.config({
 	virtual_text = false,

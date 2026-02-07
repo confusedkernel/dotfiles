@@ -1,8 +1,8 @@
 local plugin_config = require("plugins.helpers").config
 
 return {
-	{ "numToStr/Comment.nvim", event = "VeryLazy", config = plugin_config("comment") },
-	{ "windwp/nvim-autopairs", event = "InsertEnter", config = plugin_config("autopairs") },
+	{ "numToStr/Comment.nvim", event = "VeryLazy", opts = {} },
+	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
 	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "mbbill/undotree", cmd = { "UndotreeToggle", "UndotreeShow" } },
@@ -37,5 +37,5 @@ return {
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
-	{ "folke/which-key.nvim", event = "VeryLazy", config = plugin_config("which-key") },
+	{ "folke/which-key.nvim", event = "VeryLazy", opts = {} },
 }

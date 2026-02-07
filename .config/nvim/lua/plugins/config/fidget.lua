@@ -1,6 +1,7 @@
-require("fidget").setup {
-  text = {
-    spinner = "dots",
-    -- done = "[Ok]",
-  },
-}
+require("fidget").setup({
+	progress = {
+		display = {
+			progress_icon = { pattern = "dots" },
+		},
+	},
+})

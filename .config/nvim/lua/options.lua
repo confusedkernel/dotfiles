@@ -29,4 +29,5 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 
+vim.opt.cmdheight = 0
 vim.opt.scrolloff = 8

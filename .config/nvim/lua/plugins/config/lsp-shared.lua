@@ -24,14 +24,16 @@ local function lsp_references_picker()
 end
 
 function M.on_attach(client, bufno)
-	vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
 	if vim.lsp.inlay_hint and client.supports_method("textDocument/inlayHint") then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufno })
 	end
 
-	map("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufno })
-	map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufno })
+	map("n", "K", function()
+		vim.lsp.buf.hover({ border = M.border })
+	end, { desc = "LSP Hover", buffer = bufno })
+	map("n", "<C-k>", function()
+		vim.lsp.buf.signature_help({ border = M.border })
+	end, { desc = "LSP Signature help", buffer = bufno })
 	map("n", "gD", vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufno })
 	map("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definitions", buffer = bufno })
 	map("n", "gtd", vim.lsp.buf.type_definition, { desc = "LSP Type definitions", buffer = bufno })
@@ -50,11 +52,6 @@ function M.on_attach(client, bufno)
 			vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufno })
 		end, { desc = "Toggle Inlay Hints", buffer = bufno })
 	end
-end
-
-function M.setup_handlers()
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = M.border })
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = M.border })
 end
 
 return M

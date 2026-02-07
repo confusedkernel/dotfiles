@@ -2,8 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local map = vim.keymap.set
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
 
 -- Core Editing
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
@@ -27,7 +25,7 @@ map({ "n", "x", "v" }, "<leader>c", '"_dc', { desc = "Change without cutting" })
 map({ "n", "x", "v" }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
 map({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 
-map("n", "Q", "<nop>", { desc = "It's the worse place in the universe" })
+map("n", "Q", "<nop>", { desc = "It's the worst place in the universe" })
 
 map("n", "<leader>nf", function()
 	vim.cmd("enew")
@@ -87,19 +85,3 @@ map("n", "<leader><space>", function()
 	vim.cmd("normal! 5j")
 end, { desc = "Open fugitive status", silent = true })
 
-local fugitive_group = augroup("FugitiveKeymaps", { clear = true })
-autocmd("FileType", {
-	group = fugitive_group,
-	pattern = "fugitive",
-	callback = function()
-		map("n", "<leader><space>", "<cmd>q<CR>", { desc = "Close fugitive status", buffer = true, silent = true })
-	end,
-})
-
-autocmd("FileType", {
-	group = fugitive_group,
-	pattern = "fugitiveblame",
-	callback = function()
-		map("n", "<leader>gb", "<cmd>q<CR>", { desc = "Close fugitive blame", buffer = true, silent = true })
-	end,
-})

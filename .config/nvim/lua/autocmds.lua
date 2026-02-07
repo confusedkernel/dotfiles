@@ -34,6 +34,23 @@ autocmd("FileType", {
 	end,
 })
 
+local fugitive_group = group("FugitiveKeymaps", { clear = true })
+autocmd("FileType", {
+	group = fugitive_group,
+	pattern = "fugitive",
+	callback = function()
+		vim.keymap.set("n", "<leader><space>", "<cmd>q<CR>", { desc = "Close fugitive status", buffer = true, silent = true })
+	end,
+})
+
+autocmd("FileType", {
+	group = fugitive_group,
+	pattern = "fugitiveblame",
+	callback = function()
+		vim.keymap.set("n", "<leader>gb", "<cmd>q<CR>", { desc = "Close fugitive blame", buffer = true, silent = true })
+	end,
+})
+
 local startup_group = group("StartupActions", { clear = true })
 autocmd("VimEnter", {
 	group = startup_group,
@@ -54,44 +71,3 @@ autocmd("VimEnter", {
 	end,
 })
 
-vim.g.neoformat_basic_format_retab = 1
-vim.g.neoformat_try_node_exe = 1
-
-local neoformat_filetypes = {
-	css = true,
-	haskell = true,
-	html = true,
-	javascript = true,
-	json = true,
-	lua = true,
-	markdown = true,
-	python = true,
-	rust = true,
-	typst = true,
-	typescript = true,
-	vue = true,
-	xml = true,
-}
-
-local format_group = group("NeoformatOnSave", { clear = true })
-autocmd("BufWritePre", {
-	group = format_group,
-	pattern = "*",
-	callback = function(args)
-		local ft = vim.bo[args.buf].filetype
-		if not neoformat_filetypes[ft] then
-			return
-		end
-
-		local ok, lazy = pcall(require, "lazy")
-		if ok then
-			lazy.load({ plugins = { "neoformat" } })
-		end
-
-		if vim.fn.exists(":Neoformat") == 0 then
-			return
-		end
-
-		vim.cmd("silent! undojoin | Neoformat")
-	end,
-})

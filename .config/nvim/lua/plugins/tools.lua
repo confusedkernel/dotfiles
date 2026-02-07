@@ -4,7 +4,7 @@ return {
 	{ "krivahtoo/silicon.nvim", build = "./install.sh build", cmd = "Silicon", config = plugin_config("silicon") },
 	{ "lukoshkin/highlight-whitespace", event = { "BufReadPre", "BufNewFile" } },
 	{ "uga-rosa/ccc.nvim", event = { "BufReadPre", "BufNewFile" }, config = plugin_config("color") },
-	{ "sbdchd/neoformat", cmd = { "Neoformat" } },
+	{ "sbdchd/neoformat", event = { "BufWritePre" }, config = plugin_config("neoformat") },
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
@@ -16,7 +16,7 @@ return {
 	},
 	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", event = "BufReadPost", config = plugin_config("todo-comments") },
 	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", cmd = { "Spectre" } },
-	{ "RaafatTurki/hex.nvim", cmd = { "HexToggle" }, config = plugin_config("hex") },
+	{ "RaafatTurki/hex.nvim", cmd = { "HexToggle" }, opts = {} },
 	{
 		"obsidian-nvim/obsidian.nvim",
 		version = "*",

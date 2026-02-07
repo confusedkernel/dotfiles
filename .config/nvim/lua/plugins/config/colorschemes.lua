@@ -31,7 +31,6 @@ require("catppuccin").setup({
 	},
 	integrations = {
 		barbar = false,
-		harpoon = true,
 		leap = true,
 		telescope = {
 			enabled = true,
