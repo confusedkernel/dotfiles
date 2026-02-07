@@ -37,7 +37,7 @@ lua/
 ### Plugin Layout
 
 - Specs are split by domain in `lua/plugins/*.lua`
-- Runtime plugin setup lives in `lua/plugins/config/*.lua`
+- Most runtime plugin setup lives in `lua/plugins/config/*.lua`
 - `lua/plugins/init.lua` merges all domain specs and is loaded by `init.lua`
 
 ## Plugin Management
@@ -51,11 +51,11 @@ lua/
 ## Key Behaviors
 
 - Colors:
-  - Default startup: `catppuccin-latte`
+  - Default startup uses `require("color-mode").light_scheme` (`catppuccin-latte`)
   - Auto dark mode plugin is enabled
   - Manual commands: `:UseLight`, `:UseDark`, `:ColorToggle`
 - Formatting:
-  - `Neoformat` runs on save only for selected filetypes (configured in `lua/plugins/config/lsp.lua`)
+  - `Neoformat` runs on save only for selected filetypes (configured in `lua/plugins/config/neoformat.lua`)
 - Directory open:
   - Opening Neovim with a directory triggers Telescope file browser on startup
 
@@ -63,3 +63,4 @@ lua/
 
 - This repo is managed with `yadm`; use feature branches for refactors.
 - If you add new plugins, place the spec in the matching domain file and create/update its config in `lua/plugins/config/`.
+- Plugin keymaps are centralized in `lua/keymap.lua`; filetype-specific keymap autocmds live in `lua/autocmds.lua`.

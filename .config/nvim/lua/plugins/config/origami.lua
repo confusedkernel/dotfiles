@@ -1,6 +1,9 @@
 -- default settings
 require("origami").setup({
-	useLspFoldsWithTreesitterFallback = true,
+	useLspFoldsWithTreesitterFallback = {
+		enabled = true,
+		foldmethodIfNeitherIsAvailable = "indent",
+	},
 	pauseFoldsOnSearch = true,
 	foldtext = {
 		enabled = true,
@@ -18,6 +21,6 @@ require("origami").setup({
 	},
 	foldKeymaps = {
 		setup = true, -- modifies `h`, `l`, and `$`
-		hOnlyOpensOnFirstColumn = false,
+		closeOnlyOnFirstColumn = false,
 	},
 })

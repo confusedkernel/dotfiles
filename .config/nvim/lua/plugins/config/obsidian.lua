@@ -37,15 +37,4 @@ require("obsidian").setup({
 			insert_tag = "<C-l>",
 		},
 	},
-
-	-- Sets how you follow URLs
-	---@param url string
-	follow_url_func = function(url)
-		vim.ui.open(url)
-	end,
-
-	---@param img string
-	follow_img_func = function(img)
-		vim.ui.open(img)
-	end,
 })

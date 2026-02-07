@@ -14,7 +14,7 @@ This directory is the plugin spec entrypoint for this Neovim config.
   - `telescope.lua`
   - `treesitter.lua`
   - `tools.lua`
-- Runtime plugin setup lives in `lua/plugins/config/*.lua`.
+- Most runtime plugin setup lives in `lua/plugins/config/*.lua`.
 
 ## Plugin Catalog (All Plugins)
 
@@ -82,9 +82,7 @@ This directory is the plugin spec entrypoint for this Neovim config.
 ### Treesitter (`treesitter.lua`)
 
 - `nvim-treesitter/nvim-treesitter`: syntax tree parsing/highlighting engine.
-- `OXY2DEV/markview.nvim` (dependency, disabled): optional markdown rendering integration.
-- `nvim-treesitter/nvim-treesitter-context` (disabled): sticky context window.
-- `MeanderingProgrammer/render-markdown.nvim`: markdown render enhancements.
+- `OXY2DEV/markview.nvim`: markdown/typst/latex inline preview renderer.
 - `nvim-tree/nvim-web-devicons` (dependency): icons for markdown rendering.
 
 ### Tools (`tools.lua`)
@@ -102,5 +100,5 @@ This directory is the plugin spec entrypoint for this Neovim config.
 
 ## Notes
 
-- Plugin-specific options go in `lua/plugins/config/<name>.lua`.
+- Plugin-specific options usually go in `lua/plugins/config/<name>.lua`; trivial plugins may use `opts = {}` directly in specs.
 - Shared keymaps are centralized in `lua/keymap.lua` with plugin-labeled sections.

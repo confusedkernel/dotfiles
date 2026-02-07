@@ -119,7 +119,12 @@ for name, config in pairs(servers) do
 		end
 	end
 
-	require("lspconfig")[name].setup(server_config)
+	if vim.lsp and vim.lsp.config and vim.lsp.enable then
+		vim.lsp.config(name, server_config)
+		vim.lsp.enable(name)
+	else
+		require("lspconfig")[name].setup(server_config)
+	end
 end
 
 -- Pin Buffer to Avoid Tinymist Reference Error
