@@ -1,4 +1,3 @@
-require("fidget").setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {},
@@ -7,7 +6,16 @@ require("mason-lspconfig").setup({
 })
 
 local map = vim.keymap.set
-local util = require("lspconfig.util")
+
+local function get_typescript_server_path(root_dir)
+	local project_ts = vim.fs.joinpath(root_dir, "node_modules", "typescript", "lib")
+	if (vim.uv or vim.loop).fs_stat(project_ts) then
+		return project_ts
+	end
+
+	return vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib"
+end
+
 ----------------------
 -- Language Servers --
 ----------------------
@@ -20,13 +28,6 @@ local servers = {
 	pylsp = {}, -- Python
 	marksman = {}, -- Markdown
 	lua_ls = {
-		on_attach = function(_, bufno)
-			map("n", "<leader>f", function()
-				vim.cmd(":w")
-				vim.cmd([[silent exec "!stylua %"]])
-				vim.cmd(":e")
-			end, { buffer = bufno })
-		end,
 		settings = {
 			hint = {
 				enable = true,
@@ -64,15 +65,10 @@ local servers = {
 		single_file_support = true,
 	},
 	volar = {
-		on_attach = function(_, bufno)
-			map("n", "<leader>f", function()
-				vim.cmd(":w")
-				vim.cmd([[silent exec "!npx prettier --write %"]])
-				vim.cmd(":e")
-			end, { buffer = bufno })
-		end,
 		filetypes = { "typescript", "javascript", "vue" },
 		on_new_config = function(new_config, new_root_dir)
+			new_config.init_options = new_config.init_options or {}
+			new_config.init_options.typescript = new_config.init_options.typescript or {}
 			new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
 		end,
 	},
@@ -92,12 +88,13 @@ map("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP Float", noremap = 
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", noremap = true, silent = true })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", noremap = true, silent = true })
 map("n", "<space>q", vim.diagnostic.setloclist, { desc = "Show LSP in list", noremap = true, silent = true })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action", buffer = bufno })
 
-local on_attach = function(_, bufno)
+local on_attach = function(client, bufno)
 	vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	-- Enable inlay hints
-	vim.lsp.inlay_hint.enable()
+
+	if vim.lsp.inlay_hint and client.supports_method("textDocument/inlayHint") then
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufno })
+	end
 
 	-- See `:help vim.lsp.*`
 	local ts = require("telescope.builtin")
@@ -116,12 +113,12 @@ local on_attach = function(_, bufno)
 	end, { desc = "LSP format", buffer = bufno })
 	map("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename symbol", buffer = bufno })
 
-	-- LSP Inlay Hints
-	--if vim.lsp.inlay_hint then
-	map("n", "<leader>ih", function()
-		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}), {})
-	end, { desc = "Toggle Inlay Hints" })
-	--end
+	if vim.lsp.inlay_hint then
+		map("n", "<leader>ih", function()
+			local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufno })
+			vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufno })
+		end, { desc = "Toggle Inlay Hints", buffer = bufno })
+	end
 end
 
 -- Border setup
@@ -161,32 +158,28 @@ vim.diagnostic.config({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local settings = {
-	hints = {
-		enable = true,
-	},
-}
-
 for name, config in pairs(servers) do
-	require("lspconfig")[name].setup({
+	local server_config = vim.tbl_deep_extend("force", {}, config, {
 		capabilities = capabilities,
-		settings = (config.settings or settings),
-		on_attach = function(client, bufno)
-			-- Call the config.on_attach function if it exists
-			on_attach(client, bufno);
-			(config.on_attach or function(...) end)(client, bufno)
-		end,
 	})
+
+	local server_on_attach = server_config.on_attach
+	server_config.on_attach = function(client, bufno)
+		on_attach(client, bufno)
+		if server_on_attach then
+			server_on_attach(client, bufno)
+		end
+	end
+
+	require("lspconfig")[name].setup(server_config)
 end
 
 ------------------------
 -- Standalone plugins --
 ------------------------
 
-vim.cmd([[
-    let g:neoformat_basic_format_retab = 1
-    let g:neoformat_try_node_exe = 1
-    ]])
+vim.g.neoformat_basic_format_retab = 1
+vim.g.neoformat_try_node_exe = 1
 -- Haskell
 vim.g.haskell_tools = {
 	tools = {
@@ -240,40 +233,53 @@ vim.g.rustaceanvim = {
 -- Create an augroup for formatting
 local fmt_group = vim.api.nvim_create_augroup("fmt", { clear = true })
 
+local neoformat_filetypes = {
+	css = true,
+	haskell = true,
+	html = true,
+	javascript = true,
+	json = true,
+	lua = true,
+	markdown = true,
+	python = true,
+	rust = true,
+	typst = true,
+	typescript = true,
+	vue = true,
+	xml = true,
+}
+
 -- Set up an autocmd to format files before saving
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = fmt_group,
 	pattern = "*",
-	command = "undojoin | Neoformat",
+	callback = function(args)
+		local ft = vim.bo[args.buf].filetype
+		if not neoformat_filetypes[ft] then
+			return
+		end
+
+		vim.cmd("silent! undojoin | Neoformat")
+	end,
 })
-vim.g.neoformat_try_node_exe = 1
 
 -- Pin Buffer to Avoid Tinymist Reference Error
 vim.api.nvim_create_user_command("TypstPin", function()
-	local tinymist_id = nil
-	for _, client in pairs(vim.lsp.get_active_clients()) do
-		if client.name == "tinymist" then
-			tinymist_id = client.id
-			break
-		end
-	end
-
-	if not tinymist_id then
+	local client = vim.lsp.get_clients({ name = "tinymist" })[1]
+	if not client then
 		vim.notify("tinymist not running!", vim.log.levels.ERROR)
 		return
 	end
 
-	local client = vim.lsp.get_client_by_id(tinymist_id)
-	if client then
-		client.request("workspace/executeCommand", {
-			command = "tinymist.pinMain",
-			arguments = { vim.api.nvim_buf_get_name(0) },
-		}, function(err)
-			if err then
-				vim.notify("error pinning: " .. err, vim.log.levels.ERROR)
-			else
-				vim.notify("succesfully pinned", vim.log.levels.INFO)
-			end
-		end, 0)
-	end
+	client.request("workspace/executeCommand", {
+		command = "tinymist.pinMain",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+	}, function(err)
+		if err then
+			local msg = err.message or tostring(err)
+			vim.notify("error pinning: " .. msg, vim.log.levels.ERROR)
+		else
+			vim.notify("successfully pinned", vim.log.levels.INFO)
+		end
+	end, 0)
 end, {})

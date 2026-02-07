@@ -7,7 +7,7 @@ local plugins = {
 	"nvim-lualine/lualine.nvim",
 	"f-person/auto-dark-mode.nvim",
 	"nvim-tree/nvim-web-devicons",
-	{ "krivahtoo/silicon.nvim", run = "./install.sh build" },
+	{ "krivahtoo/silicon.nvim", build = "./install.sh build" },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
 	{ "AlexvZyl/nordic.nvim", name = "nordic", lazy = false, priority = 1000 },
 	{
@@ -211,10 +211,13 @@ local opts = {
 	dev = {
 		path = "~/coding/repos/neovim",
 	},
+	change_detection = {
+		notify = false,
+	},
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -229,8 +232,10 @@ vim.opt.cmdheight = 0
 
 require("keymap")
 require("options")
+require("autocmds")
+require("commands")
 
 require("lazy").setup(plugins, opts)
 
 vim.opt.background = "light"
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-latte")

@@ -5,7 +5,7 @@ function M.switchColorScheme(scheme)
 end
 
 function M.toggleColorScheme()
-	local current_scheme = vim.fn.execute("colorscheme"):gsub("%s+", "")
+	local current_scheme = vim.g.colors_name or ""
 	local target_scheme = (current_scheme == "nordic") and "catppuccin-latte" or "nordic"
 	M.switchColorScheme(target_scheme)
 end

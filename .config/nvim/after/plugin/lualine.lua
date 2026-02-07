@@ -29,7 +29,7 @@ end
 -- Gets the current buffer's filename with the filetype icon supplied
 -- by devicons.
 local M = require("lualine.components.filetype"):extend()
-Icon_hl_cache = {}
+local Icon_hl_cache = {}
 local lualine_require = require("lualine_require")
 local modules = lualine_require.lazy_require({
 	highlight = "lualine.highlight",
@@ -124,7 +124,7 @@ end
 
 local function get_native_lsp()
 	local buf_ft = get_current_filetype()
-	local clients = vim.lsp.get_active_clients()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	if next(clients) == nil then
 		return ""
 	end
