@@ -15,19 +15,3 @@ require("barbar").setup({
 	no_name_title = nil,
 	separator = { left = "▎", right = "" },
 })
-
--- Keymap Setting
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
--- Move to previous/next
-map("n", "<A-[>", "<Cmd>BufferPrevious<CR>", opts)
-map("n", "<A-]>", "<Cmd>BufferNext<CR>", opts)
-
--- Re-order to previous/next
-map("n", "<C-{>", "<Cmd>BufferMovePrevious<CR>", opts)
-map("n", "<C-}>", "<Cmd>BufferMoveNext<CR>", opts)
-
--- Pin/unpin buffer
-map("n", "<A-P>", "<Cmd>BufferPin<CR>", opts)
-map("n", "<A-C>", "<Cmd>BufferClose<CR>", opts)

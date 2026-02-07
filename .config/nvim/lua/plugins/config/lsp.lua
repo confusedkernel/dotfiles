@@ -5,7 +5,6 @@ require("mason-lspconfig").setup({
 	automatic_enable = false,
 })
 
-local map = vim.keymap.set
 local lsp_shared = require("plugins.config.lsp-shared")
 
 local on_attach = lsp_shared.on_attach
@@ -87,11 +86,6 @@ local servers = {
 		},
 	},
 }
-
-map("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP Float", noremap = true, silent = true })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", noremap = true, silent = true })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", noremap = true, silent = true })
-map("n", "<space>q", vim.diagnostic.setloclist, { desc = "Show LSP in list", noremap = true, silent = true })
 
 -- Diagnostic display configuration
 lsp_shared.setup_handlers()

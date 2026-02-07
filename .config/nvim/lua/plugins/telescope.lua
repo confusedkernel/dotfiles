@@ -5,16 +5,6 @@ return {
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		cmd = { "Telescope" },
-		keys = {
-			{ "<leader>?" },
-			{ "<leader>/" },
-			{ "<leader>sf" },
-			{ "<leader>gf" },
-			{ "<leader>sh" },
-			{ "<leader>sw" },
-			{ "<leader>sg" },
-			{ "<leader>sd" },
-		},
 		config = plugin_config("telescope"),
 		dependencies = {
 			"nvim-lua/plenary.nvim",

@@ -5,7 +5,6 @@ return {
 	{
 		"tpope/vim-fugitive",
 		cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gblame" },
-		config = plugin_config("fugitive"),
 	},
 	{
 		"sindrets/diffview.nvim",
