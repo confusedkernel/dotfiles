@@ -1,9 +1,6 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
-local snippet_path = vim.fn.stdpath("config") .. "/snippets"
-require("luasnip.loaders.from_vscode").lazy_load { paths = { snippet_path } }
-
 local has_words_before = function()
 	local unpack_fn = table.unpack or unpack
 	local line, col = unpack_fn(vim.api.nvim_win_get_cursor(0))

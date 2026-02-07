@@ -5,11 +5,13 @@ return {
 		"mrcjkb/rustaceanvim",
 		version = "^6",
 		ft = { "rust" },
+		init = plugin_config("rustaceanvim"),
 	},
 	{
 		"mrcjkb/haskell-tools.nvim",
 		version = "^6",
 		ft = { "haskell", "lhaskell", "cabal" },
+		init = plugin_config("haskell-tools"),
 	},
 	{
 		"folke/lazydev.nvim",

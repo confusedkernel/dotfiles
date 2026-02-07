@@ -1,6 +1,11 @@
 local actions = require("telescope.actions")
-local themes = require("telescope.themes")
 local telescope = require("telescope")
+
+local borderchars = {
+	prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+	results = { " ", " ", " ", " ", " ", " ", " ", " " },
+	preview = { " ", " ", " ", " ", " ", " ", " ", " " },
+}
 
 telescope.setup({
 	-- universal theme settings
@@ -10,11 +15,7 @@ telescope.setup({
 				["<esc>"] = actions.close,
 			},
 		},
-		borderchars = {
-			prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-			results = { " ", " ", " ", " ", " ", " ", " ", " " },
-			preview = { " ", " ", " ", " ", " ", " ", " ", " " },
-		},
+		borderchars = borderchars,
 		-- borderchars = { "", "", "", "│", "", "", "", "" },
 		-- layout_config = { height = 0.6 },
 	},
@@ -37,22 +38,12 @@ telescope.setup({
 		},
 		lsp_references = {
 			theme = "ivy",
-
-			borderchars = {
-				prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-				results = { " ", " ", " ", " ", " ", " ", " ", " " },
-				preview = { " ", " ", " ", " ", " ", " ", " ", " " },
-			},
+			borderchars = borderchars,
 			layout_config = { height = 0.7 },
 		},
 		live_grep = {
 			theme = "ivy",
-
-			borderchars = {
-				prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-				results = { " ", " ", " ", " ", " ", " ", " ", " " },
-				preview = { " ", " ", " ", " ", " ", " ", " ", " " },
-			},
+			borderchars = borderchars,
 			layout_config = { height = 0.7 },
 		},
 	},
@@ -63,23 +54,18 @@ telescope.setup({
 	end,
 })
 
-require("telescope").load_extension("fzf") -- Enable telescope fzf native, if installed
-require("telescope").load_extension("file_browser")
-require("telescope").load_extension("undo")
+for _, extension in ipairs({ "fzf", "file_browser", "undo" }) do
+	pcall(telescope.load_extension, extension)
+end
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader>/", function()
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		previewer = false,
-
-		borderchars = {
-			prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-			results = { " ", " ", " ", " ", " ", " ", " ", " " },
-			preview = { " ", " ", " ", " ", " ", " ", " ", " " },
-		},
+		borderchars = borderchars,
 	}))
-end, { desc = "[/] Fuzzily search in current buffer]" })
+end, { desc = "[/] Fuzzily search in current buffer" })
 vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch All [F]iles" })
 vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
 vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })

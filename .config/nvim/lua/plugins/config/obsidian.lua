@@ -52,10 +52,3 @@ require("obsidian").setup({
 		-- vim.ui.open(img, { cmd = { "loupe" } })
 	end,
 })
-
-require("nvim-treesitter.configs").setup({
-	ensure_installed = { "markdown", "markdown_inline" },
-	highlight = {
-		enable = true,
-	},
-})
