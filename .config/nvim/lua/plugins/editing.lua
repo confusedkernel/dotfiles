@@ -6,7 +6,12 @@ return {
 	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "mbbill/undotree", cmd = { "UndotreeToggle", "UndotreeShow" } },
-	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", keys = { "s", "S" }, config = plugin_config("leap") },
+	{
+		url = "https://codeberg.org/andyg/leap.nvim",
+		dependencies = "tpope/vim-repeat",
+		keys = { "s", "S" },
+		config = plugin_config("leap"),
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
