@@ -36,11 +36,13 @@ telescope.setup({
 		},
 		lsp_references = {
 			theme = "ivy",
+			borderchars = borderchars,
 			layout_config = { height = 0.7 },
 		},
 		live_grep = {
 			theme = "ivy",
 			layout_config = { height = 0.7 },
+			borderchars = borderchars,
 		},
 	},
 
