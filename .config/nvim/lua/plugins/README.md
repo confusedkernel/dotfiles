@@ -51,7 +51,6 @@ This directory is the plugin spec entrypoint for this Neovim config.
 - `mg979/vim-visual-multi`: multi-cursor editing.
 - `tpope/vim-surround`: surround text objects.
 - `mbbill/undotree`: undo history tree view.
-- `mizlan/iswap.nvim`: treesitter-based argument/node swapping.
 - `ggandor/leap.nvim`: fast two-character motions.
 - `tpope/vim-repeat` (dependency): repeat plugin actions with `.`.
 - `lukas-reineke/indent-blankline.nvim`: indent guides.

@@ -6,9 +6,12 @@ return {
 	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "mbbill/undotree", cmd = { "UndotreeToggle", "UndotreeShow" } },
-	{ "mizlan/iswap.nvim", event = "VeryLazy", config = plugin_config("iswap") },
 	{ "ggandor/leap.nvim", dependencies = "tpope/vim-repeat", keys = { "s", "S" }, config = plugin_config("leap") },
-	{ "lukas-reineke/indent-blankline.nvim", event = { "BufReadPre", "BufNewFile" }, config = plugin_config("indent-blankline") },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = plugin_config("indent-blankline"),
+	},
 	{
 		"chrisgrieser/nvim-origami",
 		event = "VeryLazy",
