@@ -58,7 +58,12 @@ map("n", "<C-1>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree", silent 
 
 -- Telescope plugin
 map("n", "<leader>?", "<cmd>Telescope oldfiles<CR>", { desc = "[?] Find recently opened files", silent = true })
-map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find theme=dropdown previewer=false<CR>", { desc = "[/] Fuzzily search in current buffer", silent = true })
+map(
+	"n",
+	"<leader>/",
+	"<cmd>Telescope current_buffer_fuzzy_find theme=dropdown previewer=false<CR>",
+	{ desc = "[/] Fuzzily search in current buffer", silent = true }
+)
 map("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "[S]earch all [F]iles", silent = true })
 map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "Search [G]it [F]iles", silent = true })
 map("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "[S]earch [H]elp", silent = true })
@@ -84,4 +89,3 @@ map("n", "<leader><space>", function()
 	vim.cmd("Git")
 	vim.cmd("normal! 5j")
 end, { desc = "Open fugitive status", silent = true })
-

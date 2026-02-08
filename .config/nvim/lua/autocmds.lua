@@ -39,7 +39,12 @@ autocmd("FileType", {
 	group = fugitive_group,
 	pattern = "fugitive",
 	callback = function()
-		vim.keymap.set("n", "<leader><space>", "<cmd>q<CR>", { desc = "Close fugitive status", buffer = true, silent = true })
+		vim.keymap.set(
+			"n",
+			"<leader><space>",
+			"<cmd>q<CR>",
+			{ desc = "Close fugitive status", buffer = true, silent = true }
+		)
 	end,
 })
 
@@ -70,4 +75,3 @@ autocmd("VimEnter", {
 		telescope.extensions.file_browser.file_browser({ cwd = bufname })
 	end,
 })
-

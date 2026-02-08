@@ -211,4 +211,3 @@ require("lualine").setup({
 
 	extensions = { ["nvim-tree"] = tree },
 })
-

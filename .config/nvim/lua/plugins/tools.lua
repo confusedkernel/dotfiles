@@ -14,7 +14,12 @@ return {
 		},
 		config = plugin_config("toggleterm"),
 	},
-	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", event = "BufReadPost", config = plugin_config("todo-comments") },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		event = "BufReadPost",
+		config = plugin_config("todo-comments"),
+	},
 	{ "nvim-pack/nvim-spectre", dependencies = "nvim-lua/plenary.nvim", cmd = { "Spectre" } },
 	{ "RaafatTurki/hex.nvim", cmd = { "HexToggle" }, opts = {} },
 	{

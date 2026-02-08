@@ -6,7 +6,7 @@ require("nvim-treesitter.parsers").get_parser_configs().asm = {
 	},
 }
 
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
 		"c",
@@ -33,4 +33,4 @@ require("nvim-treesitter.configs").setup {
 		enable = true,
 		additional_vim_regex_highlighting = false,
 	},
-}
+})
