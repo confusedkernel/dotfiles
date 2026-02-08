@@ -9,7 +9,8 @@ return {
 	},
 	{
 		"OXY2DEV/markview.nvim",
-		lazy = false,
+		-- lazy = false,
+		ft = { "markdown", "mdx", "quarto", "rmd" },
 		config = plugin_config("markview"),
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
