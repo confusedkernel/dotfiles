@@ -2,7 +2,7 @@ local plugin_config = require("plugins.helpers").config
 
 return {
 	{ "nvim-lualine/lualine.nvim", event = "VeryLazy", config = plugin_config("lualine") },
-	{ "f-person/auto-dark-mode.nvim", lazy = false, config = plugin_config("auto-dark-mode") },
+	{ "f-person/auto-dark-mode.nvim", event = "VeryLazy", config = plugin_config("auto-dark-mode") },
 	"nvim-tree/nvim-web-devicons",
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
 	{

@@ -31,5 +31,4 @@ require("commands")
 
 require("lazy").setup(plugins, opts)
 
-vim.opt.background = "light"
-vim.cmd.colorscheme(require("color-mode").light_scheme)
+require("color-mode").ApplySystemTheme()
