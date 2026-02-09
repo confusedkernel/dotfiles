@@ -51,8 +51,8 @@ lua/
 ## Key Behaviors
 
 - Colors:
-  - Default startup uses `require("color-mode").light_scheme` (`catppuccin-latte`)
-  - Auto dark mode plugin is enabled
+  - Startup applies `require("color-mode").ApplySystemTheme()` (system light/dark aware)
+  - `auto-dark-mode.nvim` is enabled
   - Manual commands: `:UseLight`, `:UseDark`, `:ColorToggle`
 - Formatting:
   - `Neoformat` runs on save only for selected filetypes (configured in `lua/plugins/config/neoformat.lua`)

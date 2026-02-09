@@ -30,7 +30,6 @@ This directory is the plugin spec entrypoint for this Neovim config.
 - `nvim-telescope/telescope-fzf-native.nvim` (dependency): native fzf sorter for Telescope.
 - `nvim-tree/nvim-tree.lua`: file explorer tree.
 - `confusedkernel/nvchad-ui.nvim`: dashboard/theming UI layer.
-- `confusedkernel/center-stage.nvim`: viewport centering plugin.
 
 ### LSP (`lsp.lua`)
 
@@ -51,7 +50,7 @@ This directory is the plugin spec entrypoint for this Neovim config.
 - `mg979/vim-visual-multi`: multi-cursor editing.
 - `tpope/vim-surround`: surround text objects.
 - `mbbill/undotree`: undo history tree view.
-- `ggandor/leap.nvim`: fast two-character motions.
+- `andyg/leap.nvim` (Codeberg): fast two-character motions.
 - `tpope/vim-repeat` (dependency): repeat plugin actions with `.`.
 - `lukas-reineke/indent-blankline.nvim`: indent guides.
 - `chrisgrieser/nvim-origami`: fold UX enhancements.
