@@ -15,7 +15,7 @@ return {
 	{
 		"romgrk/barbar.nvim",
 		dependencies = "nvim-web-devicons",
-		version = "^1.0.0",
+		-- version = "^1.0.0",
 		event = "VeryLazy",
 		config = plugin_config("barbar"),
 	},
@@ -41,16 +41,16 @@ return {
 		dev = true,
 		config = plugin_config("dash"),
 	},
-	{
-		"confusedkernel/center-stage.nvim",
-		branch = "master",
-		event = "VeryLazy",
-		priority = 10,
-		dev = true,
-		opts = {
-			enabled = true,
-			center_on = { "CursorMovedI" },
-			offset = -2,
-		},
-	},
+	-- {
+	-- 	"confusedkernel/center-stage.nvim",
+	-- 	branch = "master",
+	-- 	event = "VeryLazy",
+	-- 	priority = 10,
+	-- 	dev = true,
+	-- 	opts = {
+	-- 		enabled = true,
+	-- 		center_on = { "CursorMovedI" },
+	-- 		offset = -2,
+	-- 	},
+	-- },
 }

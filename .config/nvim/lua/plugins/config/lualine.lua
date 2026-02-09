@@ -172,7 +172,7 @@ require("lualine").setup({
 		lualine_c = {
 			{
 				"branch",
-				icon = { " " },
+				icon = { " 󰘬" },
 				separator = " ",
 				padding = 0,
 			},
@@ -180,7 +180,7 @@ require("lualine").setup({
 				"diff",
 				padding = 1,
 				source = diff_source,
-				symbols = { added = " ", modified = " ", removed = " " },
+				symbols = { added = " ", modified = " ", removed = " " },
 			},
 		},
 		lualine_x = {

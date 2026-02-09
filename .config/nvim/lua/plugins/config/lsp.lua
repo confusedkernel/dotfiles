@@ -31,6 +31,13 @@ local servers = {
 	pylsp = {}, -- Python
 	marksman = {}, -- Markdown
 	lua_ls = {
+		on_attach = function(_, bufno)
+			vim.keymap.set("n", "<leader>f", function()
+				vim.cmd(":w")
+				vim.cmd([[silent exec "!stylua %"]])
+				vim.cmd(":e")
+			end, { buffer = bufno, desc = "Format Lua with Stylua" })
+		end,
 		settings = {
 			hint = {
 				enable = true,
