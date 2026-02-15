@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = {},
+	ensure_installed = { "ts_ls", "vue_ls" },
 	automatic_installation = false,
 	automatic_enable = false,
 })
@@ -30,6 +30,7 @@ local servers = {
 	lemminx = {}, -- XML
 	pylsp = {}, -- Python
 	marksman = {}, -- Markdown
+	ts_ls = {}, -- TypeScript / React
 	lua_ls = {
 		on_attach = function(_, bufno)
 			vim.keymap.set("n", "<leader>f", function()
@@ -74,8 +75,7 @@ local servers = {
 		settings = {},
 		single_file_support = true,
 	},
-	volar = {
-		filetypes = { "typescript", "javascript", "vue" },
+	vue_ls = {
 		on_new_config = function(new_config, new_root_dir)
 			new_config.init_options = new_config.init_options or {}
 			new_config.init_options.typescript = new_config.init_options.typescript or {}
@@ -126,12 +126,8 @@ for name, config in pairs(servers) do
 		end
 	end
 
-	if vim.lsp and vim.lsp.config and vim.lsp.enable then
-		vim.lsp.config(name, server_config)
-		vim.lsp.enable(name)
-	else
-		require("lspconfig")[name].setup(server_config)
-	end
+	vim.lsp.config(name, server_config)
+	vim.lsp.enable({ name })
 end
 
 -- Pin Buffer to Avoid Tinymist Reference Error

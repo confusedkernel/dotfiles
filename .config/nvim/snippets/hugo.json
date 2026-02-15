@@ -1,0 +1,86 @@
+{
+	"Hugo shortcode block (< >)": {
+		"prefix": "scb",
+		"body": [
+			"{{< ${1:name} ${2:key}=\"${3:value}\" >}}",
+			"${0}",
+			"{{< /${1:name} >}}"
+		],
+		"description": "Paired shortcode using < > delimiters"
+	},
+	"Hugo shortcode block (% %)": {
+		"prefix": "scbp",
+		"body": [
+			"{{% ${1:name} ${2:key}=\"${3:value}\" %}}",
+			"${0}",
+			"{{% /${1:name} %}}"
+		],
+		"description": "Paired shortcode using % % delimiters"
+	},
+	"Hugo shortcode inline (< >)": {
+		"prefix": "sci",
+		"body": [
+			"{{< ${1:name} ${2:key}=\"${3:value}\" />}}"
+		],
+		"description": "Self-closing shortcode using < >"
+	},
+	"Hugo shortcode inline (% %)": {
+		"prefix": "scip",
+		"body": [
+			"{{% ${1:name} ${2:key}=\"${3:value}\" /%}}"
+		],
+		"description": "Self-closing shortcode using % %"
+	},
+	"Hugo steps block (% %)": {
+		"prefix": "steps",
+		"body": [
+			"{{% steps %}}",
+			"",
+			"### ${1:Step Title}",
+			"${2:Step description}",
+			"",
+			"``` ${3:c} {filename = \"${4:file.c}\"}",
+			"${5}",
+			"```",
+			"",
+			"{{% /steps %}}"
+		],
+		"description": "Hugo steps shortcode with markdown content"
+	},
+	"Hugo figure shortcode": {
+		"prefix": "figure",
+		"body": [
+			"{{< figure src=\"${1:/images/example.jpg}\" alt=\"${2:alt text}\" caption=\"${3:Caption}\" >}}"
+		],
+		"description": "Hugo figure shortcode"
+	},
+	"Hugo relref link": {
+		"prefix": "relref",
+		"body": [
+			"[${1:Link text}]({{< relref \"${2:posts/my-post.md}\" >}})"
+		],
+		"description": "Markdown link using relref"
+	},
+	"Hugo ref link": {
+		"prefix": "ref",
+		"body": [
+			"[${1:Link text}]({{< ref \"${2:posts/my-post.md}\" >}})"
+		],
+		"description": "Markdown link using ref"
+	},
+	"Hugo front matter": {
+		"prefix": "fm",
+		"body": [
+			"---",
+			"title: \"${1:Title}\"",
+			"date: ${2:2026-02-10}",
+			"draft: ${3:true}",
+			"description: \"${4}\"",
+			"tags: [${5:tag1, tag2}]",
+			"---",
+			"",
+			"${0}"
+		],
+		"description": "YAML front matter block"
+	}
+}

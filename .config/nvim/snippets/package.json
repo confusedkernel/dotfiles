@@ -1,7 +1,11 @@
 {
-	"name": "leana-snippets",
+	"name": "tyler-snippets",
 	"contributes": {
 		"snippets": [
+			{
+				"language": "markdown",
+				"path": "./hugo.json"
+			},
 			{
 				"language": "python",
 				"path": "./python.json"
@@ -10,10 +14,6 @@
 				"language": "rust",
 				"path": "./rust.json"
 			},
-			{
-				"language": "xml",
-				"path": "./xml.json"
-			}
 		]
 	}
 }
