@@ -83,8 +83,21 @@ local servers = {
 		end,
 	},
 	tinymist = {
-		root_dir = function(_, bufnr)
-			return vim.fs.root(bufnr, { ".git" }) or vim.fn.expand("%:p:h")
+		root_dir = function(bufnr, on_dir)
+			local root = vim.fs.root(bufnr, { ".git" })
+			if not root then
+				local bufname = vim.api.nvim_buf_get_name(bufnr)
+				if bufname ~= "" then
+					root = vim.fs.dirname(bufname)
+				end
+			end
+			if not root then
+				root = (vim.uv or vim.loop).cwd()
+			end
+			if on_dir then
+				on_dir(root)
+			end
+			return root
 		end,
 		settings = {
 			formatterMode = "typstyle",
