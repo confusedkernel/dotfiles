@@ -34,7 +34,7 @@ return {
 		config = plugin_config("tree"),
 	},
 	{
-		"confusedkernel/nvchad-ui.nvim",
+		"confusedkernel/nvui.nvim",
 		branch = "master",
 		lazy = false,
 		priority = 10,

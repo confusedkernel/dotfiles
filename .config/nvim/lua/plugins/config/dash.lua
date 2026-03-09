@@ -1,4 +1,4 @@
-require("nvchad_ui").setup({
+require("nvui").setup({
 	lazyVim = true,
 	statusline = { enabled = false },
 	tabufline = { enabled = false },
