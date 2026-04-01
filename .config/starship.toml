@@ -23,12 +23,12 @@ cerulean = '#8cafd2'
 tiffany = '#8fbcbb'
 
 [character]
-success_symbol = "[⮑](forest) "
-error_symbol = "[⮑](danger) "
-vimcmd_symbol = "[⮑](normal) "
-vimcmd_replace_symbol = "[⮑](cerulean) "
-vimcmd_replace_one_symbol = "[⮑](cerulean) "
-vimcmd_visual_symbol = "[⮑](lilac) "
+success_symbol = "[\\$](forest)"
+error_symbol = "[\\$](danger)"
+vimcmd_symbol = "[\\$](normal)"
+vimcmd_replace_symbol = "[\\$](cerulean)"
+vimcmd_replace_one_symbol = "[\\$](cerulean)"
+vimcmd_visual_symbol = "[\\$](lilac)"
 
 [directory]
 truncation_length = 2
