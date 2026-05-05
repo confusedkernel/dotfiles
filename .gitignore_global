@@ -43,6 +43,7 @@
 
 # Kernel Module Compile Results
 *.mod*
+!*.module.css
 *.cmd
 .tmp_versions/
 modules.order
@@ -390,4 +391,3 @@ Temporary Items
 
 # iCloud generated files
 *.icloud
-
