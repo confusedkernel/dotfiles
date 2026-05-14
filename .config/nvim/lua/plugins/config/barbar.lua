@@ -11,7 +11,7 @@ require("barbar").setup({
 		UndoTree = { text = "UndoTree" },
 	},
 	preset = "default",
-	exclude_ft = { "" },
+	exclude_ft = { "", "NvimTree" },
 	no_name_title = nil,
 	separator = { left = "▎", right = "" },
 })

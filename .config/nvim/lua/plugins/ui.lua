@@ -22,6 +22,7 @@ return {
 	{
 		"Bekaboo/dropbar.nvim",
 		event = "BufReadPost",
+		config = plugin_config("dropbar"),
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
