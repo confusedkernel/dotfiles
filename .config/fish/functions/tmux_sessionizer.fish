@@ -4,6 +4,7 @@
 # If there's already a session present for that directory, fuzzy search your way through
 function tmux_sessionizer --description 'manage tmux sessions'
     tmux start-server
+    set -l sessions (tmux list-sessions -F '#{session_name}' 2>/dev/null)
 
     if test -z $argv[1]
         set cmd "fish"
@@ -11,7 +12,7 @@ function tmux_sessionizer --description 'manage tmux sessions'
         set cmd "$argv"
     end
 
-    if not tmux list-sessions -F '#{session_name}' | rg "^$PWD\$" > /dev/null
+    if not contains -- "$PWD" $sessions
         # create new session and attach to it
         tmux new-session -s "$PWD" "$cmd"
     else

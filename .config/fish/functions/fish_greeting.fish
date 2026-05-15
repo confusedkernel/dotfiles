@@ -23,31 +23,46 @@ function fish_greeting
     set -l album_key (string lower "$album_title")
     set -l album_code_key (string lower "$album_code")
 
-    # Coloring the text based on eras
-    if test "$album_code_key" = tpd -o "$album_key" = "the tortured poets department"
-        set_color --bold --italic B3997F
-    else if test "$album_code_key" = lsg -o "$album_key" = "the life of a showgirl"
-        set_color --bold --italic E0903E
-    else if test "$album_key" = midnights
-        set_color --bold --italic 5A67D8
-    else if test "$album_key" = folklore
-        set_color --bold --italic 7F7A6E
-    else if test "$album_key" = evermore
-        set_color --bold --italic C58B75
-    else if test "$album_key" = lover
-        set_color --bold --italic D18ED7
-    else if test "$album_key" = reputation
-        set_color --bold --italic 8A8A8A
-    else if test "$album_key" = 1989
-        set_color --bold --italic 7FBCD2
-    else if test "$album_key" = red
-        set_color --bold --italic C35763
-    else if test "$album_key" = "speak now"
-        set_color --bold --italic B585C1
-    else if test "$album_key" = fearless
-        set_color --bold --italic D3B868
-    else if test "$album_key" = "taylor swift"
-        set_color --bold --italic A6C29F
+    set -l lyric_color
+
+    switch "$album_code_key"
+        case tpd
+            set lyric_color B3997F
+        case lsg
+            set lyric_color E0903E
+    end
+
+    if not set -q lyric_color[1]
+        switch "$album_key"
+            case "the tortured poets department"
+                set lyric_color B3997F
+            case "the life of a showgirl"
+                set lyric_color E0903E
+            case midnights
+                set lyric_color 5A67D8
+            case folklore
+                set lyric_color 7F7A6E
+            case evermore
+                set lyric_color C58B75
+            case lover
+                set lyric_color D18ED7
+            case reputation
+                set lyric_color 8A8A8A
+            case 1989
+                set lyric_color 7FBCD2
+            case red
+                set lyric_color C35763
+            case "speak now"
+                set lyric_color B585C1
+            case fearless
+                set lyric_color D3B868
+            case "taylor swift"
+                set lyric_color A6C29F
+        end
+    end
+
+    if set -q lyric_color[1]
+        set_color --bold --italic $lyric_color
     else
         set_color --bold --italic
     end

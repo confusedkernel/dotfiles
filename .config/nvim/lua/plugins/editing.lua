@@ -46,4 +46,5 @@ return {
 	},
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "folke/which-key.nvim", event = "VeryLazy", opts = {} },
+	{ "confusedkernel/elicit.nvim", ft = "markdown", dev = true, config = plugin_config("elicit") },
 }

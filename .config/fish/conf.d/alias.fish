@@ -11,7 +11,7 @@ alias brewdeps="brew leaves | xargs brew deps --include-build --tree"
 
 # Tmux
 alias t='tmux'
-alias tk='tmux kill session'
+alias tk='tmux kill-session'
 
 # For yadm
 alias dotfile='yadm'
@@ -45,4 +45,4 @@ alias nv='nvim .'
 alias code='open -b com.microsoft.VSCode'
 
 # For Criterion compiling and other brew stuff
-alias meep='-I /usr/local/include -L /usr/local/lib'
+abbr --add --position anywhere -- meep '-I /usr/local/include -L /usr/local/lib'

@@ -36,6 +36,8 @@ set -gx fish_color_cancel ff8c00 --reverse #orange
 # History search matches and selected pager items (background only)
 # Default value is black (background)
 set -gx fish_color_search_match --reverse
+# The current selection
+set -gx fish_color_selection white --bold --background=brblack
 
 ## Prompt (useless with starship)
 # The current working directory in the default prompt
@@ -46,6 +48,10 @@ set -gx fish_color_cwd_root normal
 set -gx fish_color_user normal
 # The hostname in the default prompt
 set -gx fish_color_host normal
+# The hostname in the default prompt for remote sessions
+set -gx fish_color_host_remote yellow
+# The status of the last command
+set -gx fish_color_status ed4747 #crimson
 
 ## Pager
 # The progress bar at the bottom left corner
@@ -58,4 +64,3 @@ set -gx fish_pager_color_completion normal
 set -gx fish_pager_color_description d78700 --italics #caramel
 # Background of the selected completion
 set -gx fish_pager_color_selected_background --reverse
-
