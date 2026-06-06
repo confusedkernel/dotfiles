@@ -83,6 +83,23 @@ local servers = {
 		end,
 	},
 	tinymist = {
+		on_attach = function(client, bufnr)
+			vim.keymap.set("n", "<leader>tp", function()
+				client:exec_cmd({
+					title = "pin",
+					command = "tinymist.pinMain",
+					arguments = { vim.api.nvim_buf_get_name(bufnr) },
+				}, { bufnr = bufnr })
+			end, { buffer = bufnr, desc = "[T]inymist [P]in", noremap = true })
+
+			vim.keymap.set("n", "<leader>tu", function()
+				client:exec_cmd({
+					title = "unpin",
+					command = "tinymist.pinMain",
+					arguments = { vim.v.null },
+				}, { bufnr = bufnr })
+			end, { buffer = bufnr, desc = "[T]inymist [U]npin", noremap = true })
+		end,
 		root_dir = function(bufnr, on_dir)
 			local root = vim.fs.root(bufnr, { ".git" })
 			if not root then
@@ -142,24 +159,3 @@ for name, config in pairs(servers) do
 	vim.lsp.config(name, server_config)
 	vim.lsp.enable({ name })
 end
-
--- Pin Buffer to Avoid Tinymist Reference Error
-vim.api.nvim_create_user_command("TypstPin", function()
-	local client = vim.lsp.get_clients({ name = "tinymist" })[1]
-	if not client then
-		vim.notify("tinymist not running!", vim.log.levels.ERROR)
-		return
-	end
-
-	client.request("workspace/executeCommand", {
-		command = "tinymist.pinMain",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-	}, function(err)
-		if err then
-			local msg = err.message or tostring(err)
-			vim.notify("error pinning: " .. msg, vim.log.levels.ERROR)
-		else
-			vim.notify("successfully pinned", vim.log.levels.INFO)
-		end
-	end, 0)
-end, {})
