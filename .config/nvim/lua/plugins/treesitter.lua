@@ -3,7 +3,8 @@ local plugin_config = require("plugins.helpers").config
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
 		config = plugin_config("treesitter"),
 	},

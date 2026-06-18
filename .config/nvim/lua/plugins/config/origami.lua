@@ -7,7 +7,9 @@ require("origami").setup({
 	pauseFoldsOnSearch = true,
 	foldtext = {
 		enabled = true,
-		padding = 3,
+		padding = {
+			width = 3,
+		},
 		lineCount = {
 			template = "󰘖 %d", -- `%d` is replaced with the number of folded lines
 			hlgroup = "Comment",

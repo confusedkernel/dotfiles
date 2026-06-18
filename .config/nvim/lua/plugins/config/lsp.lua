@@ -85,19 +85,17 @@ local servers = {
 	tinymist = {
 		on_attach = function(client, bufnr)
 			vim.keymap.set("n", "<leader>tp", function()
-				client:exec_cmd({
-					title = "pin",
+				client.request("workspace/executeCommand", {
 					command = "tinymist.pinMain",
 					arguments = { vim.api.nvim_buf_get_name(bufnr) },
-				}, { bufnr = bufnr })
+				}, nil, bufnr)
 			end, { buffer = bufnr, desc = "[T]inymist [P]in", noremap = true })
 
 			vim.keymap.set("n", "<leader>tu", function()
-				client:exec_cmd({
-					title = "unpin",
+				client.request("workspace/executeCommand", {
 					command = "tinymist.pinMain",
 					arguments = { vim.v.null },
-				}, { bufnr = bufnr })
+				}, nil, bufnr)
 			end, { buffer = bufnr, desc = "[T]inymist [U]npin", noremap = true })
 		end,
 		root_dir = function(bufnr, on_dir)
