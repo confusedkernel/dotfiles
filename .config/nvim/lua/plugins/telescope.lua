@@ -3,7 +3,6 @@ local plugin_config = require("plugins.helpers").config
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
 		cmd = { "Telescope" },
 		config = plugin_config("telescope"),
 		dependencies = {
