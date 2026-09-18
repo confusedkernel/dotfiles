@@ -1,6 +1,6 @@
 require("barbar").setup({
-	custom_colors = true,
-	animation = true,
+	-- Open/close/move animations make every buffer change take ~150ms to settle.
+	animation = false,
 	tabpages = false,
 	auto_hide = true,
 	clickable = true,

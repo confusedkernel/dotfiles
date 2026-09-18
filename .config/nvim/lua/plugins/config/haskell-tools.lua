@@ -1,6 +1,7 @@
 vim.g.haskell_tools = {
 	tools = {
 		hover = {
+			border = "solid",
 			stylize_markdown = true,
 		},
 	},

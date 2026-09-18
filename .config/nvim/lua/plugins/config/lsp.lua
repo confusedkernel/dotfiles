@@ -65,6 +65,7 @@ local servers = {
 vim.diagnostic.config({
 	virtual_text = false,
 	severity_sort = true,
+	float = { border = "solid" },
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "",

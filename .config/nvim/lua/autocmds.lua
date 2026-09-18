@@ -129,8 +129,14 @@ autocmd("LspAttach", {
 			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 		end
 
-		map("K", vim.lsp.buf.hover, "LSP Hover")
-		map("<C-k>", vim.lsp.buf.signature_help, "LSP Signature help")
+		-- "solid" = one-cell padded border drawn in FloatBorder. Set per float rather
+		-- than via the global 'winborder', which leaks into plugin floats (e.g. lazy's backdrop).
+		map("K", function()
+			vim.lsp.buf.hover({ border = "solid" })
+		end, "LSP Hover")
+		map("<C-k>", function()
+			vim.lsp.buf.signature_help({ border = "solid" })
+		end, "LSP Signature help")
 		map("gD", vim.lsp.buf.declaration, "LSP Declaration")
 		map("gd", vim.lsp.buf.definition, "LSP Definitions")
 		map("gtd", vim.lsp.buf.type_definition, "LSP Type definitions")

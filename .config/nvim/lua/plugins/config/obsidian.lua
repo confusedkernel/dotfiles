@@ -10,9 +10,9 @@ require("obsidian").setup({
 			path = "~/linguistics/",
 		},
 	},
+	-- Completion is provided by obsidian's built-in LSP server (obsidian-ls),
+	-- so no completion-engine keys are needed here.
 	completion = {
-		blink = true,
-		nvim_cmp = false,
 		-- Trigger completion at 2 chars.
 		min_chars = 2,
 	},

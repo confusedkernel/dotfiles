@@ -8,6 +8,7 @@ vim.g.rustaceanvim = {
 	},
 	tools = {
 		hover = {
+			border = "solid",
 			stylize_markdown = true,
 		},
 		log = { level = vim.log.levels.OFF },

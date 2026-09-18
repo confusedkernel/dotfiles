@@ -40,7 +40,3 @@ vim.opt.smartindent = true
 
 vim.opt.cmdheight = 0
 vim.opt.scrolloff = 8
-
--- Default border for floating windows (LSP hover, signature help, diagnostics).
--- "solid" is a one-cell padded border drawn in FloatBorder.
-vim.opt.winborder = "solid"
