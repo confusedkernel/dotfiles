@@ -56,11 +56,28 @@ autocmd("FileType", {
 	end,
 })
 
+-- `nvim <dir>`: open the Telescope file browser instead of a blank directory
+-- buffer. If the browser is dismissed without picking a file, show the
+-- dashboard (or quit if it isn't available) rather than the empty buffer.
 local startup_group = group("StartupActions", { clear = true })
+
+local function show_dashboard_or_quit(dir_buf)
+	local ok, nvdash = pcall(require, "nvui.nvdash")
+	if not ok then
+		vim.cmd.quitall()
+		return
+	end
+	nvdash.open(vim.api.nvim_create_buf(false, true))
+	if vim.api.nvim_buf_is_valid(dir_buf) then
+		vim.api.nvim_buf_delete(dir_buf, { force = true })
+	end
+end
+
 autocmd("VimEnter", {
 	group = startup_group,
 	callback = function()
-		local bufname = vim.api.nvim_buf_get_name(0)
+		local dir_buf = vim.api.nvim_get_current_buf()
+		local bufname = vim.api.nvim_buf_get_name(dir_buf)
 		if vim.fn.isdirectory(bufname) ~= 1 then
 			return
 		end
@@ -72,7 +89,26 @@ autocmd("VimEnter", {
 			return
 		end
 
-		telescope.extensions.file_browser.file_browser({ cwd = bufname })
+		telescope.extensions.file_browser.file_browser({
+			cwd = bufname,
+			attach_mappings = function(prompt_bufnr)
+				autocmd("BufWipeout", {
+					group = startup_group,
+					buffer = prompt_bufnr,
+					once = true,
+					callback = function()
+						-- Selecting a file closes the picker first and opens the
+						-- file right after, so decide once that has had a chance to run.
+						vim.schedule(function()
+							if vim.api.nvim_get_current_buf() == dir_buf then
+								show_dashboard_or_quit(dir_buf)
+							end
+						end)
+					end,
+				})
+				return true
+			end,
+		})
 	end,
 })
 
