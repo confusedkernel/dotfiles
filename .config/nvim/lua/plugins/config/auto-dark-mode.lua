@@ -6,5 +6,3 @@ auto_dark_mode.setup({
 	set_light_mode = color_mode.UseLight,
 	set_dark_mode = color_mode.UseDark,
 })
-
-auto_dark_mode.init()

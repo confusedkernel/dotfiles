@@ -29,19 +29,17 @@ This directory is the plugin spec entrypoint for this Neovim config.
 - `Bekaboo/dropbar.nvim`: breadcrumb winbar/navigation bar.
 - `nvim-telescope/telescope-fzf-native.nvim` (dependency): native fzf sorter for Telescope.
 - `nvim-tree/nvim-tree.lua`: file explorer tree.
-- `confusedkernel/nvchad-ui.nvim`: dashboard/theming UI layer.
+- `confusedkernel/nvui.nvim` (dev): dashboard/theming UI layer.
 
 ### LSP (`lsp.lua`)
 
 - `mrcjkb/rustaceanvim`: Rust LSP tooling integration.
 - `mrcjkb/haskell-tools.nvim`: Haskell LSP/repl tooling integration.
 - `folke/lazydev.nvim`: Lua/Neovim dev library typing support.
-- `neovim/nvim-lspconfig`: LSP client/server configuration backbone.
-- `williamboman/mason.nvim` (dependency): LSP/tool installer UI.
-- `williamboman/mason-lspconfig.nvim` (dependency): Mason bridge for `lspconfig`.
-- `hrsh7th/cmp-nvim-lsp` (dependency): LSP completion capabilities for `nvim-cmp`.
-- `j-hui/fidget.nvim` (dependency): LSP progress notifications.
-- `lukas-reineke/lsp-format.nvim`: LSP formatting helper.
+- `neovim/nvim-lspconfig`: default server configs (`lsp/*.lua`); servers are enabled via `vim.lsp.enable`.
+- `mason-org/mason.nvim`: LSP/tool installer UI (loads on `:Mason` only).
+- `mason-org/mason-lspconfig.nvim`: `ensure_installed` bridge for Mason; runs when `:Mason` is opened.
+- `j-hui/fidget.nvim`: LSP progress notifications (loads on `LspAttach`).
 
 ### Editing (`editing.lua`)
 
@@ -54,10 +52,10 @@ This directory is the plugin spec entrypoint for this Neovim config.
 - `tpope/vim-repeat` (dependency): repeat plugin actions with `.`.
 - `lukas-reineke/indent-blankline.nvim`: indent guides.
 - `chrisgrieser/nvim-origami`: fold UX enhancements.
-- `hrsh7th/nvim-cmp`: completion menu engine.
+- `saghen/blink.cmp`: completion engine (LSP, snippets, path sources).
 - `L3MON4D3/LuaSnip`: snippet engine.
-- `saadparwaiz1/cmp_luasnip` (dependency): snippet source for `nvim-cmp`.
 - `rafamadriz/friendly-snippets` (dependency): snippet collection.
+- `stevearc/conform.nvim`: formatter dispatcher (format on save + `<leader>f`, LSP fallback).
 - `tpope/vim-sleuth`: auto-detect indentation style.
 - `folke/which-key.nvim`: keymap hint popup.
 
@@ -88,7 +86,6 @@ This directory is the plugin spec entrypoint for this Neovim config.
 - `krivahtoo/silicon.nvim`: create code screenshots.
 - `lukoshkin/highlight-whitespace`: visualize whitespace issues.
 - `uga-rosa/ccc.nvim`: color picker/highlighter.
-- `sbdchd/neoformat`: external formatter dispatcher.
 - `akinsho/toggleterm.nvim`: floating/split terminal management.
 - `folke/todo-comments.nvim`: highlight and search TODO-like comments.
 - `nvim-lua/plenary.nvim` (dependency): utility library used by tools.

@@ -3,8 +3,7 @@ local plugin_config = require("plugins.helpers").config
 return {
 	{ "krivahtoo/silicon.nvim", build = "./install.sh build", cmd = "Silicon", config = plugin_config("silicon") },
 	{ "lukoshkin/highlight-whitespace", event = { "BufReadPre", "BufNewFile" } },
-	{ "uga-rosa/ccc.nvim", event = { "BufReadPre", "BufNewFile" }, config = plugin_config("color") },
-	{ "sbdchd/neoformat", event = { "BufWritePre" }, config = plugin_config("neoformat") },
+	{ "uga-rosa/ccc.nvim", event = "VeryLazy", config = plugin_config("color") },
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",

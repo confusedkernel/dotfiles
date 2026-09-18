@@ -27,14 +27,11 @@ return {
 		end,
 	},
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
+		version = "1.*",
 		event = "InsertEnter",
-		config = plugin_config("cmp"),
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-		},
+		config = plugin_config("blink"),
+		dependencies = { "L3MON4D3/LuaSnip" },
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -43,6 +40,12 @@ return {
 		event = "InsertEnter",
 		config = plugin_config("luasnip"),
 		dependencies = { "rafamadriz/friendly-snippets" },
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		config = plugin_config("conform"),
 	},
 	{ "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
 	{ "folke/which-key.nvim", event = "VeryLazy", opts = {} },

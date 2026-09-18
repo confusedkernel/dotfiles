@@ -45,11 +45,6 @@ telescope.setup({
 			borderchars = borderchars,
 		},
 	},
-
-	on_enter = function()
-		vim.cmd("doautocmd CursorMoved")
-		vim.cmd("doautocmd CursorMovedI")
-	end,
 })
 
 for _, extension in ipairs({ "fzf", "file_browser", "undo" }) do

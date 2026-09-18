@@ -45,4 +45,4 @@ alias nv='nvim .'
 alias code='open -b com.microsoft.VSCode'
 
 # For Criterion compiling and other brew stuff
-abbr --add --position anywhere -- meep '-I /usr/local/include -L /usr/local/lib'
+abbr --add --position anywhere -- crtrn '-I /usr/local/include -L /usr/local/lib'

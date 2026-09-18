@@ -6,13 +6,24 @@ local opts = {
 	dev = {
 		path = "~/coding/repos/neovim",
 	},
+	install = {
+		colorscheme = { "nordic", "catppuccin-latte" },
+	},
 	change_detection = {
 		notify = false,
+	},
+	rocks = {
+		enabled = false,
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
+		},
 	},
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",

@@ -1,27 +1,11 @@
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = { "ts_ls", "vue_ls" },
-	automatic_installation = false,
-	automatic_enable = false,
-})
-
-local lsp_shared = require("plugins.config.lsp-shared")
-
-local on_attach = lsp_shared.on_attach
-local border = lsp_shared.border
-
-local function get_typescript_server_path(root_dir)
-	local project_ts = vim.fs.joinpath(root_dir, "node_modules", "typescript", "lib")
-	if (vim.uv or vim.loop).fs_stat(project_ts) then
-		return project_ts
-	end
-
-	return vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib"
-end
-
 ----------------------
 -- Language Servers --
 ----------------------
+-- Defaults (cmd, filetypes, root markers) come from nvim-lspconfig's lsp/*.lua.
+-- Only overrides go here. Binaries come from Mason (see lua/options.lua for PATH)
+-- or Homebrew. Buffer keymaps live in the LspAttach autocmd in lua/autocmds.lua.
+
+local vue_ts_plugin = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
 local servers = {
 	clangd = {}, -- C, C++
@@ -30,89 +14,46 @@ local servers = {
 	lemminx = {}, -- XML
 	pylsp = {}, -- Python
 	marksman = {}, -- Markdown
-	ts_ls = {}, -- TypeScript / React
+	html = {}, -- HTML
 	lua_ls = {
-		on_attach = function(_, bufno)
-			vim.keymap.set("n", "<leader>f", function()
-				vim.cmd(":w")
-				vim.cmd([[silent exec "!stylua %"]])
-				vim.cmd(":e")
-			end, { buffer = bufno, desc = "Format Lua with Stylua" })
-		end,
 		settings = {
-			hint = {
-				enable = true,
-			},
 			Lua = {
-				workspace = {
-					checkThirdParty = false,
-				},
-				formatting = {
-					align_array_table = "none",
-					align_function_params = false,
-					align_continuous_assign_statement = false,
-					align_continuous_rect_table_field = false,
-					enable = true,
-					indent = 2,
-				},
-				diagnostics = {
-					globals = { "vim" },
-				},
+				hint = { enable = true },
+				workspace = { checkThirdParty = false },
+				diagnostics = { globals = { "vim" } },
 			},
 		},
 	},
-	html = {
-		cmd = { "vscode-html-language-server", "--stdio" },
-		filetypes = { "html" },
+	-- Vue 3 runs in "hybrid mode": vue_ls handles the template/style parts and
+	-- forwards TypeScript requests to ts_ls, which needs the Vue TS plugin.
+	ts_ls = {
+		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 		init_options = {
-			configurationSection = { "html", "css", "javascript" },
-			embeddedLanguages = {
-				css = true,
-				javascript = true,
+			plugins = {
+				{ name = "@vue/typescript-plugin", location = vue_ts_plugin, languages = { "vue" } },
 			},
-			provideFormatter = true,
 		},
-		settings = {},
-		single_file_support = true,
 	},
-	vue_ls = {
-		on_new_config = function(new_config, new_root_dir)
-			new_config.init_options = new_config.init_options or {}
-			new_config.init_options.typescript = new_config.init_options.typescript or {}
-			new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
-		end,
-	},
+	vue_ls = {},
 	tinymist = {
 		on_attach = function(client, bufnr)
+			local function pin(path)
+				client:request("workspace/executeCommand", {
+					command = "tinymist.pinMain",
+					arguments = { path },
+				}, nil, bufnr)
+			end
 			vim.keymap.set("n", "<leader>tp", function()
-				client.request("workspace/executeCommand", {
-					command = "tinymist.pinMain",
-					arguments = { vim.api.nvim_buf_get_name(bufnr) },
-				}, nil, bufnr)
-			end, { buffer = bufnr, desc = "[T]inymist [P]in", noremap = true })
-
+				pin(vim.api.nvim_buf_get_name(bufnr))
+			end, { buffer = bufnr, desc = "[T]inymist [P]in" })
 			vim.keymap.set("n", "<leader>tu", function()
-				client.request("workspace/executeCommand", {
-					command = "tinymist.pinMain",
-					arguments = { vim.v.null },
-				}, nil, bufnr)
-			end, { buffer = bufnr, desc = "[T]inymist [U]npin", noremap = true })
+				pin(vim.v.null)
+			end, { buffer = bufnr, desc = "[T]inymist [U]npin" })
 		end,
 		root_dir = function(bufnr, on_dir)
-			local root = vim.fs.root(bufnr, { ".git" })
-			if not root then
-				local bufname = vim.api.nvim_buf_get_name(bufnr)
-				if bufname ~= "" then
-					root = vim.fs.dirname(bufname)
-				end
-			end
-			if not root then
-				root = (vim.uv or vim.loop).cwd()
-			end
-			if on_dir then
-				on_dir(root)
-			end
-			return root
+			local bufname = vim.api.nvim_buf_get_name(bufnr)
+			local root = vim.fs.root(bufnr, { ".git" }) or (bufname ~= "" and vim.fs.dirname(bufname)) or vim.uv.cwd()
+			on_dir(root)
 		end,
 		settings = {
 			formatterMode = "typstyle",
@@ -124,36 +65,51 @@ local servers = {
 vim.diagnostic.config({
 	virtual_text = false,
 	severity_sort = true,
-	float = {
-		border = border,
-	},
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
 			[vim.diagnostic.severity.HINT] = "·",
 			[vim.diagnostic.severity.INFO] = "·",
 		},
 	},
 })
 
--- Language servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- Completion capabilities advertised to every server. This mirrors what
+-- require("blink.cmp").get_lsp_capabilities() returns, declared statically so
+-- opening a file doesn't load blink.cmp (and LuaSnip) before insert mode.
+vim.lsp.config("*", {
+	capabilities = {
+		textDocument = {
+			completion = {
+				completionItem = {
+					snippetSupport = true,
+					commitCharactersSupport = false,
+					documentationFormat = { "markdown", "plaintext" },
+					deprecatedSupport = true,
+					preselectSupport = false,
+					tagSupport = { valueSet = { 1 } },
+					insertReplaceSupport = true,
+					resolveSupport = {
+						properties = { "documentation", "detail", "additionalTextEdits", "command", "data" },
+					},
+					insertTextModeSupport = { valueSet = { 1 } },
+					labelDetailsSupport = true,
+				},
+				completionList = {
+					itemDefaults = { "commitCharacters", "editRange", "insertTextFormat", "insertTextMode", "data" },
+				},
+				contextSupport = true,
+				insertTextMode = 1,
+			},
+		},
+	},
+})
 
 for name, config in pairs(servers) do
-	local server_config = vim.tbl_deep_extend("force", {}, config, {
-		capabilities = capabilities,
-	})
-
-	local server_on_attach = server_config.on_attach
-	server_config.on_attach = function(client, bufno)
-		on_attach(client, bufno)
-		if server_on_attach then
-			server_on_attach(client, bufno)
-		end
+	if next(config) ~= nil then
+		vim.lsp.config(name, config)
 	end
-
-	vim.lsp.config(name, server_config)
-	vim.lsp.enable({ name })
 end
+
+vim.lsp.enable(vim.tbl_keys(servers))

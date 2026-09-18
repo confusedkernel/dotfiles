@@ -17,6 +17,10 @@ return {
 		dependencies = "nvim-web-devicons",
 		-- version = "^1.0.0",
 		event = "VeryLazy",
+		init = function()
+			-- must be set before barbar's plugin/ file runs, or it calls setup() itself
+			vim.g.barbar_auto_setup = false
+		end,
 		config = plugin_config("barbar"),
 	},
 	{

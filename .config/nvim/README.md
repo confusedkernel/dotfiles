@@ -28,9 +28,9 @@ lua/
 
 ### Core Modules
 
-- `lua/options.lua`: editor options only
+- `lua/options.lua`: editor options (also puts Mason's bin dir on `PATH` so LSP servers resolve without loading Mason)
 - `lua/keymap.lua`: global keymaps
-- `lua/autocmds.lua`: grouped autocommands
+- `lua/autocmds.lua`: grouped autocommands, including the single `LspAttach` autocmd that defines all LSP buffer keymaps
 - `lua/commands.lua`: user commands (`UseLight`, `UseDark`, `ColorToggle`)
 - `lua/color-mode.lua`: light/dark colorscheme helpers
 
@@ -54,8 +54,13 @@ lua/
   - Startup applies `require("color-mode").ApplySystemTheme()` (system light/dark aware)
   - `auto-dark-mode.nvim` is enabled
   - Manual commands: `:UseLight`, `:UseDark`, `:ColorToggle`
+- LSP:
+  - Servers are configured with `vim.lsp.config` / `vim.lsp.enable` in `lua/plugins/config/lsp.lua`
+  - Mason only loads on `:Mason`; open it once after adding a server to `ensure_installed`
 - Formatting:
-  - `Neoformat` runs on save only for selected filetypes (configured in `lua/plugins/config/neoformat.lua`)
+  - `conform.nvim` formats on save for selected filetypes and on `<leader>f` everywhere, falling back to the LSP (configured in `lua/plugins/config/conform.lua`)
+- Completion:
+  - `blink.cmp` with LuaSnip snippets (`lua/plugins/config/blink.lua`)
 - Directory open:
   - Opening Neovim with a directory triggers Telescope file browser on startup
 

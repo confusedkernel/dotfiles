@@ -1,5 +1,3 @@
-vim.g.barbar_auto_setup = false
-
 require("barbar").setup({
 	custom_colors = true,
 	animation = true,

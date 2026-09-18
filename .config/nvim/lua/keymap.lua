@@ -20,10 +20,10 @@ map("n", "N", "Nzzzv", { desc = "Find last with cursor centered" })
 map("n", "J", "mzJ`z", { desc = "Join line below without moving cursor" })
 
 -- Clipboard system
-map({ "n", "x", "v" }, "<leader>d", '"_d', { desc = "Delete without cutting" })
-map({ "n", "x", "v" }, "<leader>c", '"_dc', { desc = "Change without cutting" })
-map({ "n", "x", "v" }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
-map({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+map({ "n", "x" }, "<leader>d", '"_d', { desc = "Delete without cutting" })
+map({ "n", "x" }, "<leader>c", '"_c', { desc = "Change without cutting" })
+map("x", "<leader>p", '"_dP', { desc = "Paste over selection without copying it" })
+map({ "n", "x" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
 
 map("n", "Q", "<nop>", { desc = "It's the worst place in the universe" })
 
@@ -47,11 +47,14 @@ end, { desc = "Toggle wrap locally", silent = true })
 -- Colorscheme (color-mode plugin helper)
 map("n", "<leader>C", "<cmd>ColorToggle<CR>", { desc = "Toggle colorscheme", silent = true })
 
--- LSP plugin
-map("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP float", silent = true })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic", silent = true })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic", silent = true })
-map("n", "<space>q", vim.diagnostic.setloclist, { desc = "Show diagnostics in list", silent = true })
+-- Diagnostics ([d / ]d are built in)
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostic float", silent = true })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Show diagnostics in list", silent = true })
+
+-- Formatting (conform.nvim, falls back to LSP)
+map({ "n", "x" }, "<leader>f", function()
+	require("conform").format({ async = true })
+end, { desc = "Format buffer/selection", silent = true })
 
 -- NvimTree plugin
 map("n", "<C-1>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree", silent = true })

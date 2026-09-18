@@ -1,5 +1,7 @@
 local plugin_config = require("plugins.helpers").config
 
+local mason_cmds = { "Mason", "MasonInstall", "MasonUpdate", "MasonUninstall", "MasonLog" }
+
 return {
 	{
 		"mrcjkb/rustaceanvim",
@@ -26,12 +28,24 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		config = plugin_config("lsp"),
-		dependencies = {
-			{ "williamboman/mason.nvim" },
-			"williamboman/mason-lspconfig.nvim",
-			"hrsh7th/cmp-nvim-lsp",
-			{ "j-hui/fidget.nvim", config = plugin_config("fidget") },
+	},
+	-- Mason only needs to load for its UI/installer; its bin dir is put on PATH
+	-- in lua/options.lua so servers resolve without it.
+	{
+		"mason-org/mason.nvim",
+		cmd = mason_cmds,
+		build = ":MasonUpdate",
+		opts = { PATH = "skip" },
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		cmd = mason_cmds,
+		dependencies = { "mason-org/mason.nvim" },
+		opts = {
+			ensure_installed = { "ts_ls", "vue_ls", "cssls", "jsonls", "lemminx" },
+			automatic_installation = false,
+			automatic_enable = false,
 		},
 	},
-	{ "lukas-reineke/lsp-format.nvim", event = "LspAttach" },
+	{ "j-hui/fidget.nvim", event = "LspAttach", config = plugin_config("fidget") },
 }
