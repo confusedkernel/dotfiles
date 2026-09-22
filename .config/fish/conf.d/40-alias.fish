@@ -1,3 +1,6 @@
+status is-interactive
+or exit
+
 # General aliases
 alias ls='lsd --tree --depth 1'
 alias la='lsd -a --tree --depth 1'
