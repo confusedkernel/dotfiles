@@ -1,7 +1,6 @@
 format = """
 $hostname$directory$username$c$python$java$lua$rust$haskell
-$character
-"""
+$character"""
 
 right_format = "$git_branch$git_commit$git_state$git_status"
 
@@ -36,7 +35,7 @@ truncation_symbol = "../"
 truncate_to_repo = false
 read_only = " "
 read_only_style = "danger"
-style = "blck"
+style = "bold"
 format = "[$path]($style)[$read_only]($read_only_style) "
 
 [status]
@@ -71,83 +70,83 @@ style = "bold lilac"
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]
-format = '(via [$symbol$version \($virtualenv\)]($style))'
+format = '(via [$symbol($version )(\($virtualenv\) )]($style))'
 symbol = " "
 
 [aws]
 symbol = "  "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [buf]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [c]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [conda]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [dart]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [docker_context]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [elixir]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [elm]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [golang]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [guix_shell]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [haskell]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [haxe]
 symbol = "⌘ "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [hg_branch]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [java]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [julia]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [lua]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [meson]
-symbol = "喝 "
-format = "via [$symbol$version]($style)"
+symbol = "󰔷 "
+format = "via [$symbol($version )]($style)"
 
 [nim]
-symbol = " "
-format = "via [$symbol$version]($style)"
+symbol = "󰆥 "
+format = "via [$symbol($version )]($style)"
 
 [nix_shell]
 symbol = " "
@@ -156,18 +155,18 @@ symbol = " "
 symbol = " "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 
 [rlang]
-symbol = "ﳒ "
+symbol = "󰟔 "
 
 [ruby]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [rust]
 symbol = " "
-format = "via [$symbol$version]($style)"
+format = "via [$symbol($version )]($style)"
 
 [scala]
 symbol = " "
@@ -187,10 +186,10 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "﯑ "
+Garuda = "󰛓 "
 Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
 Linux = " "
 Macos = " "
 Manjaro = " "
@@ -199,16 +198,16 @@ MidnightBSD = " "
 Mint = " "
 NetBSD = " "
 NixOS = " "
-OpenBSD = " "
+OpenBSD = "󰈺 "
 openSUSE = " "
-OracleLinux = " "
+OracleLinux = "󰌷 "
 Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
+Redox = "󰀘 "
+Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "󰍲 "
